@@ -1,5 +1,8 @@
+using System;
+using System.Net.Http;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using PersonalFinance.Web;
 
 WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args: args);
