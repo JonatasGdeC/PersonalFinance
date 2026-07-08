@@ -4,7 +4,7 @@ using PersonalFinance.Domain.Repositories.Pot;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
-public class PotRepository(PersonalFinanceDbContext context) : IPotReadRepository, IPotWriteRepository
+internal class PotRepository(PersonalFinanceDbContext context) : IPotReadRepository, IPotWriteRepository
 {
     public async Task<List<Pot>> GetAll(Guid userId)
     {

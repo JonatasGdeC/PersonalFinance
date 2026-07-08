@@ -3,7 +3,7 @@ using PersonalFinance.Domain.Entities;
 
 namespace PersonalFinance.Infrastructure.DataAccess;
 
-public class PersonalFinanceDbContext(DbContextOptions options) : DbContext(options: options)
+internal class PersonalFinanceDbContext(DbContextOptions options) : DbContext(options: options)
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
