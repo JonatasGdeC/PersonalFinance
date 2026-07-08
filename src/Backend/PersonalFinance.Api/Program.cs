@@ -1,5 +1,6 @@
-
 using PersonalFinance.Infrastructure;
+using PersonalFinance.Infrastructure.Extensions;
+using PersonalFinance.Infrastructure.Migrations;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
@@ -16,5 +17,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+if (!builder.Configuration.IsUnitTestEnvironment())
+{
+    await MigrateDatabase();
+}
 
 app.Run();
+
+async Task MigrateDatabase()  
+{  
+    await using AsyncServiceScope scope = app.Services.CreateAsyncScope();  
+    string stringConnection = builder.Configuration.ConnectionString();
+    DataBaseMigration.Migrate(connectionString: stringConnection, serviceProvider: scope.ServiceProvider);  
+}

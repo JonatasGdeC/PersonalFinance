@@ -20,7 +20,7 @@ public static class DependencyInjectionExtension
         services.AddFluentMigratorCore()
             .ConfigureRunner(configure: config =>
             {
-                Assembly infrastructure = Assembly.Load(assemblyString: "PlanShare.Infrastructure");
+                Assembly infrastructure = Assembly.Load(assemblyString: "PersonalFinance.Infrastructure");
                 IMigrationRunnerBuilder? migrationRunnerBuilder = config.AddPostgres();
                 migrationRunnerBuilder.WithGlobalConnectionString(connectionStringOrName: connectionString)
                     .ScanIn(infrastructure).For.All();

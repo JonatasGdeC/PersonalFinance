@@ -3,6 +3,8 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+src/Backend/PersonalFinance.Api/appsettings.Development.json
+
 # dotenv files
 .env
 
