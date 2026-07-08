@@ -3,7 +3,7 @@ using PersonalFinance.Domain.Enums;
 
 namespace PersonalFinance.Domain.Entities;
 
-public class Transactions
+public class Transaction
 {
     public long Id { get; set; }
     public DateTime Date { get; set; }
