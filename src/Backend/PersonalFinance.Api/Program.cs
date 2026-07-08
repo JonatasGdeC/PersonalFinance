@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+
+using PersonalFinance.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
+builder.Services.AddInfrastructure(configurationManager: builder.Configuration);
+builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 WebApplication app = builder.Build();

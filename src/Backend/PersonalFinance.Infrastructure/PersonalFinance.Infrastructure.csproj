@@ -6,4 +6,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.79" />
+      <PackageReference Include="FluentMigrator" Version="8.0.1" />
+      <PackageReference Include="FluentMigrator.Runner" Version="8.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.9" />
+      <PackageReference Include="Npgsql" Version="10.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PersonalFinance.Domain\PersonalFinance.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

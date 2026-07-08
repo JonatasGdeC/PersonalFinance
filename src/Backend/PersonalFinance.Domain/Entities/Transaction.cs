@@ -1,4 +1,3 @@
-using System;
 using PersonalFinance.Domain.Enums;
 
 namespace PersonalFinance.Domain.Entities;

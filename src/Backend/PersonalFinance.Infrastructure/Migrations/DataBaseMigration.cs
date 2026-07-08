@@ -1,9 +1,9 @@
 using Dapper;
+using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using FluentMigrator.Runner;
 
-namespace PlanShare.Infrastructure.Migrations;
+namespace PersonalFinance.Infrastructure.Migrations;
 
 public static class DataBaseMigration
 {

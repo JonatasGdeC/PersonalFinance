@@ -1,18 +1,19 @@
 using FluentMigrator;
+using PersonalFinance.Domain.Entities;
 
-namespace PlanShare.Infrastructure.Migrations.Versions;
+namespace PersonalFinance.Infrastructure.Migrations.Versions;
 
-[Migration(version: DatabaseVersions.TABLE_REGISTER_USER, description: "Create table to save the user's information")]
+[Migration(version: MigrationContants.Version.TABLE_REGISTER_USER, description: "Creating user table registrations.")]
 public class Version00000001 : ForwardOnlyMigration
 {
     public override void Up()
     {
-        Create.Table(tableName: "Users")
-            .WithColumn(name: "Id").AsGuid().PrimaryKey().NotNullable()
-            .WithColumn(name: "Active").AsBoolean().NotNullable().WithDefaultValue(value: true)
-            .WithColumn(name: "CreatedOn").AsDateTime().NotNullable().WithDefaultValue(value: System.DateTime.UtcNow)
-            .WithColumn(name: "Name").AsString(size: 255).NotNullable()
-            .WithColumn(name: "Email").AsString(size: 255).NotNullable()
-            .WithColumn(name: "Password").AsString(size: 2000).NotNullable();
+        Create.Table(tableName: MigrationContants.TableName.USERS)
+            .WithColumn(name: nameof(User.Id)).AsGuid().PrimaryKey().NotNullable()
+            .WithColumn(name: nameof(User.Name)).AsString(size: 100).NotNullable()
+            .WithColumn(name: nameof(User.Email)).AsString(size: 256).NotNullable()
+            .WithColumn(name: nameof(User.Password)).AsString(size: 100).Nullable()
+            .WithColumn(name: nameof(User.GoogleId)).AsString(size: 50).Nullable()
+            .WithColumn(name: nameof(User.ProfileImage)).AsString(size: 500).Nullable();
     }
 }
