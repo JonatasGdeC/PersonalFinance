@@ -1,6 +1,5 @@
-namespace Kanban.Domain.Repositories.User;
+namespace PersonalFinance.Domain.Repositories.User;
 using Entities;
-using System.Threading.Tasks;
 
 public interface IUserWriteRepository
 {

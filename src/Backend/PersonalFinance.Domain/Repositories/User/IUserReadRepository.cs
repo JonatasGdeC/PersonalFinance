@@ -1,5 +1,5 @@
-namespace Kanban.Domain.Repositories.User;
-using Entities;
+namespace PersonalFinance.Domain.Repositories.User;
+using PersonalFinance.Domain.Entities;
 
 public interface IUserReadRepository
 {

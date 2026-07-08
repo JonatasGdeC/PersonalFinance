@@ -1,8 +1,8 @@
-using Kanban.Domain.Repositories;
+using PersonalFinance.Domain.Repositories;
 
-namespace Kanban.Infrastructure.DataAccess;
+namespace PersonalFinance.Infrastructure.DataAccess;
 
-internal class UnitOfWork(KanbanDbContext context) : IUnitOfWork
+internal class UnitOfWork(PersonalFinanceDbContext context) : IUnitOfWork
 {
     public async Task Commit()
     {

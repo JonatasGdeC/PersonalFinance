@@ -2,6 +2,10 @@ using System.Reflection;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalFinance.Domain.Repositories;
+using PersonalFinance.Domain.Repositories.User;
+using PersonalFinance.Infrastructure.DataAccess;
+using PersonalFinance.Infrastructure.DataAccess.Repositories;
 using PersonalFinance.Infrastructure.Extensions;
 
 namespace PersonalFinance.Infrastructure;
@@ -10,6 +14,7 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfigurationManager configurationManager)
     {
+        AddRepositories(services: services);
         AddFluentMigrator(services: services, configuration: configurationManager);
     }
 
@@ -25,5 +30,12 @@ public static class DependencyInjectionExtension
                 migrationRunnerBuilder.WithGlobalConnectionString(connectionStringOrName: connectionString)
                     .ScanIn(infrastructure).For.All();
             });
+    }
+
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUserReadRepository, UserRepository>();
+        services.AddScoped<IUserWriteRepository, UserRepository>();
     }
 }

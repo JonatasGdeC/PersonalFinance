@@ -1,10 +1,10 @@
-using Kanban.Domain.Entities;
-using Kanban.Domain.Repositories.User;
 using Microsoft.EntityFrameworkCore;
+using PersonalFinance.Domain.Entities;
+using PersonalFinance.Domain.Repositories.User;
 
-namespace Kanban.Infrastructure.DataAccess.Repositories;
+namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
-public class UserRepository(KanbanDbContext context) : IUserReadRepository, IUserWriteRepository
+public class UserRepository(PersonalFinanceDbContext context) : IUserReadRepository, IUserWriteRepository
 {
     public async Task<User?> GetByEmail(string email)
     {
@@ -26,8 +26,8 @@ public class UserRepository(KanbanDbContext context) : IUserReadRepository, IUse
         context.Users.Remove(entity: user);
     }
 
-    public Task<User?> GetById(Guid id)
+    public async Task<User?> GetById(Guid id)
     {
-        return context.Users.FirstOrDefaultAsync(predicate: user => user.Id == id);
+        return await context.Users.FirstOrDefaultAsync(predicate: user => user.Id == id);
     }
 }
