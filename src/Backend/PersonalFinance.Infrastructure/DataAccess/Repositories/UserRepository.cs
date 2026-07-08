@@ -4,7 +4,7 @@ using PersonalFinance.Domain.Repositories.User;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
-public class UserRepository(PersonalFinanceDbContext context) : IUserReadRepository, IUserWriteRepository
+internal class UserRepository(PersonalFinanceDbContext context) : IUserReadRepository, IUserWriteRepository
 {
     public async Task<User?> GetByEmail(string email)
     {
