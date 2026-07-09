@@ -25,6 +25,7 @@ internal class CategoryRepository(PersonalFinanceDbContext context) : ICategoryR
 
     public async Task<Category?> GetById(long categoryId, Guid userId)
     {
-        return await context.Categorys.AsTracking().FirstOrDefaultAsync(predicate: category => category.Id == categoryId);
+        return await context.Categorys.AsTracking()
+            .FirstOrDefaultAsync(predicate: category => category.Id == categoryId );
     }
 }

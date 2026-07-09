@@ -3,6 +3,7 @@ using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalFinance.Domain.Repositories;
+using PersonalFinance.Domain.Repositories.Budget;
 using PersonalFinance.Domain.Repositories.Category;
 using PersonalFinance.Domain.Repositories.Participant;
 using PersonalFinance.Domain.Repositories.Pot;
@@ -49,5 +50,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<IParticipantWriteRepository, ParticipantRepository>();
         services.AddScoped<ICategoryReadRepository, CategoryRepository>();
         services.AddScoped<ICategoryWriteRepository, CategoryRepository>();
+        services.AddScoped<IBudgetReadRepository, BudgetRepository>();
+        services.AddScoped<IBudgetWriteRepository, BudgetRepository>();
     }
 }
