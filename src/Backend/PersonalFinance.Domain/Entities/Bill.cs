@@ -3,6 +3,7 @@ namespace PersonalFinance.Domain.Entities;
 public class Bill
 {
     public long Id { get; set; }
+    public DateTime Date { get; set; }
     public double Amount { get; set; }
     public int Installments { get; set; }
     

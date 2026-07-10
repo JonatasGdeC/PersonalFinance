@@ -44,7 +44,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             ListOrder.Za      => query.OrderByDescending(keySelector: transaction => transaction.Participant.Name),
             ListOrder.Highest => query.OrderByDescending(keySelector: transaction => transaction.Amount),
             ListOrder.Lowest  => query.OrderBy(keySelector: transaction => transaction.Amount),
-            _                            => query.OrderByDescending(keySelector: transaction => transaction.Date)
+            _                 => query.OrderByDescending(keySelector: transaction => transaction.Date)
         };
 
         return await CreatePageList<Transaction>.Execute(query: query, page: page);
