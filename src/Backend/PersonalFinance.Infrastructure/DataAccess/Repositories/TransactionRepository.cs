@@ -1,15 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Enums;
-using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Transaction;
 using PersonalFinance.Domain.Requests.Transaction;
 using PersonalFinance.Domain.Response;
+using PersonalFinance.Domain.Response.Transaction;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
-internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
+internal class TransactionRepository(PersonalFinanceDbContext context)
+    : ITransactionReadRepository, ITransactionWhiteRepository
 {
     public async Task<PagedListResponse<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
     {
@@ -39,15 +40,41 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
 
         query = request.ListOrder switch
         {
-            ListOrder.Oldest  => query.OrderBy(keySelector: transaction => transaction.Date),
-            ListOrder.Az      => query.OrderBy(keySelector: transaction => transaction.Participant.Name),
-            ListOrder.Za      => query.OrderByDescending(keySelector: transaction => transaction.Participant.Name),
+            ListOrder.Oldest => query.OrderBy(keySelector: transaction => transaction.Date),
+            ListOrder.Az => query.OrderBy(keySelector: transaction => transaction.Participant.Name),
+            ListOrder.Za => query.OrderByDescending(keySelector: transaction => transaction.Participant.Name),
             ListOrder.Highest => query.OrderByDescending(keySelector: transaction => transaction.Amount),
-            ListOrder.Lowest  => query.OrderBy(keySelector: transaction => transaction.Amount),
-            _                 => query.OrderByDescending(keySelector: transaction => transaction.Date)
+            ListOrder.Lowest => query.OrderBy(keySelector: transaction => transaction.Amount),
+            _ => query.OrderByDescending(keySelector: transaction => transaction.Date)
         };
 
         return await CreatePageList<Transaction>.Execute(query: query, page: request.PageRequest);
+    }
+
+    public async Task<GetTransactionDashboardResponse> GetDashboard(Guid userId, DateTime date)
+    {
+        IQueryable<Transaction> query = context.Transactions
+            .AsNoTracking()
+            .Include(navigationPropertyPath: transaction => transaction.Category)
+            .Include(navigationPropertyPath: transaction => transaction.Participant)
+            .Where(predicate: transaction => transaction.UserId == userId && transaction.Date.Month == date.Month && transaction.Date.Year == date.Year);
+
+        List<Transaction> lastestTransactions = await query.Take(count: 5).ToListAsync();
+        double currentBalance = await context.Transactions.SumAsync(selector: transaction => transaction.Amount);
+        double totalIncome = await context.Transactions
+            .Where(predicate: transaction => transaction.Type == TransactionType.Income)
+            .SumAsync(selector: transaction => transaction.Amount);
+        double totalExpense = await context.Transactions
+            .Where(predicate: transaction => transaction.Type == TransactionType.Expense)
+            .SumAsync(selector: transaction => transaction.Amount);
+
+        return new GetTransactionDashboardResponse
+        {
+            LastestTransactions = lastestTransactions,
+            CurrentBalance = currentBalance,
+            TotalIncome = totalIncome,
+            TotalExpense = totalExpense
+        };
     }
 
     public async Task Add(Transaction transaction)
