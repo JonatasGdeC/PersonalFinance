@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
-using PersonalFinance.Domain.Filters.Participant;
+using PersonalFinance.Domain.Filters;
 using PersonalFinance.Domain.ReadModels;
 using PersonalFinance.Domain.Repositories.Participant;
 using PersonalFinance.Infrastructure.DataAccess.Utils;

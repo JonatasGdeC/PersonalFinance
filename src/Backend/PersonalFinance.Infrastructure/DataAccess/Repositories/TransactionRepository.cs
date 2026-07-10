@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Enums;
-using PersonalFinance.Domain.Filters.Transaction;
+using PersonalFinance.Domain.Filters;
 using PersonalFinance.Domain.ReadModels;
-using PersonalFinance.Domain.ReadModels.Transaction;
 using PersonalFinance.Domain.Repositories.Transaction;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
@@ -74,6 +73,20 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             TotalIncome = totalIncome,
             TotalExpense = totalExpense
         };
+    }
+
+    public async Task<PagedList<Transaction>> GetByCategory(Guid userId, long categoryId, DateTime date, Pagination pagination)
+    {
+        IQueryable<Transaction> query = context.Transactions
+            .AsNoTracking()
+            .Include(navigationPropertyPath: transaction => transaction.Category)
+            .Include(navigationPropertyPath: transaction => transaction.Participant)
+            .Where(predicate: transaction => transaction.UserId == userId
+                                             && transaction.CategoryId == categoryId
+                                             && transaction.Date.Month == date.Month 
+                                             && transaction.Date.Year == date.Year);
+        
+        return await CreatePageList<Transaction>.Execute(query: query, page: pagination);
     }
 
     public async Task Add(Transaction transaction)

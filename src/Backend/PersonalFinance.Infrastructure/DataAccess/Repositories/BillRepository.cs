@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Enums;
-using PersonalFinance.Domain.Filters.Bill;
+using PersonalFinance.Domain.Filters;
 using PersonalFinance.Domain.ReadModels;
-using PersonalFinance.Domain.ReadModels.Bill;
 using PersonalFinance.Domain.Repositories.Bill;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 

@@ -1,4 +1,4 @@
-using PersonalFinance.Domain.Filters.Participant;
+using PersonalFinance.Domain.Filters;
 using PersonalFinance.Domain.ReadModels;
 
 namespace PersonalFinance.Domain.Repositories.Participant;

@@ -1,4 +1,4 @@
-namespace PersonalFinance.Domain.ReadModels.Bill;
+namespace PersonalFinance.Domain.ReadModels;
 
 public record BillDashboard
 {

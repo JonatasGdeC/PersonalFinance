@@ -1,6 +1,5 @@
-using PersonalFinance.Domain.Filters.Bill;
+using PersonalFinance.Domain.Filters;
 using PersonalFinance.Domain.ReadModels;
-using PersonalFinance.Domain.ReadModels.Bill;
 
 namespace PersonalFinance.Domain.Repositories.Bill;
 using Entities;

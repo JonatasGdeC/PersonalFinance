@@ -1,5 +1,6 @@
-namespace PersonalFinance.Domain.ReadModels.Transaction;
-using Entities;
+using PersonalFinance.Domain.Entities;
+
+namespace PersonalFinance.Domain.ReadModels;
 
 public record TransactionDashboard
 {

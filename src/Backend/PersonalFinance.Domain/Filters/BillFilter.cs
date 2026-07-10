@@ -1,6 +1,6 @@
 using PersonalFinance.Domain.Enums;
 
-namespace PersonalFinance.Domain.Filters.Bill;
+namespace PersonalFinance.Domain.Filters;
 
 public record BillFilter
 {

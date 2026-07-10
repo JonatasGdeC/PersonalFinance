@@ -1,4 +1,4 @@
-namespace PersonalFinance.Domain.Filters.Participant;
+namespace PersonalFinance.Domain.Filters;
 
 public class ParticipantFilter
 {
