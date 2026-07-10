@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Requests;
+using PersonalFinance.Domain.Response;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Utils;
 
 internal static class CreatePageList<T>
 {
-    internal static async Task<PagedList<T>> Execute(IQueryable<T> query, PageRequest page)
+    internal static async Task<PagedListResponse<T>> Execute(IQueryable<T> query, PageRequest page)
     {
         int totalItems = await query.CountAsync();
 
@@ -16,7 +17,7 @@ internal static class CreatePageList<T>
 
         List<T> items = await query.Skip(count: skipItems).Take(count: pageSize).ToListAsync();
 
-        return new PagedList<T>
+        return new PagedListResponse<T>
         {
             Items = items,
             PageNumber = pageNumber,

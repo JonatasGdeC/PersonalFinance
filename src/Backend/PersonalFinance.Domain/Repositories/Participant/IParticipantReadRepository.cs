@@ -1,9 +1,10 @@
 using PersonalFinance.Domain.Requests.Participant;
+using PersonalFinance.Domain.Response;
 
 namespace PersonalFinance.Domain.Repositories.Participant;
 using Entities;
 
 public interface IParticipantReadRepository
 {
-    Task<PagedList<Participant>> GetAll(Guid userId, GetAllParticipantRequest request);
+    Task<PagedListResponse<Participant>> GetAll(Guid userId, GetAllParticipantRequest request);
 }

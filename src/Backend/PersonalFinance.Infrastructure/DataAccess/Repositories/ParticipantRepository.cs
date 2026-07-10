@@ -4,13 +4,14 @@ using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Participant;
 using PersonalFinance.Domain.Requests;
 using PersonalFinance.Domain.Requests.Participant;
+using PersonalFinance.Domain.Response;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class ParticipantRepository(PersonalFinanceDbContext context) : IParticipantReadRepository, IParticipantWriteRepository
 {
-    public async Task<PagedList<Participant>> GetAll(Guid userId, GetAllParticipantRequest request)
+    public async Task<PagedListResponse<Participant>> GetAll(Guid userId, GetAllParticipantRequest request)
     {
         IQueryable<Participant> query = context.Participants
             .AsNoTracking()

@@ -4,13 +4,14 @@ using PersonalFinance.Domain.Enums;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Transaction;
 using PersonalFinance.Domain.Requests.Transaction;
+using PersonalFinance.Domain.Response;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
 {
-    public async Task<PagedList<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
+    public async Task<PagedListResponse<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
     {
         IQueryable<Transaction> query = context.Transactions
             .AsNoTracking()

@@ -11,9 +11,10 @@ public class Version00000007 : ForwardOnlyMigration
     {
         Create.Table(tableName: MigrationContants.TableName.BILLS)
             .WithColumn(name: nameof(Bill.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
-            .WithColumn(name: nameof(Bill.Date)).AsDateTime().NotNullable()
+            .WithColumn(name: nameof(Bill.DueDate)).AsDateTime().NotNullable()
             .WithColumn(name: nameof(Bill.Amount)).AsDouble().NotNullable()
-            .WithColumn(name: nameof(Bill.Installments)).AsInt32().NotNullable()
+            .WithColumn(name: nameof(Bill.InstallmentsTotal)).AsInt32().NotNullable()
+            .WithColumn(name: nameof(Bill.InstallmentsPaid)).AsInt32().NotNullable()
             .WithColumn(name: nameof(Bill.CategoryId)).AsInt64().Nullable()
             .WithColumn(name: nameof(Bill.ParticipantId)).AsInt64().NotNullable()
             .WithColumn(name: nameof(Bill.UserId)).AsGuid().NotNullable();
