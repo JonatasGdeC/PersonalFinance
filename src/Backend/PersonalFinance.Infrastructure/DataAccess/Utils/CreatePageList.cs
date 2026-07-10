@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using PersonalFinance.Communication.Requests;
 using PersonalFinance.Domain.Repositories;
+using PersonalFinance.Domain.Requests;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Utils;
 

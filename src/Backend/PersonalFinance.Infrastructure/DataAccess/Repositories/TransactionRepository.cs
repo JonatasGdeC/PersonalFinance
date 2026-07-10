@@ -1,17 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using PersonalFinance.Communication.Enums;
-using PersonalFinance.Communication.Requests;
-using PersonalFinance.Communication.Requests.Transaction;
 using PersonalFinance.Domain.Entities;
+using PersonalFinance.Domain.Enums;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Transaction;
+using PersonalFinance.Domain.Requests.Transaction;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
 {
-    public async Task<PagedList<Transaction>> GetAll(GetAllTransactionRequest request, Guid userId, PageRequest page)
+    public async Task<PagedList<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
     {
         IQueryable<Transaction> query = context.Transactions
             .AsNoTracking()
@@ -47,7 +46,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             _                 => query.OrderByDescending(keySelector: transaction => transaction.Date)
         };
 
-        return await CreatePageList<Transaction>.Execute(query: query, page: page);
+        return await CreatePageList<Transaction>.Execute(query: query, page: request.PageRequest);
     }
 
     public async Task Add(Transaction transaction)

@@ -1,10 +1,9 @@
-using PersonalFinance.Communication.Requests;
-using PersonalFinance.Communication.Requests.Bill;
+using PersonalFinance.Domain.Requests.Bill;
 
 namespace PersonalFinance.Domain.Repositories.Bill;
 using Entities;
 
 public interface IBillReadRepository
 {
-    Task<PagedList<Bill>> GetAll(GetAllBillRequest request, Guid userId, PageRequest page);
+    Task<PagedList<Bill>> GetAll(Guid userId, GetAllBillRequest request);
 }

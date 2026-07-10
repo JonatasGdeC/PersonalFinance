@@ -1,17 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using PersonalFinance.Communication.Enums;
-using PersonalFinance.Communication.Requests;
-using PersonalFinance.Communication.Requests.Bill;
 using PersonalFinance.Domain.Entities;
+using PersonalFinance.Domain.Enums;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Bill;
+using PersonalFinance.Domain.Requests.Bill;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepository, IBillWriteRepository
 {
-    public async Task<PagedList<Bill>> GetAll(GetAllBillRequest request, Guid userId, PageRequest page)
+    public async Task<PagedList<Bill>> GetAll(Guid userId, GetAllBillRequest request)
     {
         IQueryable<Bill> query = context.Bills
             .AsNoTracking()
@@ -37,7 +36,7 @@ internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepos
             _                 => query.OrderByDescending(keySelector: transaction => transaction.Date)
         };
 
-        return await CreatePageList<Bill>.Execute(query: query, page: page);
+        return await CreatePageList<Bill>.Execute(query: query, page: request.PageRequest);
     }
 
     public async Task Add(Bill bill)

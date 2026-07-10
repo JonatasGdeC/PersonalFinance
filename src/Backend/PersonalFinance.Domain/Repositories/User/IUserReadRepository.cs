@@ -1,5 +1,5 @@
 namespace PersonalFinance.Domain.Repositories.User;
-using PersonalFinance.Domain.Entities;
+using Entities;
 
 public interface IUserReadRepository
 {
