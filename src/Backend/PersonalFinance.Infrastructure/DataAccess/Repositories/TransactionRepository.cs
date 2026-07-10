@@ -9,8 +9,7 @@ using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
-internal class TransactionRepository(PersonalFinanceDbContext context)
-    : ITransactionReadRepository, ITransactionWhiteRepository
+internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
 {
     public async Task<PagedListResponse<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
     {
