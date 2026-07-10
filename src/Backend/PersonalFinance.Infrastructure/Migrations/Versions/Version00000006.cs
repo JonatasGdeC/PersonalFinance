@@ -1,3 +1,4 @@
+using System.Data;
 using FluentMigrator;
 using PersonalFinance.Domain.Entities;
 
@@ -17,10 +18,12 @@ public class Version00000006 : ForwardOnlyMigration
 
         Create.ForeignKey(foreignKeyName: "FK_Budgets_Categories_CategoryId")
             .FromTable(table: MigrationContants.TableName.BUDGETS).ForeignColumn(column: nameof(Budget.CategoryId))
-            .ToTable(table: MigrationContants.TableName.CATEGORIES).PrimaryColumn(column: nameof(Category.Id));
+            .ToTable(table: MigrationContants.TableName.CATEGORIES).PrimaryColumn(column: nameof(Category.Id))
+            .OnDelete(rule: Rule.Cascade);
 
         Create.ForeignKey(foreignKeyName: "FK_Budgets_Users_UserId")
             .FromTable(table: MigrationContants.TableName.BUDGETS).ForeignColumn(column: nameof(Budget.UserId))
-            .ToTable(table: MigrationContants.TableName.USERS).PrimaryColumn(column: nameof(User.Id));
+            .ToTable(table: MigrationContants.TableName.USERS).PrimaryColumn(column: nameof(User.Id))
+            .OnDelete(rule: Rule.Cascade);
     }
 }

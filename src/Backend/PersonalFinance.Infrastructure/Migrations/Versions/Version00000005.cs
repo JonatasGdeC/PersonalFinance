@@ -1,3 +1,4 @@
+using System.Data;
 using FluentMigrator;
 using PersonalFinance.Domain.Entities;
 
@@ -19,14 +20,17 @@ public class Version00000005 : ForwardOnlyMigration
 
         Create.ForeignKey(foreignKeyName: "FK_Transactions_Categories_CategoryId")
             .FromTable(table: MigrationContants.TableName.TRANSACTIONS).ForeignColumn(column: nameof(Transaction.CategoryId))
-            .ToTable(table: MigrationContants.TableName.CATEGORIES).PrimaryColumn(column: nameof(Category.Id));
+            .ToTable(table: MigrationContants.TableName.CATEGORIES).PrimaryColumn(column: nameof(Category.Id))
+            .OnDelete(rule: Rule.SetNull);
 
         Create.ForeignKey(foreignKeyName: "FK_Transactions_Participants_ParticipantId")
             .FromTable(table: MigrationContants.TableName.TRANSACTIONS).ForeignColumn(column: nameof(Transaction.ParticipantId))
-            .ToTable(table: MigrationContants.TableName.PARTICIPANTS).PrimaryColumn(column: nameof(Participant.Id));
+            .ToTable(table: MigrationContants.TableName.PARTICIPANTS).PrimaryColumn(column: nameof(Participant.Id))
+            .OnDelete(rule: Rule.Cascade);
 
         Create.ForeignKey(foreignKeyName: "FK_Transactions_Users_UserId")
             .FromTable(table: MigrationContants.TableName.TRANSACTIONS).ForeignColumn(column: nameof(Transaction.UserId))
-            .ToTable(table: MigrationContants.TableName.USERS).PrimaryColumn(column: nameof(User.Id));
+            .ToTable(table: MigrationContants.TableName.USERS).PrimaryColumn(column: nameof(User.Id))
+            .OnDelete(rule: Rule.Cascade);
     }
 }
