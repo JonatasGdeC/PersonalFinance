@@ -1,6 +1,6 @@
-namespace PersonalFinance.Domain.Response.Bill;
+namespace PersonalFinance.Domain.ReadModels.Bill;
 
-public record GetBillDashboardResponse
+public record BillDashboard
 {
     public decimal Total { get; init; }
     public decimal Paid { get; init; }

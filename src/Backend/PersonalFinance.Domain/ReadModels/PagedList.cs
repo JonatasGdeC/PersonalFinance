@@ -1,6 +1,6 @@
-namespace PersonalFinance.Domain.Response;
+namespace PersonalFinance.Domain.ReadModels;
 
-public record PagedListResponse<T>
+public record PagedList<T>
 {
     public required List<T> Items { get; set; }
     public int PageNumber { get; set; }

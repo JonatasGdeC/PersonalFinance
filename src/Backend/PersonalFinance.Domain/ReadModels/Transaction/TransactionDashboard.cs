@@ -1,7 +1,7 @@
-namespace PersonalFinance.Domain.Response.Transaction;
+namespace PersonalFinance.Domain.ReadModels.Transaction;
 using Entities;
 
-public record GetTransactionDashboardResponse
+public record TransactionDashboard
 {
     public List<Transaction> LastestTransactions { get; init; } = [];
     public double CurrentBalance { get; init; }

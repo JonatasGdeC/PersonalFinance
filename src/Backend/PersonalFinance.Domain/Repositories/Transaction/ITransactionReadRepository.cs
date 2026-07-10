@@ -1,12 +1,12 @@
-using PersonalFinance.Domain.Requests.Transaction;
-using PersonalFinance.Domain.Response;
-using PersonalFinance.Domain.Response.Transaction;
+using PersonalFinance.Domain.Filters.Transaction;
+using PersonalFinance.Domain.ReadModels;
+using PersonalFinance.Domain.ReadModels.Transaction;
 
 namespace PersonalFinance.Domain.Repositories.Transaction;
 using Entities;
 
 public interface ITransactionReadRepository
 {
-    Task<PagedListResponse<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request);
-    Task<GetTransactionDashboardResponse> GetDashboard(Guid userId, DateTime date);
+    Task<PagedList<Transaction>> GetAll(Guid userId, TransactionFilter filter);
+    Task<TransactionDashboard> GetDashboard(Guid userId, DateTime date);
 }

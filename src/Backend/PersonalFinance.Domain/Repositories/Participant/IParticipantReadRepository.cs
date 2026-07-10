@@ -1,10 +1,10 @@
-using PersonalFinance.Domain.Requests.Participant;
-using PersonalFinance.Domain.Response;
+using PersonalFinance.Domain.Filters.Participant;
+using PersonalFinance.Domain.ReadModels;
 
 namespace PersonalFinance.Domain.Repositories.Participant;
 using Entities;
 
 public interface IParticipantReadRepository
 {
-    Task<PagedListResponse<Participant>> GetAll(Guid userId, GetAllParticipantRequest request);
+    Task<PagedList<Participant>> GetAll(Guid userId, ParticipantFilter filter);
 }

@@ -1,33 +1,33 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Enums;
+using PersonalFinance.Domain.Filters.Bill;
+using PersonalFinance.Domain.ReadModels;
+using PersonalFinance.Domain.ReadModels.Bill;
 using PersonalFinance.Domain.Repositories.Bill;
-using PersonalFinance.Domain.Requests.Bill;
-using PersonalFinance.Domain.Response;
-using PersonalFinance.Domain.Response.Bill;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepository, IBillWriteRepository
 {
-    public async Task<PagedListResponse<Bill>> GetAll(Guid userId, GetAllBillRequest request)
+    public async Task<PagedList<Bill>> GetAll(Guid userId, BillFilter filter)
     {
         IQueryable<Bill> query = context.Bills
             .AsNoTracking()
             .Include(navigationPropertyPath: bill => bill.Category)
             .Include(navigationPropertyPath: bill => bill.Participant)
             .Where(predicate: bill => bill.UserId == userId);
-        
-        if (!string.IsNullOrWhiteSpace(value: request.Search))
+
+        if (!string.IsNullOrWhiteSpace(value: filter.Search))
         {
-            string search = request.Search.ToLower();
+            string search = filter.Search.ToLower();
             query = query.Where(predicate: transaction =>
                 (transaction.Category != null && transaction.Category.Name.ToLower().Contains(search)) ||
                 transaction.Participant.Name.ToLower().Contains(search));
         }
-        
-        query = request.ListOrder switch
+
+        query = filter.ListOrder switch
         {
             ListOrder.Oldest  => query.OrderBy(keySelector: transaction => transaction.DueDate),
             ListOrder.Az      => query.OrderBy(keySelector: transaction => transaction.Participant.Name),
@@ -37,10 +37,10 @@ internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepos
             _                 => query.OrderByDescending(keySelector: transaction => transaction.DueDate)
         };
 
-        return await CreatePageList<Bill>.Execute(query: query, page: request.PageRequest);
+        return await CreatePageList<Bill>.Execute(query: query, page: filter.Pagination);
     }
 
-    public async Task<GetBillDashboardResponse> GetDashboard(Guid userId)
+    public async Task<BillDashboard> GetDashboard(Guid userId)
     {
         IQueryable<Bill> query = context.Bills
             .AsNoTracking()
@@ -53,7 +53,7 @@ internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepos
         decimal upcoming = await query.CountAsync(predicate: bill => bill.InstallmentsTotal != bill.InstallmentsPaid);
         decimal dueSoon = await query.CountAsync(predicate: bill => bill.DueDate == DateTime.Today.AddDays(-7));
         
-        return new GetBillDashboardResponse
+        return new BillDashboard
         {
             Total = total,
             Paid = paid,

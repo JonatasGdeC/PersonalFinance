@@ -1,31 +1,29 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
-using PersonalFinance.Domain.Repositories;
+using PersonalFinance.Domain.Filters.Participant;
+using PersonalFinance.Domain.ReadModels;
 using PersonalFinance.Domain.Repositories.Participant;
-using PersonalFinance.Domain.Requests;
-using PersonalFinance.Domain.Requests.Participant;
-using PersonalFinance.Domain.Response;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class ParticipantRepository(PersonalFinanceDbContext context) : IParticipantReadRepository, IParticipantWriteRepository
 {
-    public async Task<PagedListResponse<Participant>> GetAll(Guid userId, GetAllParticipantRequest request)
+    public async Task<PagedList<Participant>> GetAll(Guid userId, ParticipantFilter filter)
     {
         IQueryable<Participant> query = context.Participants
             .AsNoTracking()
             .Where(predicate: participant => participant.UserId == userId);
 
-        if (!string.IsNullOrWhiteSpace(value: request.Name))
+        if (!string.IsNullOrWhiteSpace(value: filter.Name))
         {
-            string search = request.Name.ToLower();
+            string search = filter.Name.ToLower();
             query = query.Where(predicate: participant => participant.Name.ToLower().Contains(search));
         }
 
         query = query.OrderBy(keySelector: participant => participant.Name);
 
-        return await CreatePageList<Participant>.Execute(query: query, page: request.PageRequest);
+        return await CreatePageList<Participant>.Execute(query: query, page: filter.Pagination);
     }
 
     public async Task Add(Participant participant)

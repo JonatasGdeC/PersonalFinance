@@ -1,12 +1,12 @@
-using PersonalFinance.Domain.Requests.Bill;
-using PersonalFinance.Domain.Response;
-using PersonalFinance.Domain.Response.Bill;
+using PersonalFinance.Domain.Filters.Bill;
+using PersonalFinance.Domain.ReadModels;
+using PersonalFinance.Domain.ReadModels.Bill;
 
 namespace PersonalFinance.Domain.Repositories.Bill;
 using Entities;
 
 public interface IBillReadRepository
 {
-    Task<PagedListResponse<Bill>> GetAll(Guid userId, GetAllBillRequest request);
-    Task<GetBillDashboardResponse> GetDashboard(Guid userId);
+    Task<PagedList<Bill>> GetAll(Guid userId, BillFilter filter);
+    Task<BillDashboard> GetDashboard(Guid userId);
 }

@@ -1,17 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Enums;
+using PersonalFinance.Domain.Filters.Transaction;
+using PersonalFinance.Domain.ReadModels;
+using PersonalFinance.Domain.ReadModels.Transaction;
 using PersonalFinance.Domain.Repositories.Transaction;
-using PersonalFinance.Domain.Requests.Transaction;
-using PersonalFinance.Domain.Response;
-using PersonalFinance.Domain.Response.Transaction;
 using PersonalFinance.Infrastructure.DataAccess.Utils;
 
 namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
 {
-    public async Task<PagedListResponse<Transaction>> GetAll(Guid userId, GetAllTransactionRequest request)
+    public async Task<PagedList<Transaction>> GetAll(Guid userId, TransactionFilter filter)
     {
         IQueryable<Transaction> query = context.Transactions
             .AsNoTracking()
@@ -19,25 +19,25 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             .Include(navigationPropertyPath: transaction => transaction.Participant)
             .Where(predicate: transaction => transaction.UserId == userId);
 
-        if (!string.IsNullOrWhiteSpace(value: request.Search))
+        if (!string.IsNullOrWhiteSpace(value: filter.Search))
         {
-            string search = request.Search.ToLower();
+            string search = filter.Search.ToLower();
             query = query.Where(predicate: transaction =>
                 (transaction.Category != null && transaction.Category.Name.ToLower().Contains(search)) ||
                 transaction.Participant.Name.ToLower().Contains(search));
         }
 
-        if (request.CategoryId.HasValue)
+        if (filter.CategoryId.HasValue)
         {
-            query = query.Where(predicate: transaction => transaction.CategoryId == request.CategoryId);
+            query = query.Where(predicate: transaction => transaction.CategoryId == filter.CategoryId);
         }
 
-        if (request.TransactionType.HasValue)
+        if (filter.TransactionType.HasValue)
         {
-            query = query.Where(predicate: transaction => (int)transaction.Type == (int)request.TransactionType);
+            query = query.Where(predicate: transaction => (int)transaction.Type == (int)filter.TransactionType);
         }
 
-        query = request.ListOrder switch
+        query = filter.ListOrder switch
         {
             ListOrder.Oldest => query.OrderBy(keySelector: transaction => transaction.Date),
             ListOrder.Az => query.OrderBy(keySelector: transaction => transaction.Participant.Name),
@@ -47,10 +47,10 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             _ => query.OrderByDescending(keySelector: transaction => transaction.Date)
         };
 
-        return await CreatePageList<Transaction>.Execute(query: query, page: request.PageRequest);
+        return await CreatePageList<Transaction>.Execute(query: query, page: filter.Pagination);
     }
 
-    public async Task<GetTransactionDashboardResponse> GetDashboard(Guid userId, DateTime date)
+    public async Task<TransactionDashboard> GetDashboard(Guid userId, DateTime date)
     {
         IQueryable<Transaction> query = context.Transactions
             .AsNoTracking()
@@ -67,7 +67,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             .Where(predicate: transaction => transaction.Type == TransactionType.Expense)
             .SumAsync(selector: transaction => transaction.Amount);
 
-        return new GetTransactionDashboardResponse
+        return new TransactionDashboard
         {
             LastestTransactions = lastestTransactions,
             CurrentBalance = currentBalance,

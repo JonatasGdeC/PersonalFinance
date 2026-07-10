@@ -1,6 +1,6 @@
-namespace PersonalFinance.Domain.Requests;
+namespace PersonalFinance.Domain.Filters;
 
-public class PageRequest
+public class Pagination
 {
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
