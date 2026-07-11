@@ -21,4 +21,43 @@
     <data name="INVALID_LOGIN" xml:space="preserve">
         <value>Email ou senha inválidos.</value>
     </data>
+    <data name="EMAIL_ALREADY_EXISTS" xml:space="preserve">
+        <value>Esse email já está sendo usado.</value>
+    </data>
+    <data name="EMAIL_INVALID" xml:space="preserve">
+        <value>Email inválido.</value>
+    </data>
+    <data name="EMAIL_IS_REQUIRED" xml:space="preserve">
+        <value>O email é obrigatório.</value>
+    </data>
+    <data name="NAME_IS_REQUIRED" xml:space="preserve">
+        <value>O nome é obrigatório.</value>
+    </data>
+    <data name="NAME_MAXIMUM_LENGTH" xml:space="preserve">
+        <value>O nome não pode ter mais de 100 caracteres.</value>
+    </data>
+    <data name="NAME_MINIMUM_LENGTH" xml:space="preserve">
+        <value>O nome deve ter no mínimo 3 caracteres.</value>
+    </data>
+    <data name="OLD_PASSWORD_INVALID" xml:space="preserve">
+        <value>A senha antiga está errada.</value>
+    </data>
+    <data name="PASSWORD_IS_REQUIRED" xml:space="preserve">
+        <value>A senha é obrigatória.</value>
+    </data>
+    <data name="PASSWORD_MINIMUM_LENGTH" xml:space="preserve">
+        <value>A senha deve conter no mínimo 8 caracteres.</value>
+    </data>
+    <data name="PASSWORD_MUST_CONTAIN_NUMBER" xml:space="preserve">
+        <value>A senha deve conter um número.</value>
+    </data>
+    <data name="PASSWORD_MUST_CONTAIN_SPECIAL_CHARACTER" xml:space="preserve">
+        <value>A senha deve conter um caracter especial.</value>
+    </data>
+    <data name="PASSWORD_MUST_CONTAIN_LOWERCASE_LETTER" xml:space="preserve">
+        <value>A senha deve conter uma letra minúscula.</value>
+    </data>
+    <data name="PASSWORD_MUST_CONTAIN_UPPERCASE_LETTER" xml:space="preserve">
+        <value>A senha deve conter uma letra maiúscula.</value>
+    </data>
 </root>

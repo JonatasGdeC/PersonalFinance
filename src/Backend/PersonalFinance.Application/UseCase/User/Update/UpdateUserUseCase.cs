@@ -1,4 +1,4 @@
-using FluentValidation.Results;
+using PersonalFinance.Communication.Requests.User;
 
 namespace PersonalFinance.Application.UseCase.User.Update;
 

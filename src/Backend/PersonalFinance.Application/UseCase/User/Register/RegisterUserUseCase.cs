@@ -5,8 +5,5 @@ namespace PersonalFinance.Application.UseCase.User.Register;
 
 public class RegisterUserUseCase : IRegisterUserUseCase
 {
-    public Task<RegisterUserResponse> Execute(RegisterUserRequest request)
-    {
-        throw new NotImplementedException();
-    }
+    public Task<RegisterUserResponse> Execute(RegisterUserRequest request) => throw new NotImplementedException();
 }

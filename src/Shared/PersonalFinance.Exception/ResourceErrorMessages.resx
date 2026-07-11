@@ -59,6 +59,6 @@
         <value>Name must be at least 3 characters.</value>
     </data>
     <data name="NAME_MAXIMUM_LENGTH" xml:space="preserve">
-        <value>Name must be at most 200 characters.</value>
+        <value>Name must be at most 100 characters.</value>
     </data>
 </root>

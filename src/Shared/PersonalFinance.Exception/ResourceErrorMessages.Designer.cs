@@ -105,7 +105,7 @@ namespace PersonalFinance.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name must be at most 200 characters..
+        ///   Looks up a localized string similar to Name must be at most 100 characters..
         /// </summary>
         public static string NAME_MAXIMUM_LENGTH {
             get {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PersonalFinance.Application.UseCase.User.Register;
 using PersonalFinance.Communication.Requests.User;
+using PersonalFinance.Communication.Responses;
 using PersonalFinance.Communication.Responses.User;
 
 namespace PersonalFinance.Api.Controllers;
@@ -13,7 +14,7 @@ public class UserController : ControllerBase
     [HttpPost]
     [AllowAnonymous]
     [ProducesResponseType(type: typeof(RegisterUserResponse), statusCode: StatusCodes.Status201Created)]
-    // [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Register([FromServices] IRegisterUserUseCase useCase, [FromBody] RegisterUserRequest request)
     {
         RegisterUserResponse response = await useCase.Execute(request: request);
