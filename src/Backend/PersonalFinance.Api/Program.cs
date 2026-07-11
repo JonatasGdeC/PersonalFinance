@@ -1,14 +1,21 @@
+using PersonalFinance.Api.Middleware;
 using PersonalFinance.Infrastructure;
 using PersonalFinance.Infrastructure.Extensions;
 using PersonalFinance.Infrastructure.Migrations;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
+builder.Services.RateLimiting();
+
 builder.Services.AddInfrastructure(configurationManager: builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 WebApplication app = builder.Build();
+
+app.UseRateLimiter(); 
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {

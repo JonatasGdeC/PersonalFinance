@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using PersonalFinance.Api.Middleware;
 using PersonalFinance.Application.UseCase.User.Delete;
 using PersonalFinance.Application.UseCase.User.ForgotPassword;
 using PersonalFinance.Application.UseCase.User.Get;
@@ -22,6 +23,7 @@ namespace PersonalFinance.Api.Controllers;
 public class UserController : ControllerBase
 {
     [HttpPost]
+    [EnableRateLimiting(policyName: RateLimitingPolicyNames.LOGIN)]
     [AllowAnonymous]
     [ProducesResponseType(type: typeof(RegisterUserResponse), statusCode: StatusCodes.Status201Created)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
@@ -33,7 +35,7 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route(template: "login")]
-    [EnableRateLimiting(policyName: "login")]
+    [EnableRateLimiting(policyName: RateLimitingPolicyNames.LOGIN)]
     [AllowAnonymous]
     [ProducesResponseType(type: typeof(LoginResponse), statusCode: StatusCodes.Status200OK)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status401Unauthorized)]
@@ -45,7 +47,7 @@ public class UserController : ControllerBase
     
     [HttpPost]
     [Route(template: "forgot-password")]
-    [EnableRateLimiting(policyName: "forgot-password")]
+    [EnableRateLimiting(policyName: RateLimitingPolicyNames.FORGOT_PASSWORD)]
     [AllowAnonymous]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     public async Task<IActionResult> ForgotPassword([FromServices] IForgotPassword useCase, [FromBody] ForgotPasswordRequest request)
