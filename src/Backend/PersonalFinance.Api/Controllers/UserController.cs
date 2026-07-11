@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinance.Application.UseCase.User.Register;
 using PersonalFinance.Communication.Requests.User;
+using PersonalFinance.Communication.Responses.User;
 
 namespace PersonalFinance.Api.Controllers;
 
@@ -8,15 +10,15 @@ namespace PersonalFinance.Api.Controllers;
 [ApiController]
 public class UserController : ControllerBase
 {
-    // [HttpPost]
-    // [AllowAnonymous]
-    // [ProducesResponseType(type: typeof(RegisteredUserResponse), statusCode: StatusCodes.Status201Created)]
+    [HttpPost]
+    [AllowAnonymous]
+    [ProducesResponseType(type: typeof(RegisterUserResponse), statusCode: StatusCodes.Status201Created)]
     // [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
-    // public async Task<IActionResult> Register([FromServices] IRegisterUserUseCase useCase, [FromBody] RegisterUserRequest request)
-    // {
-    //     RegisteredUserResponse response = await useCase.Execute(request: request);
-    //     return Created(uri: string.Empty, value: response);
-    // }
+    public async Task<IActionResult> Register([FromServices] IRegisterUserUseCase useCase, [FromBody] RegisterUserRequest request)
+    {
+        RegisterUserResponse response = await useCase.Execute(request: request);
+        return Created(uri: string.Empty, value: response);
+    }
 
     // [HttpPost]
     // [Microsoft.AspNetCore.Components.Route(template: "login")]
