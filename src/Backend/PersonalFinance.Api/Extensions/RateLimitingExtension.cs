@@ -1,8 +1,8 @@
 using System.Threading.RateLimiting;
 
-namespace PersonalFinance.Api.Middleware;
+namespace PersonalFinance.Api.Extensions;
 
-public static class RateLimitingExtensions
+public static class RateLimitingExtension
 {
     public static void RateLimiting(this IServiceCollection services)
     {

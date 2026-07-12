@@ -60,4 +60,7 @@
     <data name="PASSWORD_MUST_CONTAIN_UPPERCASE_LETTER" xml:space="preserve">
         <value>A senha deve conter uma letra maiúscula.</value>
     </data>
+    <data name="UNKNOWN_ERROR" xml:space="preserve">
+        <value>Erro desconhecido.</value>
+    </data>
 </root>

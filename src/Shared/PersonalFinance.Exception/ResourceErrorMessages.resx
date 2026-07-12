@@ -61,4 +61,7 @@
     <data name="NAME_MAXIMUM_LENGTH" xml:space="preserve">
         <value>Name must be at most 100 characters.</value>
     </data>
+    <data name="UNKNOWN_ERROR" xml:space="preserve">
+        <value>Unknown error.</value>
+    </data>
 </root>

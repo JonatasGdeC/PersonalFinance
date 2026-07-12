@@ -1,3 +1,5 @@
+using PersonalFinance.Api.Extensions;
+using PersonalFinance.Api.Filter;
 using PersonalFinance.Api.Middleware;
 using PersonalFinance.Infrastructure;
 using PersonalFinance.Infrastructure.Extensions;
@@ -5,17 +7,30 @@ using PersonalFinance.Infrastructure.Migrations;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
+const string corsPolicyName = "Frontend";
+
+builder.Services.AddCorsConfig(corsPolicyName: corsPolicyName);
+builder.Services.AddSwaggerConfig();
 builder.Services.RateLimiting();
+builder.Services.AddAuthenticationConfig(configuration: builder.Configuration);
 
 builder.Services.AddInfrastructure(configurationManager: builder.Configuration);
-builder.Services.AddControllers();
+
+builder.Services.AddControllers(configure: options =>
+{
+    options.Filters.Add(filterType: typeof(ExceptionFilter));
+});
+
 builder.Services.AddOpenApi();
 
 WebApplication app = builder.Build();
 
+app.UseCors(policyName: corsPolicyName);
 app.UseRateLimiter(); 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<CultureMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

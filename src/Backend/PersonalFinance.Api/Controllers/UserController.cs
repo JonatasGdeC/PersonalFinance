@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using PersonalFinance.Api.Extensions;
 using PersonalFinance.Api.Middleware;
 using PersonalFinance.Application.UseCase.User.Delete;
 using PersonalFinance.Application.UseCase.User.ForgotPassword;

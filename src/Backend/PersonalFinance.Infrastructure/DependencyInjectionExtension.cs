@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentMigrator.Runner;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalFinance.Domain.Repositories;
@@ -20,8 +21,17 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfigurationManager configurationManager)
     {
+        AddDbContext(services: services, configuration: configurationManager);
         AddRepositories(services: services);
         AddFluentMigrator(services: services, configuration: configurationManager);
+    }
+
+    private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
+    {
+        string connectionString = configuration.ConnectionString();
+
+        services.AddDbContext<PersonalFinanceDbContext>(optionsAction: options =>
+            options.UseNpgsql(connectionString: connectionString));
     }
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
@@ -33,8 +43,7 @@ public static class DependencyInjectionExtension
             {
                 Assembly infrastructure = Assembly.Load(assemblyString: "PersonalFinance.Infrastructure");
                 IMigrationRunnerBuilder? migrationRunnerBuilder = config.AddPostgres();
-                migrationRunnerBuilder.WithGlobalConnectionString(connectionStringOrName: connectionString)
-                    .ScanIn(infrastructure).For.All();
+                migrationRunnerBuilder.WithGlobalConnectionString(connectionStringOrName: connectionString).ScanIn(infrastructure).For.All();
             });
     }
 
