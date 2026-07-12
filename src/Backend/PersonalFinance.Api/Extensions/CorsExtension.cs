@@ -10,8 +10,7 @@ public static class CorsExtension
             {
                 policy
                     .WithOrigins(
-                        "http://localhost:5072",
-                        "https://kanban-jgc.vercel.app"
+                        "http://localhost:5290"
                     )
                     .AllowAnyHeader()
                     .AllowAnyMethod();

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using PersonalFinance.Api.Extensions;
-using PersonalFinance.Api.Middleware;
 using PersonalFinance.Application.UseCase.User.Delete;
 using PersonalFinance.Application.UseCase.User.ForgotPassword;
 using PersonalFinance.Application.UseCase.User.Get;
@@ -19,7 +18,7 @@ using PersonalFinance.Communication.Responses.User;
 
 namespace PersonalFinance.Api.Controllers;
 
-[Microsoft.AspNetCore.Components.Route(template: "[controller]")]
+[Route(template: "[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {

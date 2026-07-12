@@ -29,15 +29,17 @@ app.UseCors(policyName: corsPolicyName);
 app.UseRateLimiter(); 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseHttpsRedirection();
+app.MapControllers();
 
 app.UseMiddleware<CultureMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 if (!builder.Configuration.IsUnitTestEnvironment())
 {
