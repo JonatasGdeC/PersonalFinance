@@ -1,6 +1,7 @@
 using PersonalFinance.Api.Extensions;
 using PersonalFinance.Api.Filter;
 using PersonalFinance.Api.Middleware;
+using PersonalFinance.Application;
 using PersonalFinance.Infrastructure;
 using PersonalFinance.Infrastructure.Extensions;
 using PersonalFinance.Infrastructure.Migrations;
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerConfig();
 builder.Services.RateLimiting();
 builder.Services.AddAuthenticationConfig(configuration: builder.Configuration);
 
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(configurationManager: builder.Configuration);
 
 builder.Services.AddControllers(configure: options =>
