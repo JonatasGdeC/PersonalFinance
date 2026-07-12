@@ -1,5 +1,3 @@
-using System;
-
 namespace PersonalFinance.Domain.Entities;
 
 public class User

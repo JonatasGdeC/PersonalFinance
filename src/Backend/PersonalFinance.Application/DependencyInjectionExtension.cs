@@ -7,6 +7,7 @@ using PersonalFinance.Application.UseCase.User.Register;
 using PersonalFinance.Application.UseCase.User.ResetPassword;
 using PersonalFinance.Application.UseCase.User.Update;
 using PersonalFinance.Application.UseCase.User.UpdatePassword;
+using PersonalFinance.Application.UseCase.User.UpdateProfileImage;
 using PersonalFinance.Application.UseCase.User.ValidateResetCode;
 
 namespace PersonalFinance.Application;
@@ -25,6 +26,7 @@ public static class DependencyInjectionExtension
         service.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         service.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
         service.AddScoped<IUpdatePasswordUseCase, UpdatePasswordUseCase>();
+        service.AddScoped<IUpdateProfileImageUseCase, UpdateProfileImageUseCase>();
         service.AddScoped<IGetUserUseCase, GetUserUseCase>();
         service.AddScoped<IForgotPassword, ForgotPassword>();
         service.AddScoped<IValidateResetCodeUseCase, ValidateResetCodeUseCase>();
