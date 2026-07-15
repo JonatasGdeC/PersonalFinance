@@ -1,0 +1,17 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: personalfinance-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  smtp4dev:
+    image: rnwood/smtp4dev:v3
+    container_name: personalfinance-smtp4dev
+    ports:
+      - "5001:80"
+      - "2525:25"

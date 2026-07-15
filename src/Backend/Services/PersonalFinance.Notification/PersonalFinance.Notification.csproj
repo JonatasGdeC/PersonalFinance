@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>dotnet-PersonalFinance.Notification</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MailKit" Version="4.17.0" />
+      <PackageReference Include="MassTransit" Version="9.1.2" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="9.1.2" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\PersonalFinance.Contracts\PersonalFinance.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
