@@ -1,6 +1,19 @@
-namespace PersonalFinance.Application.UseCase.User.Delete;
+using PersonalFinance.Domain.Repositories;
+using PersonalFinance.Domain.Repositories.User;
+using PersonalFinance.Domain.Services.LoggedUser;
 
-public class DeleteUserUseCase : IDeleteUserUseCase
+namespace PersonalFinance.Application.UseCase.User.Delete;
+using Domain.Entities;
+
+public class DeleteUserUseCase(
+    IUserWriteRepository writeRepository,
+    ILoggedUser loggedUser,
+    IUnitOfWork unitOfWork) : IDeleteUserUseCase
 {
-    public Task Execute() => throw new NotImplementedException();
+    public async Task Execute()
+    {
+        User user = await loggedUser.Get();
+        writeRepository.Delete(user: user);
+        await unitOfWork.Commit();
+    }
 }
