@@ -6,7 +6,7 @@ using PersonalFinance.Communication.Responses;
 
 namespace PersonalFinance.Adapter.Services;
 
-public abstract class ApiServiceBase(HttpClient httpClient, string baseUri)
+internal abstract class ApiServiceBase(HttpClient httpClient, string baseUri)
 {
   protected async Task<TResponse?> GetAsync<TResponse>(string? route = null)
   {

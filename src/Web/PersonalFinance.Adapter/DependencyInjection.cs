@@ -13,7 +13,7 @@ public static class DependencyInjection
         string apiBaseUrl = builder.Configuration[key: "ApiBaseUrl"] ?? "http://localhost:5100";
         services.AddScoped(implementationFactory: _ => new HttpClient { BaseAddress = new Uri(uriString: apiBaseUrl) });
 
-        services.AddScoped<UserServiceApi>();
+        services.AddScoped<PersonalFinanceApi>();
 
         services.AddAuthorizationCore();
         services.AddScoped<CookieAuthenticationStateProvider>();

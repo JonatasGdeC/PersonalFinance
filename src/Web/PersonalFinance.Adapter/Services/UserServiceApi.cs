@@ -4,7 +4,7 @@ using PersonalFinance.Communication.Responses.User;
 
 namespace PersonalFinance.Adapter.Services;
 
-public class UserServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient: httpClient, baseUri: "User")
+internal class UserServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient: httpClient, baseUri: "User"), IUserServiceApi
 {
     public async Task<RegisterUserResponse> Register(RegisterUserRequest request) =>
         await PostAsync<RegisterUserRequest, RegisterUserResponse>(request: request);
