@@ -78,4 +78,7 @@
     <data name="PARTICIPANT_NOT_FOUND" xml:space="preserve">
         <value>Participante não encontrado.</value>
     </data>
+    <data name="CATEGORY_NOT_FOUND" xml:space="preserve">
+        <value>Categoria não encontrada.</value>
+    </data>
 </root>

@@ -6,7 +6,8 @@ namespace PersonalFinance.Infrastructure.DataAccess.Repositories;
 
 internal class CategoryRepository(PersonalFinanceDbContext context) : ICategoryReadRepository, ICategoryWriteRepository
 {
-    public async Task<List<Category>> GetAll(Guid userId) => await context.Categorys.AsNoTracking().ToListAsync();
+    public async Task<List<Category>> GetAll(Guid userId) =>
+        await context.Categorys.AsNoTracking().Where(predicate: category => category.UserId == userId).ToListAsync();
 
     public async Task Add(Category category)
     {

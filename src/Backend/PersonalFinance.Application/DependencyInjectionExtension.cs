@@ -1,4 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
+using PersonalFinance.Application.UseCase.Category.Delete;
+using PersonalFinance.Application.UseCase.Category.GetAll;
+using PersonalFinance.Application.UseCase.Category.Register;
+using PersonalFinance.Application.UseCase.Category.Update;
 using PersonalFinance.Application.UseCase.Participant.Delete;
 using PersonalFinance.Application.UseCase.Participant.GetAll;
 using PersonalFinance.Application.UseCase.Participant.GetById;
@@ -49,5 +53,9 @@ public static class DependencyInjectionExtension
         service.AddScoped<IDeleteParticipantUseCase, DeleteParticipantUseCase>();
         service.AddScoped<IGetAllParticipantUseCase, GetAllParticipantUseCase>();
         service.AddScoped<IGetParticipantByIdUseCase, GetParticipantByIdUseCase>();
+        service.AddScoped<IRegisterCategoryUseCase, RegisterCategoryUseCase>();
+        service.AddScoped<IUpdateCategoryUseCase, UpdateCategoryUseCase>();
+        service.AddScoped<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
+        service.AddScoped<IGetAllCategoryUseCase, GetAllCategoryUseCase>();
     }
 }
