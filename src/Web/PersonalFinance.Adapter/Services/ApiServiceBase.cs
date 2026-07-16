@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Microsoft.AspNetCore.WebUtilities;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Responses;
 
@@ -34,6 +35,17 @@ internal abstract class ApiServiceBase(HttpClient httpClient, string baseUri)
     AddLanguageHeader();
     using HttpResponseMessage response = await httpClient.DeleteAsync(requestUri: $"{baseUri}{route}");
     await EnsureSuccessResponse(response: response);
+  }
+
+  protected static string BuildQueryString(params (string Key, object? Value)[] parameters)
+  {
+    Dictionary<string, string?> queryParams = parameters
+      .Where(predicate: parameter => parameter.Value is not null)
+      .ToDictionary(
+        keySelector: parameter => parameter.Key,
+        elementSelector: parameter => parameter.Value is DateTime dateTime ? dateTime.ToString(format: "O") : parameter.Value!.ToString());
+
+    return queryParams.Count == 0 ? string.Empty : QueryHelpers.AddQueryString(uri: string.Empty, queryString: queryParams);
   }
 
   private static async Task<TResponse> ReadResponse<TResponse>(HttpResponseMessage response)
