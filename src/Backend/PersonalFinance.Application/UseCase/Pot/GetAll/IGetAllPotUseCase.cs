@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Pot.GetAll;
 
 public interface IGetAllPotUseCase
 {
-    Task<GetAllPotsResponse> GetAll();
+    Task<GetAllPotsResponse> Execute();
 }
