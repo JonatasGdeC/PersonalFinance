@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Category.Update;
 
 public interface IUpdateCategoryUseCase
 {
-    Task Execute(long potId, RegisterCategoryRequest request);
+    Task Execute(long categoryId, RegisterCategoryRequest request);
 }
