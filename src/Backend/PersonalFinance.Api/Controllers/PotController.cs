@@ -29,11 +29,4 @@ public class PotController : ControllerBase
     {
         return Ok();
     }
-
-    [HttpGet]
-    [Route(template: "{id}")]
-    public async Task<IActionResult> GetById(long potId)
-    {
-        return Ok();
-    }
 }
