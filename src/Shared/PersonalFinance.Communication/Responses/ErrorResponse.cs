@@ -4,13 +4,7 @@ public record ErrorResponse
 {
     public List<string> ErrorMessages { get; init; }
 
-    public ErrorResponse(string errorMessage)
-    {
-        ErrorMessages = [errorMessage];
-    }
+    public ErrorResponse(string errorMessage) => ErrorMessages = [errorMessage];
 
-    public ErrorResponse(List<string> errorMessages)
-    {
-        ErrorMessages = errorMessages;
-    }
+    public ErrorResponse(List<string> errorMessages) => ErrorMessages = errorMessages;
 }

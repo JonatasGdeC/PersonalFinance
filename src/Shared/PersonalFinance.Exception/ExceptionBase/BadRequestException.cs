@@ -6,8 +6,5 @@ public class BadRequestException(string message) : ExceptionBase(message: messag
 {
     public override int StatusCode => (int)HttpStatusCode.BadRequest;
 
-    public override List<string> GetErrors()
-    {
-        return [Message];
-    }
+    public override List<string> GetErrors() => [Message];
 }

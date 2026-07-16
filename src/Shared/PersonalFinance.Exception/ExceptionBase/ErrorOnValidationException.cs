@@ -6,8 +6,5 @@ public class ErrorOnValidationException(List<string> errorsMessages) : Exception
 {
     public override int StatusCode => (int)HttpStatusCode.BadRequest;
 
-    public override List<string> GetErrors()
-    {
-        return errorsMessages;
-    }
+    public override List<string> GetErrors() => errorsMessages;
 }
