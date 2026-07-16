@@ -9,4 +9,5 @@ public class PersonalFinanceApi(HttpClient httpClient)
     public IParticipantServiceApi Participant { get; } = new ParticipantServiceApi(httpClient: httpClient);
     public ICategoryServiceApi Category { get; } = new CategoryServiceApi(httpClient: httpClient);
     public ITransactionServiceApi Transaction { get; } = new TransactionServiceApi(httpClient: httpClient);
+    public IBudgetServiceApi Budget { get; } = new BudgetServiceApi(httpClient: httpClient);
 }
