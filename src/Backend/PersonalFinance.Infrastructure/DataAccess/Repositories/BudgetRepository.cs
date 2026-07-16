@@ -8,7 +8,11 @@ internal class BudgetRepository(PersonalFinanceDbContext context) : IBudgetReadR
 {
     public async Task<List<Budget>> GetAll(Guid userId)
     {
-        return await context.Budgets.AsNoTracking().Where(predicate: budget => budget.UserId == userId).ToListAsync();
+        return await context.Budgets
+            .AsNoTracking()
+            .Include(navigationPropertyPath: budget => budget.Category)
+            .Where(predicate: budget => budget.UserId == userId)
+            .ToListAsync();
     }
 
     public async Task Add(Budget budget)

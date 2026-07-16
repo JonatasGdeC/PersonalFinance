@@ -90,4 +90,10 @@
     <data name="DATE_IS_REQUIRED" xml:space="preserve">
         <value>A data é obrigatória.</value>
     </data>
+    <data name="BUDGET_NOT_FOUND" xml:space="preserve">
+        <value>Orçamento não encontrado.</value>
+    </data>
+    <data name="MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>O valor máximo de gasto deve ser maior que zero.</value>
+    </data>
 </root>

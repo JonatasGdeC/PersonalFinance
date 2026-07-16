@@ -1,39 +1,57 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinance.Application.UseCase.Budget.Delete;
+using PersonalFinance.Application.UseCase.Budget.GetAll;
+using PersonalFinance.Application.UseCase.Budget.Register;
+using PersonalFinance.Application.UseCase.Budget.Update;
+using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Requests.Budget;
+using PersonalFinance.Communication.Responses;
+using PersonalFinance.Communication.Responses.Budget;
 
 namespace PersonalFinance.Api.Controllers;
 
 [Route(template: "[controller]")]
 [ApiController]
+[Authorize]
 public class BudgetController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Register()
+    [ProducesResponseType(type: typeof(BudgetDto), statusCode: StatusCodes.Status201Created)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Register([FromServices] IRegisterBudgetUseCase useCase, [FromBody] RegisterBudgetRequest request)
     {
-        return Ok();
+        BudgetDto response = await useCase.Execute(request: request);
+        return Created(uri: string.Empty, value: response);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update()
+    [Route(template: "{budgetId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update([FromServices] IUpdateBudgetUseCase useCase, [FromRoute] long budgetId, [FromBody] RegisterBudgetRequest request)
     {
-        return Ok();
+        await useCase.Execute(budgetId: budgetId, request: request);
+        return NoContent();
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Delete()
+    [Route(template: "{budgetId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete([FromServices] IDeleteBudgetUseCase useCase, [FromRoute] long budgetId)
     {
+        await useCase.Execute(budgetId: budgetId);
         return NoContent();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [ProducesResponseType(type: typeof(GetAllBudgetResponse), statusCode: StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll([FromServices] IGetAllBudgetUseCase useCase)
     {
-        return Ok();
-    }
-
-    [HttpGet]
-    [Route(template: "{id}")]
-    public async Task<IActionResult> GetById(long budgetId)
-    {
-        return Ok();
+        GetAllBudgetResponse response = await useCase.Execute();
+        return Ok(value: response);
     }
 }

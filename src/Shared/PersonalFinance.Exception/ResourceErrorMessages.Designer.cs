@@ -274,5 +274,23 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("DATE_IS_REQUIRED", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Budget not found..
+        /// </summary>
+        public static string BUDGET_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BUDGET_NOT_FOUND", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum spend must be greater than zero..
+        /// </summary>
+        public static string MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
     }
 }

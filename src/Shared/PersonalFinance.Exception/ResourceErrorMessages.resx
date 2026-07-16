@@ -91,4 +91,10 @@
     <data name="DATE_IS_REQUIRED" xml:space="preserve">
         <value>Date is required.</value>
     </data>
+    <data name="BUDGET_NOT_FOUND" xml:space="preserve">
+        <value>Budget not found.</value>
+    </data>
+    <data name="MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>Maximum spend must be greater than zero.</value>
+    </data>
 </root>
