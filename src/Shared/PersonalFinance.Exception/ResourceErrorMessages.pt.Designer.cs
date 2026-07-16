@@ -292,5 +292,32 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Conta não encontrada..
+        /// </summary>
+        public static string BILL_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BILL_NOT_FOUND", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to O total de parcelas deve ser maior que zero..
+        /// </summary>
+        public static string INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to As parcelas pagas não podem ser negativas nem exceder o total de parcelas..
+        /// </summary>
+        public static string INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL {
+            get {
+                return ResourceManager.GetString("INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL", resourceCulture);
+            }
+        }
     }
 }

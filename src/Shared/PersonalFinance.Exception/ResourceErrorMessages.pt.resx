@@ -96,4 +96,13 @@
     <data name="MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
         <value>O valor máximo de gasto deve ser maior que zero.</value>
     </data>
+    <data name="BILL_NOT_FOUND" xml:space="preserve">
+        <value>Conta não encontrada.</value>
+    </data>
+    <data name="INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>O total de parcelas deve ser maior que zero.</value>
+    </data>
+    <data name="INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL" xml:space="preserve">
+        <value>As parcelas pagas não podem ser negativas nem exceder o total de parcelas.</value>
+    </data>
 </root>

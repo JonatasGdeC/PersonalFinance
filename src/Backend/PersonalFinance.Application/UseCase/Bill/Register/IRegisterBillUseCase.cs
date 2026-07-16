@@ -5,5 +5,5 @@ namespace PersonalFinance.Application.UseCase.Bill.Register;
 
 public interface IRegisterBillUseCase
 {
-    Task<BudgetDto> Execute(RegisterBillRequest request);
+    Task<BillDto> Execute(RegisterBillRequest request);
 }

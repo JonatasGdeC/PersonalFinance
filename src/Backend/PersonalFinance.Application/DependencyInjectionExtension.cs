@@ -1,4 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
+using PersonalFinance.Application.UseCase.Bill.Delete;
+using PersonalFinance.Application.UseCase.Bill.GetAll;
+using PersonalFinance.Application.UseCase.Bill.GetDashboard;
+using PersonalFinance.Application.UseCase.Bill.Register;
+using PersonalFinance.Application.UseCase.Bill.Update;
 using PersonalFinance.Application.UseCase.Budget.Delete;
 using PersonalFinance.Application.UseCase.Budget.GetAll;
 using PersonalFinance.Application.UseCase.Budget.Register;
@@ -77,5 +82,10 @@ public static class DependencyInjectionExtension
         service.AddScoped<IUpdateBudgetUseCase, UpdateBudgetUseCase>();
         service.AddScoped<IDeleteBudgetUseCase, DeleteBudgetUseCase>();
         service.AddScoped<IGetAllBudgetUseCase, GetAllBudgetUseCase>();
+        service.AddScoped<IRegisterBillUseCase, RegisterBillUseCase>();
+        service.AddScoped<IUpdateBillUseCase, UpdateBillUseCase>();
+        service.AddScoped<IDeleteBillUseCase, DeleteBillUseCase>();
+        service.AddScoped<IGetAllBillUseCase, GetAllBillUseCase>();
+        service.AddScoped<IGetBillDashboardUseCase, GetBillDashboardUseCase>();
     }
 }

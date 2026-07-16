@@ -50,7 +50,10 @@ internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepos
         decimal total = await query.CountAsync();
         decimal paid = await query.CountAsync(predicate: bill => bill.InstallmentsTotal == bill.InstallmentsPaid);
         decimal upcoming = await query.CountAsync(predicate: bill => bill.InstallmentsTotal != bill.InstallmentsPaid);
-        decimal dueSoon = await query.CountAsync(predicate: bill => bill.DueDate == DateTime.Today.AddDays(-7));
+        decimal dueSoon = await query.CountAsync(predicate: bill =>
+            bill.InstallmentsTotal != bill.InstallmentsPaid &&
+            bill.DueDate >= DateTime.Today &&
+            bill.DueDate <= DateTime.Today.AddDays(7));
         
         return new BillDashboard
         {

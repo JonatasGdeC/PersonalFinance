@@ -1,5 +1,6 @@
 using AutoMapper;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Requests.Bill;
 using PersonalFinance.Communication.Requests.Budget;
 using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Communication.Requests.Participant;
@@ -26,6 +27,7 @@ public class AutoMapping : Profile
         CreateMap<RegisterCategoryRequest, Category>();
         CreateMap<RegisterTransactionRequest, Transaction>();
         CreateMap<RegisterBudgetRequest, Budget>();
+        CreateMap<RegisterBillRequest, Bill>();
     }
 
     private void EntityToResponse()
@@ -37,5 +39,6 @@ public class AutoMapping : Profile
         CreateMap<Transaction, TransactionDto>()
             .ForMember(destinationMember: dto => dto.ParticipantDto, memberOptions: opt => opt.MapFrom(mapExpression: transaction => transaction.Participant));
         CreateMap<Budget, BudgetDto>();
+        CreateMap<Bill, BillDto>();
     }
 }
