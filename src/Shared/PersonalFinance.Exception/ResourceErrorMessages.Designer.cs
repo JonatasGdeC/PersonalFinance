@@ -193,5 +193,41 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pot not found..
+        /// </summary>
+        public static string POT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("POT_NOT_FOUND", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Color is required..
+        /// </summary>
+        public static string COLOR_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("COLOR_IS_REQUIRED", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Target must be greater than zero..
+        /// </summary>
+        public static string TARGET_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("TARGET_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Current amount must be greater than or equal to zero..
+        /// </summary>
+        public static string CURRENT_AMOUNT_MUST_BE_POSITIVE {
+            get {
+                return ResourceManager.GetString("CURRENT_AMOUNT_MUST_BE_POSITIVE", resourceCulture);
+            }
+        }
     }
 }

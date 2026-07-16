@@ -63,4 +63,16 @@
     <data name="UNKNOWN_ERROR" xml:space="preserve">
         <value>Erro desconhecido.</value>
     </data>
+    <data name="POT_NOT_FOUND" xml:space="preserve">
+        <value>Cofrinho não encontrado.</value>
+    </data>
+    <data name="COLOR_IS_REQUIRED" xml:space="preserve">
+        <value>A cor é obrigatória.</value>
+    </data>
+    <data name="TARGET_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>O valor da meta deve ser maior que zero.</value>
+    </data>
+    <data name="CURRENT_AMOUNT_MUST_BE_POSITIVE" xml:space="preserve">
+        <value>O valor atual deve ser maior ou igual a zero.</value>
+    </data>
 </root>

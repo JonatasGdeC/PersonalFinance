@@ -1,5 +1,6 @@
 using AutoMapper;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Requests.Pot;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Domain.Entities;
 
@@ -16,10 +17,12 @@ public class AutoMapping : Profile
     private void RequestToEntity()
     {
         CreateMap<RegisterUserRequest, User>();
+        CreateMap<RegisterPotRequest, Pot>();
     }
-    
+
     private void EntityToResponse()
     {
         CreateMap<User, UserDto>();
+        CreateMap<Pot, PotDto>();
     }
 }
