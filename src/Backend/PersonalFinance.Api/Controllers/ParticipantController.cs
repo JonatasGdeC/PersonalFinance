@@ -1,39 +1,67 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinance.Application.UseCase.Participant.Delete;
+using PersonalFinance.Application.UseCase.Participant.GetAll;
+using PersonalFinance.Application.UseCase.Participant.GetById;
+using PersonalFinance.Application.UseCase.Participant.Register;
+using PersonalFinance.Application.UseCase.Participant.Update;
+using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Requests.Participant;
+using PersonalFinance.Communication.Responses;
+using PersonalFinance.Communication.Responses.Participant;
 
 namespace PersonalFinance.Api.Controllers;
 
 [Route(template: "[controller]")]
 [ApiController]
+[Authorize]
 public class ParticipantController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Register()
+    [ProducesResponseType(type: typeof(ParticipantDto), statusCode: StatusCodes.Status201Created)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Register([FromServices] IRegisterParticipantUseCase useCase, [FromBody] RegisterParticipantRequest request)
     {
-        return Ok();
+        ParticipantDto response = await useCase.Execute(request: request);
+        return Created(uri: string.Empty, value: response);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update()
+    [Route(template: "{participantId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update([FromServices] IUpdateParticipantUseCase useCase, [FromRoute] long participantId, [FromBody] RegisterParticipantRequest request)
     {
-        return Ok();
+        await useCase.Execute(participantId: participantId, request: request);
+        return NoContent();
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Delete()
+    [Route(template: "{participantId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete([FromServices] IDeleteParticipantUseCase useCase, [FromRoute] long participantId)
     {
+        await useCase.Execute(participantId: participantId);
         return NoContent();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [ProducesResponseType(type: typeof(GetAllParticipantResponse), statusCode: StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll([FromServices] IGetAllParticipantUseCase useCase)
     {
-        return Ok();
+        GetAllParticipantResponse response = await useCase.Execute();
+        return Ok(value: response);
     }
 
     [HttpGet]
-    [Route(template: "{id}")]
-    public async Task<IActionResult> GetById(long participantId)
+    [Route(template: "{participantId}")]
+    [ProducesResponseType(type: typeof(ParticipantDto), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById([FromServices] IGetParticipantByIdUseCase useCase, [FromRoute] long participantId)
     {
-        return Ok();
+        ParticipantDto response = await useCase.Execute(id: participantId);
+        return Ok(value: response);
     }
 }

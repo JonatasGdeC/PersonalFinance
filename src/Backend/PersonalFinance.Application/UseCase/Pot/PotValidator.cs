@@ -12,7 +12,7 @@ public class PotValidator : AbstractValidator<RegisterPotRequest>
             .Cascade(cascadeMode: CascadeMode.Stop)
             .NotEmpty().WithMessage(errorMessage: ResourceErrorMessages.NAME_IS_REQUIRED)
             .MinimumLength(minimumLength: 3).WithMessage(errorMessage: ResourceErrorMessages.NAME_MINIMUM_LENGTH)
-            .MaximumLength(maximumLength: 200).WithMessage(errorMessage: ResourceErrorMessages.NAME_MAXIMUM_LENGTH);
+            .MaximumLength(maximumLength: 100).WithMessage(errorMessage: ResourceErrorMessages.NAME_MAXIMUM_LENGTH);
 
         RuleFor(expression: request => request.Color)
             .NotEmpty().WithMessage(errorMessage: ResourceErrorMessages.COLOR_IS_REQUIRED);

@@ -229,5 +229,14 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("CURRENT_AMOUNT_MUST_BE_POSITIVE", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Participant not found..
+        /// </summary>
+        public static string PARTICIPANT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("PARTICIPANT_NOT_FOUND", resourceCulture);
+            }
+        }
     }
 }
