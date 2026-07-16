@@ -1,0 +1,24 @@
+@switch (TagHtml)
+{
+    case TagText.H1:
+        <h1 class="add-text @GetPresetCssClass()">@Text</h1>
+        break;
+    case TagText.H2:
+        <h2 class="add-text @GetPresetCssClass()">@Text</h2>
+        break;
+    case TagText.H3:
+        <h3 class="add-text @GetPresetCssClass()">@Text</h3>
+        break;
+    case TagText.H4:
+        <h4 class="add-text @GetPresetCssClass()">@Text</h4>
+        break;
+    case TagText.H5:
+        <h5 class="add-text @GetPresetCssClass()">@Text</h5>
+        break;
+    case TagText.Label:
+        <label class="add-text @GetPresetCssClass()">@Text</label>
+        break;
+    default:
+        <p class="add-text @GetPresetCssClass()">@Text</p>
+        break;
+}

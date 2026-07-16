@@ -1,0 +1,46 @@
+.add-text {
+    font-family: Public Sans, sans-serif;
+    letter-spacing: 0;
+}
+
+.add-text--text-preset-1 {
+    font-size: 32px;
+    line-height: 120%;
+    font-weight: 700;
+}
+
+.add-text--text-preset-2 {
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 700;
+}
+
+.add-text--text-preset-3 {
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 700;
+}
+
+.add-text--text-preset-4 {
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+.add-text--text-preset-4-bold {
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 700;
+}
+
+.add-text--text-preset-5 {
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+.add-text--text-preset-5-bold {
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 700;
+}
