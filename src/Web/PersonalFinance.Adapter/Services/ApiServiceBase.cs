@@ -6,33 +6,33 @@ using PersonalFinance.Communication.Responses;
 
 namespace PersonalFinance.Adapter.Services;
 
-public abstract class ApiServiceBase(HttpClient httpClient)
+public abstract class ApiServiceBase(HttpClient httpClient, string baseUri)
 {
-  protected async Task<TResponse?> GetAsync<TResponse>(string uri)
+  protected async Task<TResponse?> GetAsync<TResponse>(string? route = null)
   {
     AddLanguageHeader();
-    using HttpResponseMessage response = await httpClient.GetAsync(requestUri: uri);
+    using HttpResponseMessage response = await httpClient.GetAsync(requestUri: $"{baseUri}{route}");
     return await ReadResponse<TResponse>(response: response);
   }
   
-  protected async Task<TResponse> PostAsync<TRequest, TResponse>(string uri, TRequest request)
+  protected async Task<TResponse> PostAsync<TRequest, TResponse>(TRequest request, string? route = null)
   {
     AddLanguageHeader();
-    using HttpResponseMessage response = await httpClient.PostAsJsonAsync(requestUri: uri, value: request);
+    using HttpResponseMessage response = await httpClient.PostAsJsonAsync(requestUri: $"{baseUri}{route}", value: request);
     return await ReadResponse<TResponse>(response: response);
   }
 
-  protected async Task PutAsync<TRequest>(string uri, TRequest request)
+  protected async Task PutAsync<TRequest>(TRequest request, string? route = null)
   {
     AddLanguageHeader();
-    using HttpResponseMessage response = await httpClient.PutAsJsonAsync(requestUri: uri, value: request);
+    using HttpResponseMessage response = await httpClient.PutAsJsonAsync(requestUri: $"{baseUri}{route}", value: request);
     await EnsureSuccessResponse(response: response);
   }
 
-  protected async Task DeleteAsync(string uri)
+  protected async Task DeleteAsync(string? route = null)
   {
     AddLanguageHeader();
-    using HttpResponseMessage response = await httpClient.DeleteAsync(requestUri: uri);
+    using HttpResponseMessage response = await httpClient.DeleteAsync(requestUri: $"{baseUri}{route}");
     await EnsureSuccessResponse(response: response);
   }
 

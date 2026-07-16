@@ -4,34 +4,32 @@ using PersonalFinance.Communication.Responses.User;
 
 namespace PersonalFinance.Adapter.Services;
 
-public class UserServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient: httpClient)
+public class UserServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient: httpClient, baseUri: "User")
 {
-    private const string BaseUri = "User";
-
     public async Task<RegisterUserResponse> Register(RegisterUserRequest request) =>
-        await PostAsync<RegisterUserRequest, RegisterUserResponse>(uri: BaseUri, request: request);
+        await PostAsync<RegisterUserRequest, RegisterUserResponse>(request: request);
 
     public async Task<LoginResponse> Login(LoginRequest request) =>
-        await PostAsync<LoginRequest, LoginResponse>(uri: $"{BaseUri}/login", request: request);
+        await PostAsync<LoginRequest, LoginResponse>(request: request, route: "/login");
 
     public async Task<UserDto?> Get() => 
-        await GetAsync<UserDto>(uri: BaseUri);
+        await GetAsync<UserDto>();
 
     public async Task Update(UpdateUserRequest request) => 
-        await PutAsync(uri: BaseUri, request: request);
+        await PutAsync(request: request);
     
     public async Task UpdatePassword(UpdatePasswordRequest request) => 
-        await PutAsync(uri: $"{BaseUri}/password", request: request);
+        await PutAsync(request: request, route: "/password");
 
     public async Task ForgotPassword(ForgotPasswordRequest request) => 
-        await PostAsync<ForgotPasswordRequest, object>(uri: $"{BaseUri}/forgot-password", request: request);
+        await PostAsync<ForgotPasswordRequest, object>(request: request, route: "/forgot-password");
 
     public async Task<ValidateResetCodeResponse> ValidateResetCode(ValidateResetCodeRequest request) =>
-        await PostAsync<ValidateResetCodeRequest, ValidateResetCodeResponse>(uri: $"{BaseUri}/validate-reset-code", request: request);
+        await PostAsync<ValidateResetCodeRequest, ValidateResetCodeResponse>(request: request, route: "/validate-reset-code");
 
     public async Task ResetPassword(ResetPasswordRequest request) => 
-        await PutAsync(uri: $"{BaseUri}/reset-password", request: request);
+        await PutAsync(request: request, route: "/reset-password");
 
     public async Task Delete() => 
-        await DeleteAsync(uri: BaseUri);
+        await DeleteAsync();
 }
