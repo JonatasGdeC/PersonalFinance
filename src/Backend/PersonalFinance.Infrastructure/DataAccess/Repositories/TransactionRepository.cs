@@ -57,19 +57,22 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
             .Include(navigationPropertyPath: transaction => transaction.Participant)
             .Where(predicate: transaction => transaction.UserId == userId && transaction.Date.Month == date.Month && transaction.Date.Year == date.Year);
 
-        List<Transaction> lastestTransactions = await query.Take(count: 5).ToListAsync();
-        double currentBalance = await context.Transactions.SumAsync(selector: transaction => transaction.Amount);
-        double totalIncome = await context.Transactions
+        List<Transaction> lastestTransactions = await query
+            .OrderByDescending(keySelector: transaction => transaction.Date)
+            .Take(count: 5)
+            .ToListAsync();
+
+        double totalIncome = await query
             .Where(predicate: transaction => transaction.Type == TransactionType.Income)
             .SumAsync(selector: transaction => transaction.Amount);
-        double totalExpense = await context.Transactions
+        double totalExpense = await query
             .Where(predicate: transaction => transaction.Type == TransactionType.Expense)
             .SumAsync(selector: transaction => transaction.Amount);
 
         return new TransactionDashboard
         {
             LastestTransactions = lastestTransactions,
-            CurrentBalance = currentBalance,
+            CurrentBalance = totalIncome - totalExpense,
             TotalIncome = totalIncome,
             TotalExpense = totalExpense
         };

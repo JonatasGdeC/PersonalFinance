@@ -1,53 +1,79 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PersonalFinance.Application.UseCase.Transaction.Delete;
+using PersonalFinance.Application.UseCase.Transaction.GetAll;
+using PersonalFinance.Application.UseCase.Transaction.GetByCategory;
+using PersonalFinance.Application.UseCase.Transaction.GetDashboard;
+using PersonalFinance.Application.UseCase.Transaction.Register;
+using PersonalFinance.Application.UseCase.Transaction.Update;
+using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Requests;
+using PersonalFinance.Communication.Requests.Transaction;
+using PersonalFinance.Communication.Responses;
+using PersonalFinance.Communication.Responses.Transaction;
 
 namespace PersonalFinance.Api.Controllers;
 
 [Route(template: "[controller]")]
 [ApiController]
+[Authorize]
 public class TransactionController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Register()
+    [ProducesResponseType(type: typeof(TransactionDto), statusCode: StatusCodes.Status201Created)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Register([FromServices] IRegisterTransactionUseCase useCase, [FromBody] RegisterTransactionRequest request)
     {
-        return Ok();
+        TransactionDto response = await useCase.Execute(request: request);
+        return Created(uri: string.Empty, value: response);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update()
+    [Route(template: "{transactionId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update([FromServices] IUpdateTransactionUseCase useCase, [FromRoute] long transactionId, [FromBody] RegisterTransactionRequest request)
     {
-        return Ok();
+        await useCase.Execute(transaction: transactionId, request: request);
+        return NoContent();
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Delete()
+    [Route(template: "{transactionId}")]
+    [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete([FromServices] IDeleteTransactionUseCase useCase, [FromRoute] long transactionId)
     {
+        await useCase.Execute(transactionId: transactionId);
         return NoContent();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [ProducesResponseType(type: typeof(GetListTransactionsResponse), statusCode: StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll([FromServices] IGetAllTransactionUseCase useCase, [FromQuery] TransactionFilterRequest request)
     {
-        return Ok();
+        GetListTransactionsResponse response = await useCase.Execute(request: request);
+        return Ok(value: response);
     }
 
     [HttpGet]
     [Route(template: "dashboard")]
-    public async Task<IActionResult> GetDashboard()
+    [ProducesResponseType(type: typeof(GetTransactionDashboardResponse), statusCode: StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetDashboard([FromServices] IGetTransactionDashboardUseCase useCase, [FromQuery] DateTime date)
     {
-        return Ok();
+        GetTransactionDashboardResponse response = await useCase.Execute(date: date);
+        return Ok(value: response);
     }
 
     [HttpGet]
     [Route(template: "category/{categoryId}")]
-    public async Task<IActionResult> GetByCategory(long categoryId)
+    [ProducesResponseType(type: typeof(GetListTransactionsResponse), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetByCategory([FromServices] IGetTransactionByCategoryIdUseCase useCase, [FromRoute] long categoryId, [FromQuery] DateTime date, [FromQuery] PaginationRequest pagination)
     {
-        return Ok();
-    }
-
-    [HttpGet]
-    [Route(template: "{id}")]
-    public async Task<IActionResult> GetById(long transactionId)
-    {
-        return Ok();
+        GetListTransactionsResponse response = await useCase.Execute(categoryId: categoryId, date: date, pagination: pagination);
+        return Ok(value: response);
     }
 }

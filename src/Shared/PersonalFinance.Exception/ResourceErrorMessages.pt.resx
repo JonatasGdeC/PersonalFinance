@@ -81,4 +81,13 @@
     <data name="CATEGORY_NOT_FOUND" xml:space="preserve">
         <value>Categoria não encontrada.</value>
     </data>
+    <data name="TRANSACTION_NOT_FOUND" xml:space="preserve">
+        <value>Transação não encontrada.</value>
+    </data>
+    <data name="AMOUNT_MUST_BE_GREATER_THAN_ZERO" xml:space="preserve">
+        <value>O valor deve ser maior que zero.</value>
+    </data>
+    <data name="DATE_IS_REQUIRED" xml:space="preserve">
+        <value>A data é obrigatória.</value>
+    </data>
 </root>

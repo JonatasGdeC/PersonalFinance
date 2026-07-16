@@ -247,5 +247,32 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("CATEGORY_NOT_FOUND", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction not found..
+        /// </summary>
+        public static string TRANSACTION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("TRANSACTION_NOT_FOUND", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Amount must be greater than zero..
+        /// </summary>
+        public static string AMOUNT_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("AMOUNT_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Date is required..
+        /// </summary>
+        public static string DATE_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("DATE_IS_REQUIRED", resourceCulture);
+            }
+        }
     }
 }

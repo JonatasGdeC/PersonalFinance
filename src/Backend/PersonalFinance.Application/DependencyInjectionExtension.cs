@@ -12,6 +12,12 @@ using PersonalFinance.Application.UseCase.Pot.Delete;
 using PersonalFinance.Application.UseCase.Pot.GetAll;
 using PersonalFinance.Application.UseCase.Pot.Register;
 using PersonalFinance.Application.UseCase.Pot.Update;
+using PersonalFinance.Application.UseCase.Transaction.Delete;
+using PersonalFinance.Application.UseCase.Transaction.GetAll;
+using PersonalFinance.Application.UseCase.Transaction.GetByCategory;
+using PersonalFinance.Application.UseCase.Transaction.GetDashboard;
+using PersonalFinance.Application.UseCase.Transaction.Register;
+using PersonalFinance.Application.UseCase.Transaction.Update;
 using PersonalFinance.Application.UseCase.User.Delete;
 using PersonalFinance.Application.UseCase.User.ForgotPassword;
 using PersonalFinance.Application.UseCase.User.Get;
@@ -57,5 +63,11 @@ public static class DependencyInjectionExtension
         service.AddScoped<IUpdateCategoryUseCase, UpdateCategoryUseCase>();
         service.AddScoped<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
         service.AddScoped<IGetAllCategoryUseCase, GetAllCategoryUseCase>();
+        service.AddScoped<IRegisterTransactionUseCase, RegisterTransactionUseCase>();
+        service.AddScoped<IUpdateTransactionUseCase, UpdateTransactionUseCase>();
+        service.AddScoped<IDeleteTransactionUseCase, DeleteTransactionUseCase>();
+        service.AddScoped<IGetAllTransactionUseCase, GetAllTransactionUseCase>();
+        service.AddScoped<IGetTransactionByCategoryIdUseCase, GetTransactionByCategoryIdUseCase>();
+        service.AddScoped<IGetTransactionDashboardUseCase, GetTransactionDashboardUseCase>();
     }
 }
