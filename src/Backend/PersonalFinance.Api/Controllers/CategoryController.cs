@@ -7,7 +7,7 @@ namespace PersonalFinance.Api.Controllers;
 public class CategoryController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Add()
+    public async Task<IActionResult> Register()
     {
         return Ok();
     }
