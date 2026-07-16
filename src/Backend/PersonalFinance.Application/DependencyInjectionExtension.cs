@@ -45,6 +45,12 @@ public static class DependencyInjectionExtension
     public static void AddApplication(this IServiceCollection services)
     {
         AddUseCases(service: services);
+        AddAutoMapperApplication(services: services);
+    }
+    
+    private static void AddAutoMapperApplication(this IServiceCollection services)
+    {
+        services.AddAutoMapper(configAction: config => { }, typeof(AutoMapping.AutoMapping));
     }
 
     private static void AddUseCases(this IServiceCollection service)
