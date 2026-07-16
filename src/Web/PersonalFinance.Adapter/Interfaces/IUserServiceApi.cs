@@ -2,7 +2,7 @@ using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
 
-namespace PersonalFinance.Adapter.Services;
+namespace PersonalFinance.Adapter.Interfaces;
 
 public interface IUserServiceApi
 {

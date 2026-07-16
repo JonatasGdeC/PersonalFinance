@@ -1,3 +1,4 @@
+using PersonalFinance.Adapter.Interfaces;
 using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
