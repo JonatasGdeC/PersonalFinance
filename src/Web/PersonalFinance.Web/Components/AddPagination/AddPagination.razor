@@ -1,0 +1,26 @@
+<nav class="add-pagination" aria-label="Pagination">
+    <button type="button" class="add-pagination__nav" disabled="@(CurrentPage <= 1)" @onclick="() => GoToPage(page: CurrentPage - 1)">
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+            <path d="M5 1L1 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Prev</span>
+    </button>
+
+    <div class="add-pagination__pages">
+        @for (int page = 1; page <= TotalPages; page++)
+        {
+            int capturedPage = page;
+
+            <button type="button" class="add-pagination__page @(capturedPage == CurrentPage ? "add-pagination__page--active" : string.Empty)" @onclick="() => GoToPage(page: capturedPage)">
+                @capturedPage
+            </button>
+        }
+    </div>
+
+    <button type="button" class="add-pagination__nav" disabled="@(CurrentPage >= TotalPages)" @onclick="() => GoToPage(page: CurrentPage + 1)">
+        <span>Next</span>
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+</nav>

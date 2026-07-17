@@ -34,7 +34,7 @@
                     {
                         bool isSelected = option.Value == Value;
 
-                        <button type="button" class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)" @onclick="() => SelectOption(option)">
+                        <button type="button" class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)" @onclick="() => SelectOption(option: option)">
                             @if (option.ColorTag is not null)
                             {
                                 <span class="add-input__color-dot" style="background-color: @option.ColorTag;"></span>
@@ -48,7 +48,7 @@
                                     <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             }
-                            else if (!isSelected && !string.IsNullOrWhiteSpace(option.Badge))
+                            else if (!isSelected && !string.IsNullOrWhiteSpace(value: option.Badge))
                             {
                                 <span class="add-input__badge">@option.Badge</span>
                             }

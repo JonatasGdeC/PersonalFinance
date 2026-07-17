@@ -17,9 +17,14 @@
 <AddInput Label="Sort by" Options="_sortOptions" @bind-Value="_sortValue"/>
 <AddInput Label="Password" IsPassword="true"/>
 
+<AddPagination TotalPages="5" CurrentPage="_currentPage" OnPageChanged="HandlePageChanged"/>
+
 @code {
     private string? _colorValue = "green";
     private string? _sortValue = "latest";
+    private int _currentPage = 2;
+
+    private void HandlePageChanged(int page) => _currentPage = page;
 
     private readonly List<AddInputOption> _colorOptions =
     [
