@@ -1,0 +1,61 @@
+using Microsoft.AspNetCore.Components;
+
+namespace PersonalFinance.Web.Components.AddInput;
+
+public partial class AddInput
+{
+    [Parameter] public string? Label { get; set; }
+    [Parameter] public string? Placeholder { get; set; }
+    [Parameter] public string? HelperText { get; set; }
+    [Parameter] public string? Prefix { get; set; }
+    [Parameter] public bool ShowSearchIcon { get; set; }
+    [Parameter] public bool IsPassword { get; set; }
+    [Parameter] public List<AddInputOption>? Options { get; set; }
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+
+    private bool _isOpen;
+    private bool _isPasswordVisible;
+
+    private bool IsDropdown => Options is { Count: > 0 };
+
+    private AddInputOption? SelectedOption => Options?.FirstOrDefault(predicate: option => option.Value == Value);
+
+    private string GetInputType() => IsPassword && !_isPasswordVisible ? "password" : "text";
+
+    private void TogglePasswordVisibility() => _isPasswordVisible = !_isPasswordVisible;
+
+    private void ToggleDropdown()
+    {
+        if (Disabled)
+        {
+            return;
+        }
+
+        _isOpen = !_isOpen;
+    }
+
+    private void CloseDropdown() => _isOpen = false;
+
+    private async Task SelectOption(AddInputOption option)
+    {
+        Value = option.Value;
+        _isOpen = false;
+
+        if (ValueChanged.HasDelegate)
+        {
+            await ValueChanged.InvokeAsync(arg: Value);
+        }
+    }
+
+    private async Task HandleValueChanged(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+
+        if (ValueChanged.HasDelegate)
+        {
+            await ValueChanged.InvokeAsync(arg: Value);
+        }
+    }
+}

@@ -8,3 +8,36 @@
 <AddButton Text="Placeholder" Variant="ButtonVariant.Secondary"/>
 <AddButton Text="Placeholder" Variant="ButtonVariant.Tertiary"/>
 <AddButton Text="Placeholder" Variant="ButtonVariant.Destructive"/>
+
+<AddInput Label="Basic Field" Placeholder="Placeholder" HelperText="Helper text"/>
+<AddInput Label="Field With Icon" Placeholder="Placeholder" HelperText="Helper text" ShowSearchIcon="true"/>
+<AddInput Label="Field With Prefix" Placeholder="Placeholder" HelperText="Helper text" Prefix="$"/>
+<AddInput Label="Field With Color Tag" HelperText="Helper text" Options="_colorOptions" @bind-Value="_colorValue"/>
+<AddInput Prefix="$" HelperText="Helper text" Options="_colorOptions" @bind-Value="_colorValue"/>
+<AddInput Label="Sort by" Options="_sortOptions" @bind-Value="_sortValue"/>
+<AddInput Label="Password" IsPassword="true"/>
+
+@code {
+    private string? _colorValue = "green";
+    private string? _sortValue = "latest";
+
+    private readonly List<AddInputOption> _colorOptions =
+    [
+        new AddInputOption { Value = "green", Label = "Green", ColorTag = "var(--green)" },
+        new AddInputOption { Value = "yellow", Label = "Yellow", ColorTag = "var(--yellow)", Badge = "Already used" },
+        new AddInputOption { Value = "cyan", Label = "Cyan", ColorTag = "var(--cyan)" },
+        new AddInputOption { Value = "navy", Label = "Navy", ColorTag = "var(--navy)", Badge = "Already used" },
+        new AddInputOption { Value = "red", Label = "Red", ColorTag = "var(--red)", Badge = "Already used" },
+        new AddInputOption { Value = "purple", Label = "Purple", ColorTag = "var(--purple-dark)" }
+    ];
+
+    private readonly List<AddInputOption> _sortOptions =
+    [
+        new AddInputOption { Value = "latest", Label = "Latest" },
+        new AddInputOption { Value = "oldest", Label = "Oldest" },
+        new AddInputOption { Value = "az", Label = "A to Z" },
+        new AddInputOption { Value = "za", Label = "Z to A" },
+        new AddInputOption { Value = "highest", Label = "Highest" },
+        new AddInputOption { Value = "lowest", Label = "Lowest" }
+    ];
+}
