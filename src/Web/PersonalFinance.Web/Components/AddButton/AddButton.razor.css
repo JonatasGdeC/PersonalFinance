@@ -1,4 +1,5 @@
 .add-button {
+    width: auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -51,6 +52,18 @@
 
 .add-button--tertiary:hover:not(:disabled) {
     color: var(--grey-900);
+}
+
+.add-button--link {
+    background-color: transparent;
+    color: var(--grey-900);
+    border-radius: 0;
+    border-bottom: 1px solid var(--grey-900);
+    padding: 0;
+}
+
+.add-button--link:hover {
+    color: var(--grey-300);
 }
 
 .add-button--destructive {

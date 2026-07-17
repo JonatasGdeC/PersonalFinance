@@ -1,0 +1,19 @@
+.form-register-user, .form-register-user__inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-register-user {
+    gap: 32px;
+}
+
+.form-register-user__inputs {
+    gap: 16px;
+}
+
+.form-register-user__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

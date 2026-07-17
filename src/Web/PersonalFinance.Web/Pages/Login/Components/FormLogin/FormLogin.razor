@@ -1,7 +1,7 @@
-<form class="login-page" @onsubmit="@HandleLogin">
+<form class="form-login" @onsubmit="@HandleLogin">
     <AddText Text="Login" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
 
-    <div class="login-page__inputs">
+    <div class="form-login__inputs">
         <AddInput Label="Email" @bind-Value="_loginRequest.Email" 
                   IsEmail="true" Required="true" Disabled="_isSubmitting" />
         <AddInput Label="Password" @bind-Value="_loginRequest.Password" 
@@ -17,8 +17,8 @@
                Variant="ButtonVariant.Primary" Type="submit"
                FullWidth="true" Disabled="_isSubmitting"/>
 
-    <div class="login-page__footer">
+    <div class="form-login__footer">
         <AddText Text="Need to create an account?" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
-        <AddButton Text="Sign Up" Variant="ButtonVariant.Tertiary"/>
+        <AddButton Text="Sign Up" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToSignUp.InvokeAsync())"/>
     </div>
 </form>

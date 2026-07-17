@@ -18,6 +18,7 @@ public partial class AddButton
             ButtonVariant.Primary     => "add-button--primary",
             ButtonVariant.Secondary   => "add-button--secondary",
             ButtonVariant.Tertiary    => "add-button--tertiary",
+            ButtonVariant.Link        => "add-button--link",
             ButtonVariant.Destructive => "add-button--destructive",
             _                         => throw new ArgumentOutOfRangeException(paramName: nameof(Variant), actualValue: Variant, message: null)
         };
@@ -45,5 +46,6 @@ public enum ButtonVariant
     Primary,
     Secondary,
     Tertiary,
+    Link,
     Destructive
 }

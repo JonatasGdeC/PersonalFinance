@@ -1,18 +1,19 @@
-.login-page, .login-page__inputs {
+.form-login, .form-login__inputs {
     display: flex;
     flex-direction: column;
 }
 
-.login-page {
+.form-login {
     gap: 32px;
 }
 
-.login-page__inputs {
+.form-login__inputs {
     gap: 16px;
 }
 
-.login-page__footer {
+.form-login__footer {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 }
