@@ -1,0 +1,68 @@
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 150%;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.add-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.add-button--full-width {
+    width: 100%;
+}
+
+.add-button--primary {
+    background-color: var(--grey-900);
+    color: var(--white);
+}
+
+.add-button--primary:hover:not(:disabled) {
+    background-color: var(--grey-500);
+}
+
+.add-button--secondary {
+    background-color: var(--beige-100);
+    color: var(--grey-900);
+}
+
+.add-button--secondary:hover:not(:disabled) {
+    background-color: var(--white);
+    border-color: var(--beige-500);
+}
+
+.add-button--tertiary {
+    padding: 8px 0;
+    font-weight: 400;
+    color: var(--grey-500);
+}
+
+.add-button--tertiary:hover:not(:disabled) {
+    color: var(--grey-900);
+}
+
+.add-button--destructive {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.add-button--destructive:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--red) 70%, var(--white));
+}
+
+.add-button__chevron {
+    font-size: 16px;
+    line-height: 1;
+}

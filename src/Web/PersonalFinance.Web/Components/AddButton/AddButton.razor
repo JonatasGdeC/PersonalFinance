@@ -1,0 +1,7 @@
+<button type="@Type" class="@GetCssClass()" disabled="@Disabled" @onclick="HandleClick">
+    @Text
+    @if (Variant == ButtonVariant.Tertiary)
+    {
+        <span class="add-button__chevron" aria-hidden="true">&#8250;</span>
+    }
+</button>
