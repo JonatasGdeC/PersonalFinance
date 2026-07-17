@@ -1,5 +1,10 @@
-<h3>AddCard</h3>
-
-@code {
-    
+@if (IsLoading)
+{
+    <AddSkeleton Width="@Width" Height="@Height" BorderRadius="@BorderRadius"/>
+}
+else
+{
+    <article style="@HandleStyle()">
+        @Body
+    </article>
 }

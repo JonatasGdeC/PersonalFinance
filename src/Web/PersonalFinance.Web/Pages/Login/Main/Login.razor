@@ -1,0 +1,22 @@
+@using PersonalFinance.Web.Pages.Login.Components.FormLogin
+
+<PageTitle>Login</PageTitle>
+
+<section class="login">
+    <div class="login__sidebar">
+        <img src="icons/Logo.svg" width="120" height="22" alt="Finance app"/>
+        <div class="login__sidebar-text">
+            <AddText Text="Keep track of your money and save for your future"
+                     Preset="TextPreset.Preset1" Color="ThemeColor.White"/>
+            
+            <AddText Text="Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily."
+                     Preset="TextPreset.Preset4" Color="ThemeColor.White"/>
+        </div>
+    </div>
+    
+    <AddCard Width="560px">
+        <Body>
+        <FormLogin/>
+        </Body>
+    </AddCard>
+</section>

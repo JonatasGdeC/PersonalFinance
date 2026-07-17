@@ -1,13 +1,14 @@
 <div class="add-input">
     @if (!string.IsNullOrWhiteSpace(value: Label))
     {
-        <label class="add-input__label">@Label</label>
+        <label class="add-input__label" for="@_addInputId">@Label</label>
     }
 
     @if (IsDropdown)
     {
         <div class="add-input__dropdown">
-            <button type="button" class="add-input__control add-input__trigger" disabled="@Disabled" @onclick="ToggleDropdown">
+            <button type="button" class="add-input__control add-input__trigger" disabled="@Disabled"
+                    @onclick="ToggleDropdown">
                 @if (SelectedOption?.ColorTag is not null)
                 {
                     <span class="add-input__color-dot" style="background-color: @SelectedOption.ColorTag;"></span>
@@ -20,8 +21,10 @@
 
                 <span class="add-input__value">@(SelectedOption?.Label ?? Placeholder)</span>
 
-                <svg class="add-input__chevron @(_isOpen ? "add-input__chevron--open" : string.Empty)" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <svg class="add-input__chevron @(_isOpen ? "add-input__chevron--open" : string.Empty)" width="12"
+                     height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
                 </svg>
             </button>
 
@@ -34,7 +37,9 @@
                     {
                         bool isSelected = option.Value == Value;
 
-                        <button type="button" class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)" @onclick="() => SelectOption(option: option)">
+                        <button type="button"
+                                class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)"
+                                @onclick="() => SelectOption(option: option)">
                             @if (option.ColorTag is not null)
                             {
                                 <span class="add-input__color-dot" style="background-color: @option.ColorTag;"></span>
@@ -44,8 +49,10 @@
 
                             @if (isSelected && option.ColorTag is not null)
                             {
-                                <svg class="add-input__check" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                    <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                <svg class="add-input__check" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                     aria-hidden="true">
+                                    <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.6"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             }
                             else if (!isSelected && !string.IsNullOrWhiteSpace(value: option.Badge))
@@ -66,24 +73,32 @@
                 <span class="add-input__prefix">@Prefix</span>
             }
 
-            <input type="@GetInputType()" class="add-input__field" placeholder="@Placeholder" value="@Value" disabled="@Disabled" @oninput="HandleValueChanged" />
+            <input type="@GetInputType()" class="add-input__field" placeholder="@Placeholder" value="@Value"
+                   disabled="@Disabled" @oninput="HandleValueChanged" required="@Required" id="@_addInputId"/>
 
             @if (IsPassword)
             {
-                <button type="button" class="add-input__icon-button" disabled="@Disabled" @onclick="TogglePasswordVisibility" aria-label="@(_isPasswordVisible ? "Hide password" : "Show password")">
+                <button type="button" class="add-input__icon-button" disabled="@Disabled"
+                        @onclick="TogglePasswordVisibility"
+                        aria-label="@(_isPasswordVisible ? "Hide password" : "Show password")">
                     @if (_isPasswordVisible)
                     {
-                        <svg class="add-input__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <path d="M1 8C1 8 3.5 3.5 8 3.5C12.5 3.5 15 8 15 8C15 8 12.5 12.5 8 12.5C3.5 12.5 1 8 1 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-                            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4" />
-                            <line x1="2" y1="13.5" x2="14" y2="2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                        <svg class="add-input__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                             aria-hidden="true">
+                            <path d="M1 8C1 8 3.5 3.5 8 3.5C12.5 3.5 15 8 15 8C15 8 12.5 12.5 8 12.5C3.5 12.5 1 8 1 8Z"
+                                  stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+                            <line x1="2" y1="13.5" x2="14" y2="2.5" stroke="currentColor" stroke-width="1.4"
+                                  stroke-linecap="round"/>
                         </svg>
                     }
                     else
                     {
-                        <svg class="add-input__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <path d="M1 8C1 8 3.5 3.5 8 3.5C12.5 3.5 15 8 15 8C15 8 12.5 12.5 8 12.5C3.5 12.5 1 8 1 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-                            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4" />
+                        <svg class="add-input__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                             aria-hidden="true">
+                            <path d="M1 8C1 8 3.5 3.5 8 3.5C12.5 3.5 15 8 15 8C15 8 12.5 12.5 8 12.5C3.5 12.5 1 8 1 8Z"
+                                  stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
                         </svg>
                     }
                 </button>
@@ -91,8 +106,8 @@
             else if (ShowSearchIcon)
             {
                 <svg class="add-input__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5" />
-                    <path d="M11.5 11.5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M11.5 11.5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
             }
         </div>

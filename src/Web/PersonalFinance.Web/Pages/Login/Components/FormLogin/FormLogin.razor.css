@@ -1,0 +1,18 @@
+.login-page, .login-page__inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page {
+    gap: 32px;
+}
+
+.login-page__inputs {
+    gap: 16px;
+}
+
+.login-page__footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

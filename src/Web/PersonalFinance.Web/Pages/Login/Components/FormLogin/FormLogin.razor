@@ -1,17 +1,24 @@
-<form class="login-page__card" @onsubmit="HandleLoginAsync">
-    <AddText Text="Login" Preset="TextPreset.Preset1"/>
+<form class="login-page" @onsubmit="@HandleLogin">
+    <AddText Text="Login" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
 
-    <AddInput Label="Email" @bind-Value="_email" Disabled="_isSubmitting"/>
-    <AddInput Label="Password" IsPassword="true" @bind-Value="_password" Disabled="_isSubmitting"/>
+    <div class="login-page__inputs">
+        <AddInput Label="Email" @bind-Value="_loginRequest.Email" 
+                  IsEmail="true" Required="true" Disabled="_isSubmitting" />
+        <AddInput Label="Password" @bind-Value="_loginRequest.Password" 
+                  IsPassword="true" Required="true" Disabled="_isSubmitting"/>
 
-    @if (!string.IsNullOrWhiteSpace(value: _errorMessage))
-    {
-        <p class="login-page__error">@_errorMessage</p>
-    }
+        @foreach (string errorMessage in _errorMessage)
+        {
+            <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5"/>    
+        }
+    </div>
 
-    <AddButton Text="@(_isSubmitting ? "Logging in..." : "Login")" Variant="ButtonVariant.Primary" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+    <AddButton Text="@(_isSubmitting ? "Logging in..." : "Login")"
+               Variant="ButtonVariant.Primary" Type="submit"
+               FullWidth="true" Disabled="_isSubmitting"/>
 
-    <p class="login-page__footer-text">
-        Need to create an account? <a href="/signup" class="login-page__link">Sign Up</a>
-    </p>
+    <div class="login-page__footer">
+        <AddText Text="Need to create an account?" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+        <AddButton Text="Sign Up" Variant="ButtonVariant.Tertiary"/>
+    </div>
 </form>

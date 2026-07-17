@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 
-namespace PersonalFinance.Web.Pages.Login.Components.HandleRegisterUser;
+namespace PersonalFinance.Web.Pages.Login.Components.FormRegisterUser;
 
-public partial class HandleRegisterUser : ComponentBase
+public partial class FormRegisterUser : ComponentBase
 {
 }

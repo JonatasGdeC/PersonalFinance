@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using PersonalFinance.Web.Extensions;
 
 namespace PersonalFinance.Web.Components.AddText;
 
@@ -7,6 +8,7 @@ public partial class AddText
     [Parameter] public required string Text { get; set; }
     [Parameter] public TextPreset Preset { get; set; } = TextPreset.Preset1;
     [Parameter] public TagText TagHtml { get; set; } = TagText.P;
+    [Parameter] public ThemeColor Color { get; set; } = ThemeColor.Grey900;
     
     private string GetPresetCssClass()
     {
@@ -22,6 +24,8 @@ public partial class AddText
             _                      => throw new ArgumentOutOfRangeException(paramName: nameof(Preset), actualValue: Preset, message: null)
         };
     }
+
+    private string HandleColor => $"color: {Color.ToCssVar()}";
 }
 
 public enum TextPreset

@@ -10,19 +10,23 @@ public partial class AddInput
     [Parameter] public string? Prefix { get; set; }
     [Parameter] public bool ShowSearchIcon { get; set; }
     [Parameter] public bool IsPassword { get; set; }
+    [Parameter] public bool IsEmail { get; set; }
     [Parameter] public List<AddInputOption>? Options { get; set; }
     [Parameter] public string? Value { get; set; }
     [Parameter] public EventCallback<string?> ValueChanged { get; set; }
     [Parameter] public bool Disabled { get; set; }
+    [Parameter] public bool Required { get; set; }
 
     private bool _isOpen;
     private bool _isPasswordVisible;
-
+    
+    private readonly string _addInputId = Guid.NewGuid().ToString();
+    
     private bool IsDropdown => Options is { Count: > 0 };
 
     private AddInputOption? SelectedOption => Options?.FirstOrDefault(predicate: option => option.Value == Value);
 
-    private string GetInputType() => IsPassword && !_isPasswordVisible ? "password" : "text";
+    private string GetInputType() => IsPassword && !_isPasswordVisible ? "password" : IsEmail ? "email" : "text";
 
     private void TogglePasswordVisibility() => _isPasswordVisible = !_isPasswordVisible;
 

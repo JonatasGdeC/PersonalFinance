@@ -3,11 +3,11 @@ using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
 
-namespace PersonalFinance.Web.Pages.Login.Components.HandleLogin;
+namespace PersonalFinance.Web.Pages.Login.Components.FormLogin;
 
-public partial class HandleLogin : ComponentBase
+public partial class FormLogin : ComponentBase
 {
-    private LoginRequest _loginRequest = new()
+    private readonly LoginRequest _loginRequest = new()
     {
         Email = string.Empty,
         Password = string.Empty
@@ -16,9 +16,9 @@ public partial class HandleLogin : ComponentBase
     private List<string> _errorMessage = [];
     private bool _isSubmitting;
 
-    private async Task SubmitLogin()
+    private async Task HandleLogin()
     {
-        _errorMessage = null;
+        _errorMessage = [];
 
         if (string.IsNullOrWhiteSpace(value: _loginRequest.Email) || string.IsNullOrWhiteSpace(value: _loginRequest.Password))
         {
@@ -31,7 +31,6 @@ public partial class HandleLogin : ComponentBase
         try
         {
             LoginResponse response = await PersonalFinanceApi.User.Login(request: _loginRequest);
-
             await AuthenticationStateProvider.SetTokenAsync(token: response.Token);
             NavigationManager.NavigateTo(uri: "/");
         }
@@ -42,6 +41,10 @@ public partial class HandleLogin : ComponentBase
         catch
         {
             _errorMessage = ["An error occured while logging in."];
+        }
+        finally
+        {
+            _isSubmitting = false;
         }
     }
 }
