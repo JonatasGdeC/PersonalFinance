@@ -1,10 +1,12 @@
+@using PersonalFinance.Web.Resources.Login
+
 <form class="form-login" @onsubmit="@HandleLogin">
-    <AddText Text="Login" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddText Text="@LoginResources.Login" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
 
     <div class="form-login__inputs">
-        <AddInput Label="Email" @bind-Value="_loginRequest.Email" 
+        <AddInput Label="@LoginResources.Email" @bind-Value="_loginRequest.Email" 
                   IsEmail="true" Required="true" Disabled="_isSubmitting" />
-        <AddInput Label="Password" @bind-Value="_loginRequest.Password" 
+        <AddInput Label="@LoginResources.Password" @bind-Value="_loginRequest.Password" 
                   IsPassword="true" Required="true" Disabled="_isSubmitting"/>
 
         @foreach (string errorMessage in _errorMessage)
@@ -13,12 +15,12 @@
         }
     </div>
 
-    <AddButton Text="@(_isSubmitting ? "Logging in..." : "Login")"
+    <AddButton Text="@(_isSubmitting ? LoginResources.LoggingIn : LoginResources.Login)"
                Variant="ButtonVariant.Primary" Type="submit"
                FullWidth="true" Disabled="_isSubmitting"/>
 
     <div class="form-login__footer">
-        <AddText Text="Need to create an account?" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
-        <AddButton Text="Sign Up" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToSignUp.InvokeAsync())"/>
+        <AddText Text="@LoginResources.NeedAccount" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+        <AddButton Text="@LoginResources.SignUp" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToSignUp.InvokeAsync())"/>
     </div>
 </form>

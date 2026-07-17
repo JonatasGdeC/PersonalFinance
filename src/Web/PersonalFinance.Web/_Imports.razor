@@ -17,10 +17,13 @@
 @using PersonalFinance.Web.Components.AddInput
 @using PersonalFinance.Web.Components.AddPagination
 @using PersonalFinance.Web.Components.AddSkeleton
-@using PersonalFinance.Web.Components.AddCard;
+@using PersonalFinance.Web.Components.AddCard
+@using PersonalFinance.Web.Components.AddSetLanguage
 
 @using PersonalFinance.Web.Extensions
+@using PersonalFinance.Web.Resources
 
 @inject PersonalFinanceApi PersonalFinanceApi
 @inject CookieAuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager 
+@inject IJSRuntime JsRuntime

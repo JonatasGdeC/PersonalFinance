@@ -5,6 +5,13 @@
     padding: 20px;
     gap: 160px;
     
+    & > .login__set-language {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 24px;
+    }
+    
     & > .login__sidebar {
         background-image: url("./images/login.svg");
         background-repeat: no-repeat;

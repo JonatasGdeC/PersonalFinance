@@ -1,14 +1,16 @@
+@using PersonalFinance.Web.Resources.Login
+
 <form class="form-register-user" @onsubmit="@HandleRegisterUser">
-    <AddText Text="Sign Up" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddText Text="@LoginResources.SignUp" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
 
     <div class="form-register-user__inputs">
-        <AddInput Label="Name" @bind-Value="_registerUserRequest.Name" 
+        <AddInput Label="@LoginResources.Name" @bind-Value="_registerUserRequest.Name" 
                   Required="true" Disabled="_isSubmitting" />
-        <AddInput Label="Email" @bind-Value="_registerUserRequest.Email"
+        <AddInput Label="@LoginResources.Email" @bind-Value="_registerUserRequest.Email"
                   IsEmail="true" Required="true" Disabled="_isSubmitting"/>
-        <AddInput Label="Password" @bind-Value="_registerUserRequest.Password"
+        <AddInput Label="@LoginResources.CreatePassword" @bind-Value="_registerUserRequest.Password"
                   IsPassword="true" Required="true" Disabled="_isSubmitting"
-                  HelperText="@(_registerUserRequest.Password.Length < 8 ? "Passwords must be at least 8 characters" : string.Empty)"/>
+                  HelperText="@(_registerUserRequest.Password.Length < 8 ? LoginResources.PasswordMinLength : string.Empty)"/>
 
         @foreach (string errorMessage in _errorMessage)
         {
@@ -16,12 +18,12 @@
         }
     </div>
 
-    <AddButton Text="@(_isSubmitting ? "Logging in..." : "Login")"
+    <AddButton Text="@(_isSubmitting ? LoginResources.LoggingIn : LoginResources.SignUp)"
                Variant="ButtonVariant.Primary" Type="submit"
                FullWidth="true" Disabled="_isSubmitting"/>
 
     <div class="form-register-user__footer">
-        <AddText Text="Already have an account?" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
-        <AddButton Text="Login" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToLogin.InvokeAsync())"/>
+        <AddText Text="@LoginResources.AlreadyHaveAccount" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+        <AddButton Text="@LoginResources.Login" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToLogin.InvokeAsync())"/>
     </div>
 </form>

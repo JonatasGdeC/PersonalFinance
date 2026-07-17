@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
+using PersonalFinance.Web.Resources.Login;
 
 namespace PersonalFinance.Web.Pages.Login.Components.FormRegisterUser;
 
@@ -43,7 +44,7 @@ public partial class FormRegisterUser : ComponentBase
         }
         catch
         {
-            _errorMessage = ["An error occured while logging in."];
+            _errorMessage = [LoginResources.UnknownError];
         }
         finally
         {
