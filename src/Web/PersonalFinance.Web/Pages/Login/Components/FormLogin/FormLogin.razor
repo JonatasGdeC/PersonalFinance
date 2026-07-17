@@ -1,0 +1,17 @@
+<form class="login-page__card" @onsubmit="HandleLoginAsync">
+    <AddText Text="Login" Preset="TextPreset.Preset1"/>
+
+    <AddInput Label="Email" @bind-Value="_email" Disabled="_isSubmitting"/>
+    <AddInput Label="Password" IsPassword="true" @bind-Value="_password" Disabled="_isSubmitting"/>
+
+    @if (!string.IsNullOrWhiteSpace(value: _errorMessage))
+    {
+        <p class="login-page__error">@_errorMessage</p>
+    }
+
+    <AddButton Text="@(_isSubmitting ? "Logging in..." : "Login")" Variant="ButtonVariant.Primary" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+
+    <p class="login-page__footer-text">
+        Need to create an account? <a href="/signup" class="login-page__link">Sign Up</a>
+    </p>
+</form>
