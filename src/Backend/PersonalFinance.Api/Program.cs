@@ -32,14 +32,14 @@ builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
 
 WebApplication app = builder.Build();
 
+app.UseMiddleware<CultureMiddleware>();
+
 app.UseCors(policyName: corsPolicyName);
-app.UseRateLimiter(); 
+app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
-
-app.UseMiddleware<CultureMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

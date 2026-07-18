@@ -14,9 +14,7 @@ builder.Services.AddAdapter(builder: builder);
 
 WebAssemblyHost host = builder.Build();
 
-string? storedCulture = await host.Services.GetRequiredService<IJSRuntime>()
-    .InvokeAsync<string?>(identifier: "localStorage.getItem", args: ["culture"]);
-
+string? storedCulture = await host.Services.GetRequiredService<IJSRuntime>().InvokeAsync<string?>(identifier: "localStorage.getItem", args: ["culture"]);
 CultureInfo culture = new(name: storedCulture ?? CultureInfo.CurrentUICulture.Name);
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;

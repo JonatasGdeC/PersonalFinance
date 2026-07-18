@@ -23,7 +23,7 @@ namespace PersonalFinance.Api.Controllers;
 public class UserController : ControllerBase
 {
     [HttpPost]
-    [EnableRateLimiting(policyName: RateLimitingPolicyNames.LOGIN)]
+    [EnableRateLimiting(policyName: RateLimitingPolicyNames.REGISTER_USER)]
     [AllowAnonymous]
     [ProducesResponseType(type: typeof(RegisterUserResponse), statusCode: StatusCodes.Status201Created)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]

@@ -1,6 +1,6 @@
 @using PersonalFinance.Web.Resources.Login
 
-<form class="form-login" @onsubmit="@HandleLogin">
+<form class="form-login" @onsubmit="@HandleLogin" @onsubmit:preventDefault="true">
     <AddText Text="@LoginResources.Login" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
 
     <div class="form-login__inputs">
@@ -11,7 +11,7 @@
 
         @foreach (string errorMessage in _errorMessage)
         {
-            <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5"/>    
+            <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>    
         }
     </div>
 

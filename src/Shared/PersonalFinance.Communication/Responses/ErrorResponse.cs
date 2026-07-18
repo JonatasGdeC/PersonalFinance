@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace PersonalFinance.Communication.Responses;
 
 public record ErrorResponse
@@ -6,5 +8,6 @@ public record ErrorResponse
 
     public ErrorResponse(string errorMessage) => ErrorMessages = [errorMessage];
 
+    [JsonConstructor]
     public ErrorResponse(List<string> errorMessages) => ErrorMessages = errorMessages;
 }
