@@ -5,10 +5,14 @@
 <PageTitle>Finance - @(_showPageLogin ? "Login" : "Sign Up")</PageTitle>
 
 <section class="login">
+    <div class="login__header">
+        <img src="icons/Logo.svg" width="120" height="22" alt="Finance app"/>
+    </div>
+    
     <div class="login__set-language">
         <AddSetLanguage/>
     </div>
-    
+
     <div class="login__sidebar">
         <img src="icons/Logo.svg" width="120" height="22" alt="Finance app"/>
         <div class="login__sidebar-text">
@@ -20,7 +24,7 @@
         </div>
     </div>
 
-    <AddCard Width="560px">
+    <AddCard Width="var(--width-card-login)" Padding="var(--padding-card-login)">
         <Body>
         @if (_showPageLogin)
         {
