@@ -11,6 +11,7 @@ public partial class AddInput
     [Parameter] public bool ShowSearchIcon { get; set; }
     [Parameter] public bool IsPassword { get; set; }
     [Parameter] public bool IsEmail { get; set; }
+    [Parameter] public bool IsDate { get; set; }
     [Parameter] public List<AddInputOption>? Options { get; set; }
     [Parameter] public string? Value { get; set; }
     [Parameter] public EventCallback<string?> ValueChanged { get; set; }
@@ -26,7 +27,7 @@ public partial class AddInput
 
     private AddInputOption? SelectedOption => Options?.FirstOrDefault(predicate: option => option.Value == Value);
 
-    private string GetInputType() => IsPassword && !_isPasswordVisible ? "password" : IsEmail ? "email" : "text";
+    private string GetInputType() => IsPassword && !_isPasswordVisible ? "password" : IsEmail ? "email" : IsDate ? "date" : "text";
 
     private void TogglePasswordVisibility() => _isPasswordVisible = !_isPasswordVisible;
 
