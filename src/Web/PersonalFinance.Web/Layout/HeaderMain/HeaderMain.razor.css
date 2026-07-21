@@ -1,0 +1,10 @@
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px 32px;
+    
+    & > .add-input {
+        width: 120px;
+    }
+}

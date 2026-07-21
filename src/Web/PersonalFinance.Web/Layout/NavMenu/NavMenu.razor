@@ -1,11 +1,13 @@
+@using PersonalFinance.Web.Resources.Common
+
 <aside class="nav-menu @(_isCollapsed ? "nav-menu--collapsed" : "")">
     @if (_isCollapsed)
     {
-        <img class="nav-menu__icon" src="icons/LogoMini.svg" width="13" height="22" alt="Finance app"/>
+        <img class="nav-menu__icon" src="icons/LogoMini.svg" width="13" height="22" alt="@CommonResources.FinanceAppAlt"/>
     }
     else
     {
-        <img class="nav-menu__icon" src="icons/Logo.svg" width="120" height="22" alt="Finance app"/>
+        <img class="nav-menu__icon" src="icons/Logo.svg" width="120" height="22" alt="@CommonResources.FinanceAppAlt"/>
     }
 
     <ul class="nav-menu__links">
@@ -25,9 +27,9 @@
             </li>
         }
     </ul>
-
+    
     <button type="button" class="nav-menu__toggle @(_isCollapsed ? "nav-menu__toggle--collapsed" : "")" @onclick="ToggleCollapsed">
         <AddIcon Icon="Icon.ARROW_FAT_LINES_LEFT" Size="24" Color="ThemeColor.Grey300"/>
-        <AddText Text="Minimize Menu" Preset="TextPreset.Preset3" Color="ThemeColor.Grey300"/>
+        <AddText Text="@CommonResources.MinimizeMenu" Preset="TextPreset.Preset3" Color="ThemeColor.Grey300"/>
     </button>
 </aside>

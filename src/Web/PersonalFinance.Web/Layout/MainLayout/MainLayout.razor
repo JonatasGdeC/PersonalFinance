@@ -1,4 +1,5 @@
-﻿@using PersonalFinance.Web.Layout.NavMenu
+﻿@using PersonalFinance.Web.Layout.HeaderMain
+@using PersonalFinance.Web.Layout.NavMenu
 @using PersonalFinance.Web.Pages.Login.Main
 @inherits LayoutComponentBase
 
@@ -11,8 +12,11 @@
     {
         <NavMenu/>
 
-        <main>
-            @Body
+        <main class="page-main">
+            <HeaderMain/>
+            <div class="page-content">
+                @Body
+            </div>
         </main>
     }
 

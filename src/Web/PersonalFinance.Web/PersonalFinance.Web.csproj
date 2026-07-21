@@ -30,6 +30,14 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>LoginResources.pt.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Common\CommonResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Common\CommonResources.pt.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>CommonResources.pt.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -42,6 +50,16 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>LoginResources.pt.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Common\CommonResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CommonResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Common\CommonResources.pt.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CommonResources.pt.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 
