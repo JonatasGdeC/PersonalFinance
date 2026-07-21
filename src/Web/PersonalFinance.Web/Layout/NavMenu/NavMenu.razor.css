@@ -83,6 +83,7 @@
         }
 
         & > .link--active {
+            padding: 16px 32px 16px 27px;
             background-color: var(--beige-100);
             border-left: 5px solid var(--green);
 
