@@ -63,4 +63,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pages\Home\Components\" />
+    </ItemGroup>
+
 </Project>
