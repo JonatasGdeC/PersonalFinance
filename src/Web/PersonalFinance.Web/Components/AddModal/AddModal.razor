@@ -1,0 +1,26 @@
+@if (IsOpen)
+{
+    <div class="add-modal__overlay">
+        <div class="add-modal__backdrop" @onclick="HandleClose"></div>
+
+        <div class="add-modal" style="max-width: @MaxWidth;">
+            <div class="add-modal__header">
+                <AddText Text="@Title" Preset="TextPreset.Preset2" TagHtml="TagText.H2"/>
+                <button type="button" class="add-modal__close" @onclick="HandleClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(value: Subtitle))
+            {
+                <AddText Text="@Subtitle" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+            }
+
+            <div class="add-modal__body">
+                @Body
+            </div>
+        </div>
+    </div>
+}

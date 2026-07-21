@@ -1,0 +1,58 @@
+.add-modal__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.add-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-modal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    border-radius: 12px;
+    background-color: var(--white);
+    overflow-y: auto;
+}
+
+.add-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.add-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: var(--grey-300);
+    cursor: pointer;
+}
+
+.add-modal__close:hover {
+    color: var(--grey-900);
+}
+
+.add-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
