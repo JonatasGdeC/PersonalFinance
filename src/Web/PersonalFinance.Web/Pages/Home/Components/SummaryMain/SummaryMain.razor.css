@@ -1,0 +1,17 @@
+.summary-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 32px 0;
+
+    & > li {
+        width: 100%;
+    }
+}
+
+.summary-main__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

@@ -1,3 +1,12 @@
 ﻿@page "/"
+@using PersonalFinance.Web.Pages.Home.Components.SummaryMain
+@using PersonalFinance.Web.Resources.Common
 
 <PageTitle>Home</PageTitle>
+
+<AddText Text="@CommonResources.Overview" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+
+<SummaryMain IsLoading="@_isLoading" 
+             CurrentBalance="@_transactionDashboard?.CurrentBalance"
+             TotalExpense="@_transactionDashboard?.TotalExpense"
+             TotalIncome="@_transactionDashboard?.TotalIncome"/>

@@ -1,0 +1,34 @@
+@using PersonalFinance.Web.Resources.Home
+
+<ul class="summary-main">
+    <li>
+        <AddCard BackgroundColor="ThemeColor.Grey900" IsLoading="@IsLoading">
+            <Body>
+                <div class="summary-main__content">
+                    <AddText Text="@HomeResources.CurrentBalance" Preset="TextPreset.Preset4" Color="ThemeColor.White"/>
+                    <AddText Text="@FormattedCurrentBalance" Preset="TextPreset.Preset1" Color="ThemeColor.White"/>
+                </div>
+            </Body>
+        </AddCard>
+    </li>
+    <li>
+        <AddCard IsLoading="@IsLoading">
+            <Body>
+                <div class="summary-main__content">
+                    <AddText Text="@HomeResources.Income" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                    <AddText Text="@FormattedTotalIncome" Preset="TextPreset.Preset1"/>
+                </div>
+            </Body>
+        </AddCard>
+    </li>
+    <li>
+        <AddCard IsLoading="@IsLoading">
+            <Body>
+                <div class="summary-main__content">
+                    <AddText Text="@HomeResources.Expenses" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                    <AddText Text="@FormattedTotalExpense" Preset="TextPreset.Preset1"/>
+                </div>
+            </Body>
+        </AddCard>
+    </li>
+</ul>
