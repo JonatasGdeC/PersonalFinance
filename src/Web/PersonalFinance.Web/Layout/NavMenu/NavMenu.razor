@@ -15,7 +15,12 @@
             <li class="@(isActive ? "link--active" : "link")">
                 <a href="@item.Route">
                     <AddIcon Icon="item.Icon" Size="24" Color="@(isActive ? ThemeColor.Green : ThemeColor.Grey300)"/>
-                    <AddText Text="@item.Label" Preset="TextPreset.Preset3" Color="@(isActive ? ThemeColor.Grey900 : ThemeColor.Grey300)"/>
+                    <div class="text-desktop">
+                        <AddText Text="@item.Label" Preset="TextPreset.Preset3" Color="@(isActive ? ThemeColor.Grey900 : ThemeColor.Grey300)"/>
+                    </div>
+                    <div class="text-mobile">
+                        <AddText Text="@item.Label" Preset="TextPreset.Preset5Bold" Color="@(isActive ? ThemeColor.Grey900 : ThemeColor.Grey300)"/>
+                    </div>
                 </a>
             </li>
         }
