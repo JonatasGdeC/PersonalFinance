@@ -38,6 +38,14 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>CommonResources.pt.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Home\HomeResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>HomeResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Home\HomeResources.pt.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>HomeResources.pt.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -61,10 +69,23 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>CommonResources.pt.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Home\HomeResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>HomeResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Home\HomeResources.pt.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>HomeResources.pt.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\Home\Components\" />
+      <Folder Include="Pages\Home\Components\SummaryBudgets\" />
+      <Folder Include="Pages\Home\Components\SummaryPots\" />
+      <Folder Include="Pages\Home\Components\SummaryRecurringBills\" />
+      <Folder Include="Pages\Home\Components\SummaryTransactions\" />
     </ItemGroup>
 
 </Project>
