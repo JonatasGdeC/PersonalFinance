@@ -1,0 +1,16 @@
+@page "/budgets"
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Transactions
+@using PersonalFinance.Web.Utils.HandlerNotFound
+
+<PageTitle>Finance - @CommonResources.Budgets</PageTitle>
+
+<header class="budgets-header">
+    <AddText Text="@CommonResources.Budgets" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddButton Text="+ Add New Budget"/>
+</header>
+
+@if (_allBudgetResponse?.ListBudgets.Any() == false)
+{
+    <HandlerNotFound Text="No budget recorded."/>
+}
