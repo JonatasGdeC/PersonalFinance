@@ -1,0 +1,18 @@
+@using PersonalFinance.Web.Resources.Transactions
+
+<AddModal IsOpen="@IsOpen" Title="@TransactionsResources.AddCategoryTitle" Subtitle="@TransactionsResources.AddCategorySubtitle"
+          OnClose="HandleClose">
+    <Body>
+        <form class="add-category-modal" @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+            <AddInput Label="@TransactionsResources.CategoryNameLabel" Placeholder="@TransactionsResources.CategoryNamePlaceholder"
+                      @bind-Value="_name" Required="true" Disabled="_isSubmitting"/>
+
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@TransactionsResources.AddCategoryButton" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+        </form>
+    </Body>
+</AddModal>

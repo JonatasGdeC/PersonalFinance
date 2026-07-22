@@ -1,0 +1,62 @@
+.transactions__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions__table th {
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--grey-100);
+    text-align: left;
+}
+
+.transactions__table td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--grey-100);
+}
+
+.transactions__table tr:last-child td {
+    border-bottom: none;
+}
+
+.transactions__amount-header {
+    display: flex;
+    justify-content: end;
+    text-align: right;
+}
+
+.transactions__amount-cell {
+    text-align: right;
+}
+
+.transactions__participant {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.transactions__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.transactions__avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey-300);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.transactions__not-found {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

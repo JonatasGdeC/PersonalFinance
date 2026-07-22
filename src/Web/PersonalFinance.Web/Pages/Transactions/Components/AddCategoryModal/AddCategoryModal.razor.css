@@ -1,0 +1,5 @@
+.add-category-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

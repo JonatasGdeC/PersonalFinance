@@ -1,0 +1,65 @@
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Communication.Enums
+@using PersonalFinance.Web.Resources.Transactions
+
+<table class="transactions__table">
+    <thead>
+    <tr>
+        <th>
+            <AddText Text="@TransactionsResources.RecipientSender" Preset="TextPreset.Preset5"
+                     Color="ThemeColor.Grey500"/>
+        </th>
+        <th>
+            <AddText Text="@TransactionsResources.Category" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+        </th>
+        <th>
+            <AddText Text="@TransactionsResources.TransactionDate" Preset="TextPreset.Preset5"
+                     Color="ThemeColor.Grey500"/>
+        </th>
+        <th class="transactions__amount-header">
+            <AddText Text="@TransactionsResources.Amount" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (TransactionDto transaction in ListTransactions)
+    {
+        <tr>
+            <td>
+                <div class="transactions__participant">
+                    @if (!string.IsNullOrWhiteSpace(value: transaction.ParticipantDto.Image))
+                    {
+                        <img class="transactions__avatar" src="@transaction.ParticipantDto.Image"
+                             alt="@transaction.ParticipantDto.Name"/>
+                    }
+                    else
+                    {
+                        <span class="transactions__avatar transactions__avatar--placeholder">@GetInitial(name: transaction.ParticipantDto.Name)</span>
+                    }
+                    
+                    <AddText Text="@transaction.ParticipantDto.Name" Preset="TextPreset.Preset4Bold"/>
+                </div>
+            </td>
+            <td>
+                <AddText Text="@(transaction.Category?.Name ?? string.Empty)" Preset="TextPreset.Preset5"
+                         Color="ThemeColor.Grey500"/>
+            </td>
+            <td>
+                <AddText Text="@FormatDate(date: transaction.Date)" Preset="TextPreset.Preset5"
+                         Color="ThemeColor.Grey500"/>
+            </td>
+            <td class="transactions__amount-cell">
+                <AddText Text="@FormatAmount(transaction: transaction)" Preset="TextPreset.Preset3"
+                         Color="@(transaction.Type == TransactionType.Income ? ThemeColor.Green : ThemeColor.Grey900)"/>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@if (!ListTransactions.Any())
+{
+    <div class="transactions__not-found">
+        <AddText Text="There is no transaction record." Preset="TextPreset.Preset4"/>
+    </div>
+}

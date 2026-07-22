@@ -1,6 +1,53 @@
 @page "/transactions"
-<h3>Transactions</h3>
+@using PersonalFinance.Web.Pages.Transactions.Components.AddTransactionModal
+@using PersonalFinance.Web.Pages.Transactions.Components.TransactionsTable
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Transactions
 
-@code {
-    
-}
+<header class="transactions-header">
+    <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddButton Text="@TransactionsResources.AddTransactionCta" OnClick="OpenAddTransactionModal"/>
+</header>
+
+<AddCard>
+    <Body>
+        <div class="transactions">
+            <header class="transactions__toolbar">
+                <div class="transactions__search">
+                    <AddInput Placeholder="@TransactionsResources.SearchPlaceholder" ShowSearchIcon="true"
+                              Value="@_filterRequest.Search" ValueChanged="@HandleSearchChanged"/>
+                </div>
+
+                <div class="transactions__filters">
+                    <div class="transactions__filter">
+                        <AddText Text="@TransactionsResources.SortBy" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                        <div class="transactions__filter-control">
+                            <AddInput Options="SortOptions" Value="@SortValue" ValueChanged="@HandleSortChanged"/>
+                        </div>
+                    </div>
+
+                    <div class="transactions__filter">
+                        <AddText Text="@TransactionsResources.Category" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                        <div class="transactions__filter-control">
+                            <AddInput Options="_categoryOptions" Value="@CategoryValue" ValueChanged="HandleCategoryChanged"/>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            @if (_isLoading)
+            {
+                <AddSkeleton Height="60vh" BorderRadius="12px"/>
+            }
+            else
+            {
+                <TransactionsTable ListTransactions="@(_transactions?.ListTransactions ?? [])"/>
+                <AddPagination TotalPages="@(_transactions?.TotalPages ?? 1)" CurrentPage="@(_transactions?.PageNumber ?? 1)" OnPageChanged="HandlePageChanged"/>
+            }
+        </div>
+    </Body>
+</AddCard>
+
+<AddTransactionModal IsOpen="@_isAddTransactionModalOpen" CategoryOptions="_categoryFormOptions"
+                     OnClose="CloseAddTransactionModal" OnRegistered="HandleTransactionRegistered"
+                     OnCategoryRegistered="HandleCategoryRegistered"/>

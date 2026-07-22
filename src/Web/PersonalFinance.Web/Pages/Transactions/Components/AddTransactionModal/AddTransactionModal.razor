@@ -1,0 +1,42 @@
+@using PersonalFinance.Web.Pages.Transactions.Components.AddCategoryModal
+@using PersonalFinance.Web.Pages.Transactions.Components.AddParticipantModal
+@using PersonalFinance.Web.Resources.Transactions
+
+<AddModal IsOpen="@IsOpen" Title="@TransactionsResources.AddTransactionTitle" Subtitle="@TransactionsResources.AddTransactionSubtitle"
+          OnClose="HandleClose">
+    <Body>
+        <form class="add-transaction-modal" @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+            <div class="add-transaction-modal__field">
+                <AddInput Label="@TransactionsResources.Participant" Placeholder="@TransactionsResources.ParticipantPlaceholder"
+                          Options="_participantOptions" @bind-Value="_participantValue" Disabled="_isSubmitting"/>
+                
+                <AddButton Text="@TransactionsResources.AddParticipantCta" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddParticipantModal"/>
+            </div>
+
+            <AddInput Label="@TransactionsResources.Type" Options="TypeOptions" @bind-Value="_typeValue" Disabled="_isSubmitting"/>
+
+            <div class="add-transaction-modal__field">
+                <AddInput Label="@TransactionsResources.Category" Placeholder="@TransactionsResources.CategoryPlaceholder"
+                          Options="_categoryOptions" @bind-Value="_categoryValue" Disabled="_isSubmitting"/>
+
+                <AddButton Text="@TransactionsResources.AddCategoryCta" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddCategoryModal"/>
+            </div>
+
+            <AddInput Label="@TransactionsResources.Amount" Prefix="$" @bind-Value="_amountText" Required="true" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@TransactionsResources.DateLabel" IsDate="true" @bind-Value="_dateText" Required="true" Disabled="_isSubmitting"/>
+
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@TransactionsResources.AddTransactionButton" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+        </form>
+    </Body>
+</AddModal>
+
+<AddParticipantModal IsOpen="@_isAddParticipantModalOpen" OnClose="CloseAddParticipantModal" OnRegistered="HandleParticipantRegistered"/>
+<AddCategoryModal IsOpen="@_isAddCategoryModalOpen" OnClose="CloseAddCategoryModal" OnRegistered="HandleCategoryRegistered"/>
