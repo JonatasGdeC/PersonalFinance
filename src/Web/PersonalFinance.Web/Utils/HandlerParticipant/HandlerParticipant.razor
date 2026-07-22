@@ -1,0 +1,23 @@
+<div class="handler-participant">
+    @if (!string.IsNullOrWhiteSpace(value: Participant.Image))
+    {
+        <img class="handler-participant__avatar" src="@Participant.Image"
+             alt="@Participant.Name"/>
+    }
+    else
+    {
+        <span class="handler-participant__avatar handler-participant__avatar--placeholder">@GetInitial(name: Participant.Name)</span>
+    }
+                    
+    @if (!string.IsNullOrWhiteSpace(value: Subtitle))
+    {
+        <div class="handler-participant__info">
+            <AddText Text="@Participant.Name" Preset="TextPreset.Preset4Bold"/>
+            <AddText Text="@Subtitle" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+        </div>
+    }
+    else
+    {
+        <AddText Text="@Participant.Name" Preset="TextPreset.Preset4Bold"/>
+    }
+</div>

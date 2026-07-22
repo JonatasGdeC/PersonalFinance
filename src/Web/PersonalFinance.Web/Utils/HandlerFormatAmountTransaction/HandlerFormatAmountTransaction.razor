@@ -1,0 +1,4 @@
+@using PersonalFinance.Communication.Enums
+
+<AddText Text="@FormatAmount(transaction: Transaction)" Preset="TextPreset.Preset3"
+         Color="@(Transaction.Type == TransactionType.Income ? ThemeColor.Green : ThemeColor.Grey900)"/>

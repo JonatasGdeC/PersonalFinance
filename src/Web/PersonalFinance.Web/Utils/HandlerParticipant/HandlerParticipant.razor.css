@@ -1,0 +1,29 @@
+.handler-participant {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.handler-participant__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.handler-participant__avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey-300);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.handler-participant__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
