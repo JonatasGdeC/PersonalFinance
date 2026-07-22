@@ -127,6 +127,31 @@
     color: var(--grey-900);
 }
 
+.add-input__compact-icon {
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .add-input__trigger--compact {
+        justify-content: center;
+        gap: 0;
+        padding: 12px 8px;
+    }
+
+    .add-input__trigger--compact .add-input__value,
+    .add-input__trigger--compact .add-input__chevron,
+    .add-input__trigger--compact .add-input__prefix {
+        display: none;
+    }
+
+    .add-input__trigger--compact .add-input__compact-icon {
+        display: inline-flex;
+    }
+}
+
 .add-input__backdrop {
     position: fixed;
     inset: 0;

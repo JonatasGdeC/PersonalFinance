@@ -4,102 +4,119 @@
         <label class="add-input__label" for="@_addInputId">@Label</label>
     }
 
-    @if (IsDropdown)
+    @if (IsLoading)
     {
-        <div class="add-input__dropdown">
-            <button type="button" class="add-input__control add-input__trigger" disabled="@Disabled"
-                    @onclick="ToggleDropdown">
-                @if (SelectedOption?.ColorTag is not null)
-                {
-                    <span class="add-input__color-dot" style="background-color: @SelectedOption.ColorTag;"></span>
-                }
+        <AddSkeleton Height="40px" BorderRadius="8px"/>
+    }
+    else
+    {
+        @if (IsDropdown)
+        {
+            <div class="add-input__dropdown">
+                <button type="button"
+                        class="add-input__control add-input__trigger @(CompactIcon is not null ? "add-input__trigger--compact" : string.Empty)"
+                        disabled="@Disabled"
+                        @onclick="ToggleDropdown">
+                    @if (CompactIcon is not null)
+                    {
+                        <span class="add-input__compact-icon">
+                        <AddIcon Icon="CompactIcon.Value" Size="20" Color="ThemeColor.Grey900"/>
+                    </span>
+                    }
 
+                    @if (SelectedOption?.ColorTag is not null)
+                    {
+                        <span class="add-input__color-dot" style="background-color: @SelectedOption.ColorTag;"></span>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(value: Prefix))
+                    {
+                        <span class="add-input__prefix">@Prefix</span>
+                    }
+
+                    <span class="add-input__value">@(SelectedOption?.Label ?? Placeholder)</span>
+
+                    <svg class="add-input__chevron @(_isOpen ? "add-input__chevron--open" : string.Empty)" width="12"
+                         height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                @if (_isOpen)
+                {
+                    <div class="add-input__backdrop" @onclick="CloseDropdown"></div>
+
+                    <div class="add-input__options">
+                        @foreach (AddInputOption option in Options!)
+                        {
+                            bool isSelected = option.Value == Value;
+
+                            <button type="button"
+                                    class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)"
+                                    @onclick="() => SelectOption(option: option)">
+                                @if (option.ColorTag is not null)
+                                {
+                                    <span class="add-input__color-dot"
+                                          style="background-color: @option.ColorTag;"></span>
+                                }
+
+                                <span class="add-input__option-label">@option.Label</span>
+
+                                @if (isSelected && option.ColorTag is not null)
+                                {
+                                    <svg class="add-input__check" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                         aria-hidden="true">
+                                        <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.6"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                }
+                                else if (!isSelected && !string.IsNullOrWhiteSpace(value: option.Badge))
+                                {
+                                    <span class="add-input__badge">@option.Badge</span>
+                                }
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="add-input__control">
                 @if (!string.IsNullOrWhiteSpace(value: Prefix))
                 {
                     <span class="add-input__prefix">@Prefix</span>
                 }
 
-                <span class="add-input__value">@(SelectedOption?.Label ?? Placeholder)</span>
+                <input type="@GetInputType()" class="add-input__field" placeholder="@Placeholder" value="@Value"
+                       disabled="@Disabled" @oninput="HandleValueChanged" required="@Required" id="@_addInputId"/>
 
-                <svg class="add-input__chevron @(_isOpen ? "add-input__chevron--open" : string.Empty)" width="12"
-                     height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </button>
+                @if (IsPassword)
+                {
+                    <button type="button" class="add-input__icon-button" disabled="@Disabled"
+                            @onclick="TogglePasswordVisibility"
+                            aria-label="@(_isPasswordVisible ? "Hide password" : "Show password")">
+                        @if (_isPasswordVisible)
+                        {
+                            <AddIcon Icon="Icon.EYE_SLASH"/>
+                        }
+                        else
+                        {
+                            <AddIcon Icon="Icon.EYE"/>
+                        }
+                    </button>
+                }
+                else if (ShowSearchIcon)
+                {
+                    <AddIcon Icon="Icon.MAGNIFYING_GLASS"/>
+                }
+            </div>
+        }
 
-            @if (_isOpen)
-            {
-                <div class="add-input__backdrop" @onclick="CloseDropdown"></div>
-
-                <div class="add-input__options">
-                    @foreach (AddInputOption option in Options!)
-                    {
-                        bool isSelected = option.Value == Value;
-
-                        <button type="button"
-                                class="add-input__option @(isSelected ? "add-input__option--selected" : string.Empty)"
-                                @onclick="() => SelectOption(option: option)">
-                            @if (option.ColorTag is not null)
-                            {
-                                <span class="add-input__color-dot" style="background-color: @option.ColorTag;"></span>
-                            }
-
-                            <span class="add-input__option-label">@option.Label</span>
-
-                            @if (isSelected && option.ColorTag is not null)
-                            {
-                                <svg class="add-input__check" width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                     aria-hidden="true">
-                                    <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.6"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            }
-                            else if (!isSelected && !string.IsNullOrWhiteSpace(value: option.Badge))
-                            {
-                                <span class="add-input__badge">@option.Badge</span>
-                            }
-                        </button>
-                    }
-                </div>
-            }
-        </div>
-    }
-    else
-    {
-        <div class="add-input__control">
-            @if (!string.IsNullOrWhiteSpace(value: Prefix))
-            {
-                <span class="add-input__prefix">@Prefix</span>
-            }
-
-            <input type="@GetInputType()" class="add-input__field" placeholder="@Placeholder" value="@Value"
-                   disabled="@Disabled" @oninput="HandleValueChanged" required="@Required" id="@_addInputId"/>
-
-            @if (IsPassword)
-            {
-                <button type="button" class="add-input__icon-button" disabled="@Disabled"
-                        @onclick="TogglePasswordVisibility"
-                        aria-label="@(_isPasswordVisible ? "Hide password" : "Show password")">
-                    @if (_isPasswordVisible)
-                    {
-                        <AddIcon Icon="Icon.EYE_SLASH"/>
-                    }
-                    else
-                    {
-                        <AddIcon Icon="Icon.EYE"/>
-                    }
-                </button>
-            }
-            else if (ShowSearchIcon)
-            {
-                <AddIcon Icon="Icon.MAGNIFYING_GLASS"/>
-            }
-        </div>
-    }
-
-    @if (!string.IsNullOrWhiteSpace(value: HelperText))
-    {
-        <span class="add-input__helper-text">@HelperText</span>
+        @if (!string.IsNullOrWhiteSpace(value: HelperText))
+        {
+            <span class="add-input__helper-text">@HelperText</span>
+        }
     }
 </div>

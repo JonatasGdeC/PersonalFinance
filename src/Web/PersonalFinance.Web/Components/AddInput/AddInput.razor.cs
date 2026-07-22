@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using PersonalFinance.Web.Components.AddIcon;
 
 namespace PersonalFinance.Web.Components.AddInput;
 
@@ -12,11 +13,13 @@ public partial class AddInput
     [Parameter] public bool IsPassword { get; set; }
     [Parameter] public bool IsEmail { get; set; }
     [Parameter] public bool IsDate { get; set; }
+    [Parameter] public Icon? CompactIcon { get; set; }
     [Parameter] public List<AddInputOption>? Options { get; set; }
     [Parameter] public string? Value { get; set; }
     [Parameter] public EventCallback<string?> ValueChanged { get; set; }
     [Parameter] public bool Disabled { get; set; }
     [Parameter] public bool Required { get; set; }
+    [Parameter] public bool IsLoading { get; set; }
 
     private bool _isOpen;
     private bool _isPasswordVisible;
