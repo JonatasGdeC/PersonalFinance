@@ -71,7 +71,6 @@ public partial class Transactions : ComponentBase
     {
         _isLoading = true;
         _transactions = await PersonalFinanceApi.Transaction.GetAll(request: _filterRequest);
-        await Task.Delay(millisecondsDelay: 2000);
         _isLoading = false;
     }
 
