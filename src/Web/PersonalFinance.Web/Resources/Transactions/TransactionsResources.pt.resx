@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="SearchPlaceholder" xml:space="preserve">
+        <value>Buscar transação</value>
+    </data>
+    <data name="SortBy" xml:space="preserve">
+        <value>Ordenar por</value>
+    </data>
+    <data name="Category" xml:space="preserve">
+        <value>Categoria</value>
+    </data>
+    <data name="AllTransactions" xml:space="preserve">
+        <value>Todas as Transações</value>
+    </data>
+    <data name="RecipientSender" xml:space="preserve">
+        <value>Destinatário / Remetente</value>
+    </data>
+    <data name="TransactionDate" xml:space="preserve">
+        <value>Data da Transação</value>
+    </data>
+    <data name="Amount" xml:space="preserve">
+        <value>Valor</value>
+    </data>
+    <data name="Latest" xml:space="preserve">
+        <value>Mais recentes</value>
+    </data>
+    <data name="Oldest" xml:space="preserve">
+        <value>Mais antigas</value>
+    </data>
+    <data name="AToZ" xml:space="preserve">
+        <value>A a Z</value>
+    </data>
+    <data name="ZToA" xml:space="preserve">
+        <value>Z a A</value>
+    </data>
+    <data name="Highest" xml:space="preserve">
+        <value>Maior valor</value>
+    </data>
+    <data name="Lowest" xml:space="preserve">
+        <value>Menor valor</value>
+    </data>
+    <data name="AddTransactionCta" xml:space="preserve">
+        <value>Adicionar nova transação</value>
+    </data>
+    <data name="AddTransactionTitle" xml:space="preserve">
+        <value>Adicionar Nova Transação</value>
+    </data>
+    <data name="AddTransactionSubtitle" xml:space="preserve">
+        <value>Adicione uma nova transação para manter seus registros atualizados.</value>
+    </data>
+    <data name="AddTransactionButton" xml:space="preserve">
+        <value>Adicionar Transação</value>
+    </data>
+    <data name="Participant" xml:space="preserve">
+        <value>Participante</value>
+    </data>
+    <data name="ParticipantPlaceholder" xml:space="preserve">
+        <value>Selecione um participante</value>
+    </data>
+    <data name="AddParticipantCta" xml:space="preserve">
+        <value>+ Adicionar novo participante</value>
+    </data>
+    <data name="Type" xml:space="preserve">
+        <value>Tipo</value>
+    </data>
+    <data name="Income" xml:space="preserve">
+        <value>Receita</value>
+    </data>
+    <data name="Expense" xml:space="preserve">
+        <value>Despesa</value>
+    </data>
+    <data name="CategoryPlaceholder" xml:space="preserve">
+        <value>Selecione uma categoria</value>
+    </data>
+    <data name="DateLabel" xml:space="preserve">
+        <value>Data</value>
+    </data>
+    <data name="RequiredFieldsError" xml:space="preserve">
+        <value>Por favor, preencha todos os campos obrigatórios.</value>
+    </data>
+    <data name="UnknownError" xml:space="preserve">
+        <value>Ocorreu um erro desconhecido. Tente novamente mais tarde.</value>
+    </data>
+    <data name="AddParticipantTitle" xml:space="preserve">
+        <value>Adicionar Novo Participante</value>
+    </data>
+    <data name="AddParticipantSubtitle" xml:space="preserve">
+        <value>Adicione um novo destinatário ou remetente para usar em suas transações.</value>
+    </data>
+    <data name="ParticipantNameLabel" xml:space="preserve">
+        <value>Nome</value>
+    </data>
+    <data name="ParticipantNamePlaceholder" xml:space="preserve">
+        <value>ex. Maria Silva</value>
+    </data>
+    <data name="ParticipantImageLabel" xml:space="preserve">
+        <value>URL da Foto (opcional)</value>
+    </data>
+    <data name="AddParticipantButton" xml:space="preserve">
+        <value>Adicionar Participante</value>
+    </data>
+    <data name="AddCategoryCta" xml:space="preserve">
+        <value>+ Adicionar nova categoria</value>
+    </data>
+    <data name="AddCategoryTitle" xml:space="preserve">
+        <value>Adicionar Nova Categoria</value>
+    </data>
+    <data name="AddCategorySubtitle" xml:space="preserve">
+        <value>Adicione uma nova categoria para organizar suas transações.</value>
+    </data>
+    <data name="CategoryNameLabel" xml:space="preserve">
+        <value>Nome</value>
+    </data>
+    <data name="CategoryNamePlaceholder" xml:space="preserve">
+        <value>ex. Mercado</value>
+    </data>
+    <data name="AddCategoryButton" xml:space="preserve">
+        <value>Adicionar Categoria</value>
+    </data>
+</root>
