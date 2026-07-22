@@ -10,6 +10,7 @@ public partial class AddButton
     [Parameter] public bool FullWidth { get; set; }
     [Parameter] public string Type { get; set; } = "button";
     [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string? Size { get; set; }
 
     private string GetVariantCssClass()
     {
@@ -22,6 +23,18 @@ public partial class AddButton
             ButtonVariant.Destructive => "add-button--destructive",
             _                         => throw new ArgumentOutOfRangeException(paramName: nameof(Variant), actualValue: Variant, message: null)
         };
+    }
+
+    private string HandlerSize()
+    {
+        if (string.IsNullOrEmpty(value: Size))
+        {
+            return string.Empty;
+        }
+        
+        string width = $"width: {Size};";
+        string height = $"height: {Size};";
+        return $"{width}{height}";
     }
 
     private string GetCssClass()
