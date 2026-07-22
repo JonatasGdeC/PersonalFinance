@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using PersonalFinance.Web.Pages.Home.Components.SummaryMain
+@using PersonalFinance.Web.Pages.Home.Components.SummaryTransactions
 @using PersonalFinance.Web.Resources.Common
 
 <PageTitle>Home</PageTitle>
@@ -10,3 +11,6 @@
              CurrentBalance="@_transactionDashboard?.CurrentBalance"
              TotalExpense="@_transactionDashboard?.TotalExpense"
              TotalIncome="@_transactionDashboard?.TotalIncome"/>
+             
+<SummaryTransactions IsLoading="_isLoading"
+                     LastestTransactions="@(_transactionDashboard?.LastestTransactions ?? [])"/>
