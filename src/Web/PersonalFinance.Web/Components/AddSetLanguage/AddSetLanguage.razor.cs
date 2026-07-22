@@ -7,16 +7,23 @@ public partial class AddSetLanguage
 {
     private readonly List<AddInputOption> _languages =
     [
-        new() { Value = "en", Label = "English" },
-        new() { Value = "pt", Label = "Português" },
+        new() { Value = "en-US", Label = "English" },
+        new() { Value = "pt-BR", Label = "Português" },
     ];
 
-    private string _currentCulture = "en";
+    private string _currentCulture = "en-US";
 
     protected override async Task OnInitializedAsync()
     {
         string? stored = await JsRuntime.InvokeAsync<string?>(identifier: "localStorage.getItem", args: ["culture"]);
-        _currentCulture = stored ?? System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
+        _currentCulture = stored switch
+        {
+            "en" => "en-US",
+            "pt" => "pt-BR",
+            null => System.Globalization.CultureInfo.CurrentUICulture.Name,
+            _ => stored
+        };
     }
 
     private async Task NavigateToCulture()
