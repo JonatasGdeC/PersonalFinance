@@ -5,8 +5,6 @@ namespace PersonalFinance.Web.Pages.Home.Components.SummaryMain;
 
 public partial class SummaryMain : ComponentBase
 {
-    private static readonly CultureInfo CurrencyCulture = new(name: "en-US");
-
     [Parameter] public bool IsLoading { get; init; }
     [Parameter] public double? CurrentBalance { get; init; }
     [Parameter] public double? TotalIncome { get; init; }
@@ -16,5 +14,5 @@ public partial class SummaryMain : ComponentBase
     private string FormattedTotalIncome => FormatCurrency(value: TotalIncome);
     private string FormattedTotalExpense => FormatCurrency(value: TotalExpense);
 
-    private static string FormatCurrency(double? value) => (value ?? 0).ToString(format: "C2", provider: CurrencyCulture);
+    private static string FormatCurrency(double? value) => (value ?? 0).ToString(format: "C2", provider: CultureInfo.CurrentCulture);
 }
