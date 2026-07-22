@@ -4,6 +4,8 @@
 @using PersonalFinance.Web.Resources.Common
 @using PersonalFinance.Web.Resources.Transactions
 
+<PageTitle>Finance - @CommonResources.Transactions</PageTitle>
+
 <header class="transactions-header">
     <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
     <AddButton Text="@TransactionsResources.AddTransactionCta" OnClick="OpenAddTransactionModal"/>
@@ -15,21 +17,26 @@
             <header class="transactions__toolbar">
                 <div class="transactions__search">
                     <AddInput Placeholder="@TransactionsResources.SearchPlaceholder" ShowSearchIcon="true"
-                              Value="@_filterRequest.Search" ValueChanged="@HandleSearchChanged"/>
+                              Value="@_filterRequest.Search" ValueChanged="@HandleSearchChanged"
+                              IsLoading="@_isLoading"/>
                 </div>
 
                 <div class="transactions__filters">
                     <div class="transactions__filter">
                         <AddText Text="@TransactionsResources.SortBy" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
                         <div class="transactions__filter-control">
-                            <AddInput Options="SortOptions" Value="@SortValue" ValueChanged="@HandleSortChanged"/>
+                            <AddInput Options="SortOptions" 
+                                      Value="@SortValue" ValueChanged="@HandleSortChanged" 
+                                      CompactIcon="Icon.SORT" IsLoading="@_isLoading"/>
                         </div>
                     </div>
 
                     <div class="transactions__filter">
                         <AddText Text="@TransactionsResources.Category" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
                         <div class="transactions__filter-control">
-                            <AddInput Options="_categoryOptions" Value="@CategoryValue" ValueChanged="HandleCategoryChanged"/>
+                            <AddInput Options="_categoryOptions" 
+                                      Value="@CategoryValue" ValueChanged="HandleCategoryChanged" 
+                                      CompactIcon="Icon.FILTER" IsLoading="@_isLoading"/>
                         </div>
                     </div>
                 </div>

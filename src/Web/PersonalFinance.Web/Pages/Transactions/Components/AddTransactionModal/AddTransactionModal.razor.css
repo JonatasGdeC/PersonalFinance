@@ -6,6 +6,6 @@
 
 .add-transaction-modal__field {
     display: flex;
-    flex-direction: column;
+    align-items: end;
     gap: 8px;
 }

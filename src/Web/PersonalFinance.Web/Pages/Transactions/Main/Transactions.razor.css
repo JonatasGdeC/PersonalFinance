@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
     margin-bottom: 32px;
 }
 
@@ -38,4 +40,29 @@
 
 .transactions__filter-control {
     width: 140px;
+}
+
+@media (max-width: 600px) {
+    .transactions__toolbar {
+        flex-wrap: nowrap;
+    }
+
+    .transactions__search {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .transactions__filters {
+        flex-shrink: 0;
+        gap: 8px;
+    }
+
+    .transactions__filter > .add-text {
+        display: none;
+    }
+
+    .transactions__filter-control {
+        width: 44px;
+    }
 }

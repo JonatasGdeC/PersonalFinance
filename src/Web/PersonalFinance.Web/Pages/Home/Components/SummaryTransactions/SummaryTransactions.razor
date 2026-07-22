@@ -1,4 +1,9 @@
+@using PersonalFinance.Communication.Dtos
 @using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Utils.HandlerFormatAmountTransaction
+@using PersonalFinance.Web.Utils.HandlerFormatDateTransaction
+@using PersonalFinance.Web.Utils.HandlerNotFound
+@using PersonalFinance.Web.Utils.HandlerParticipant
 
 <AddCard>
     <Body>
@@ -6,5 +11,25 @@
         <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset2"/>
         <AddButton Text="View All" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToTransaction"/>
     </header>
+    @if (!LastestTransactions.Any())
+    {
+        <HandlerNotFound Text="There is no transaction record."/>
+    }
+    else
+    {
+        <ul class="summary-transaction-list">
+           @foreach (TransactionDto transaction in LastestTransactions)
+           {
+               <li>
+                   <HandlerParticipant Participant="transaction.ParticipantDto"/>
+                   
+                   <div class="summary-transaction-list__amount">
+                       <HandlerFormatAmountTransaction Transaction="@transaction"/>
+                       <HandlerFormatDateTransaction Transaction="@transaction"/>
+                   </div>
+               </li>
+           }
+        </ul>
+    }
     </Body>
 </AddCard>

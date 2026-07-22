@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Components;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Dtos;
@@ -97,7 +98,7 @@ public partial class AddTransactionModal : ComponentBase
         _errorMessages = [];
 
         bool isAmountValid = double.TryParse(s: _amountText, result: out double amount) && amount > 0;
-        bool isDateValid = DateTime.TryParse(s: _dateText, result: out DateTime date);
+        bool isDateValid = DateTime.TryParseExact(s: _dateText, format: "yyyy-MM-dd", provider: CultureInfo.InvariantCulture, style: DateTimeStyles.None, result: out DateTime date);
         bool isParticipantValid = long.TryParse(s: _participantValue, result: out long participantId);
 
         if (!isAmountValid || !isDateValid || !isParticipantValid)
@@ -110,7 +111,7 @@ public partial class AddTransactionModal : ComponentBase
 
         RegisterTransactionRequest request = new()
         {
-            Date = date,
+            Date = DateTime.SpecifyKind(value: date, kind: DateTimeKind.Utc),
             Type = Enum.TryParse(value: _typeValue, result: out TransactionType type) ? type : TransactionType.Expense,
             Amount = amount,
             CategoryId = long.TryParse(s: _categoryValue, result: out long categoryId) ? categoryId : null,

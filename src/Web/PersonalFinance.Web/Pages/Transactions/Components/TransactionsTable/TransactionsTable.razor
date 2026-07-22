@@ -1,6 +1,9 @@
 @using PersonalFinance.Communication.Dtos
-@using PersonalFinance.Communication.Enums
 @using PersonalFinance.Web.Resources.Transactions
+@using PersonalFinance.Web.Utils.HandlerFormatAmountTransaction
+@using PersonalFinance.Web.Utils.HandlerFormatDateTransaction
+@using PersonalFinance.Web.Utils.HandlerNotFound
+@using PersonalFinance.Web.Utils.HandlerParticipant
 
 <table class="transactions__table">
     <thead>
@@ -26,40 +29,38 @@
     {
         <tr>
             <td>
-                <div class="transactions__participant">
-                    @if (!string.IsNullOrWhiteSpace(value: transaction.ParticipantDto.Image))
-                    {
-                        <img class="transactions__avatar" src="@transaction.ParticipantDto.Image"
-                             alt="@transaction.ParticipantDto.Name"/>
-                    }
-                    else
-                    {
-                        <span class="transactions__avatar transactions__avatar--placeholder">@GetInitial(name: transaction.ParticipantDto.Name)</span>
-                    }
-                    
-                    <AddText Text="@transaction.ParticipantDto.Name" Preset="TextPreset.Preset4Bold"/>
-                </div>
+                <HandlerParticipant Participant="@transaction.ParticipantDto"/>
             </td>
             <td>
                 <AddText Text="@(transaction.Category?.Name ?? string.Empty)" Preset="TextPreset.Preset5"
                          Color="ThemeColor.Grey500"/>
             </td>
             <td>
-                <AddText Text="@FormatDate(date: transaction.Date)" Preset="TextPreset.Preset5"
-                         Color="ThemeColor.Grey500"/>
+                <HandlerFormatDateTransaction Transaction="@transaction"/>
             </td>
             <td class="transactions__amount-cell">
-                <AddText Text="@FormatAmount(transaction: transaction)" Preset="TextPreset.Preset3"
-                         Color="@(transaction.Type == TransactionType.Income ? ThemeColor.Green : ThemeColor.Grey900)"/>
+                <HandlerFormatAmountTransaction Transaction="@transaction"/>
             </td>
         </tr>
     }
     </tbody>
 </table>
 
+<ul class="transactions__list">
+    @foreach (TransactionDto transaction in ListTransactions)
+    {
+        <li class="transactions__list-item">
+            <HandlerParticipant Participant="@transaction.ParticipantDto" Subtitle="@(transaction.Category?.Name ?? string.Empty)"/>
+
+            <div class="transactions__list-amount">
+                <HandlerFormatAmountTransaction Transaction="@transaction"/>
+                <HandlerFormatDateTransaction Transaction="@transaction"/>
+            </div>
+        </li>
+    }
+</ul>
+
 @if (!ListTransactions.Any())
 {
-    <div class="transactions__not-found">
-        <AddText Text="There is no transaction record." Preset="TextPreset.Preset4"/>
-    </div>
+    <HandlerNotFound Text="There is no transaction record."/>
 }
