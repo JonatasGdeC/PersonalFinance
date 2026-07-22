@@ -1,9 +1,17 @@
 .summary-main {
+    --padding-card-summary-main: 24px;
+    
     width: 100%;
     display: flex;
     align-items: center;
     gap: 24px;
     margin: 32px 0;
+    
+    @media(max-width: 800px) {
+        --padding-card-summary-main: 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
 
     & > li {
         width: 100%;

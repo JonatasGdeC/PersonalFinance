@@ -2,7 +2,7 @@
 
 <ul class="summary-main">
     <li>
-        <AddCard BackgroundColor="ThemeColor.Grey900" IsLoading="@IsLoading">
+        <AddCard BackgroundColor="ThemeColor.Grey900" IsLoading="@IsLoading" Padding="var(--padding-card-summary-main)">
             <Body>
                 <div class="summary-main__content">
                     <AddText Text="@HomeResources.CurrentBalance" Preset="TextPreset.Preset4" Color="ThemeColor.White"/>
@@ -12,7 +12,7 @@
         </AddCard>
     </li>
     <li>
-        <AddCard IsLoading="@IsLoading">
+        <AddCard IsLoading="@IsLoading" Padding="var(--padding-card-summary-main)">
             <Body>
                 <div class="summary-main__content">
                     <AddText Text="@HomeResources.Income" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
@@ -22,7 +22,7 @@
         </AddCard>
     </li>
     <li>
-        <AddCard IsLoading="@IsLoading">
+        <AddCard IsLoading="@IsLoading" Padding="var(--padding-card-summary-main)">
             <Body>
                 <div class="summary-main__content">
                     <AddText Text="@HomeResources.Expenses" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
