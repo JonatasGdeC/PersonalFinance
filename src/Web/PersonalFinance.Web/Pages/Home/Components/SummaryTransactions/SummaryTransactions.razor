@@ -1,0 +1,10 @@
+@using PersonalFinance.Web.Resources.Common
+
+<AddCard>
+    <Body>
+    <header class="summary-transaction-header">
+        <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset2"/>
+        <AddButton Text="View All" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToTransaction"/>
+    </header>
+    </Body>
+</AddCard>
