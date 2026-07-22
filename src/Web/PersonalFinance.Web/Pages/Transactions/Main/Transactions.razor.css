@@ -1,0 +1,41 @@
+.transactions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.transactions__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.transactions__search {
+    width: 320px;
+    max-width: 100%;
+}
+
+.transactions__filters {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.transactions__filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.transactions__filter-control {
+    width: 140px;
+}
