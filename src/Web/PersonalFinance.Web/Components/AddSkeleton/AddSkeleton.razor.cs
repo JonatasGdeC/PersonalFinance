@@ -12,7 +12,7 @@ public partial class AddSkeleton
   {
     string width = $"width: {Width};";
     string height = $"height: {Height};";
-    string radius = $"radius: {BorderRadius};";
+    string radius = $"border-radius: {BorderRadius};";
 
     return $"{width} {height} {radius}";
   }
