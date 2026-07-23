@@ -1,0 +1,42 @@
+.budget-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    
+    & > .budget-chart__summary {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        
+        & > .budget-chart__list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            & > .budget-chart__list-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                & > .budget-chart__item-identify {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    
+                    & > .budget-chart__item-identify-color {
+                        width: 5px;
+                        height: 20px;
+                        border-radius: 8px;
+                    }
+                }
+
+                & > .budget-chart__item--value {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@using System.Globalization
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Utils.HandlerBudgetChart
+@using PersonalFinance.Web.Utils.HandlerExpensesByBudget
+
+<AddCard IsLoading="@IsLoading">
+    <Body>
+    <div class="budget-chart">
+        <HandlerBudgetChart ListBudgets="@ListBudgets"/>
+        <div class="budget-chart__summary">
+            <AddText Text="Spending Summary" Preset="TextPreset.Preset2"/>
+            
+            <ul class="budget-chart__list">
+                @foreach (BudgetDto budget in ListBudgets)
+                {
+                    <li class="budget-chart__list-item">
+                        <div class="budget-chart__item-identify">
+                            <div class="budget-chart__item-identify-color" style="@($"background-color: {budget.Color}")"></div>
+                            <AddText Text="@budget.Category.Name" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                        </div>
+                        <div class="budget-chart__item--value">
+                            <HandlerExpensesByBudget Budget="budget"/>
+                            <AddText Text="@($"of {budget.MaximumSpend.ToString(format: "C2", provider: CultureInfo.CurrentCulture)}")" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    </Body>
+</AddCard>
