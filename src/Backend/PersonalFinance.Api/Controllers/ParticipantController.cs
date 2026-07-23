@@ -31,7 +31,7 @@ public class ParticipantController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdateParticipantUseCase useCase, [FromRoute] long participantId, [FromBody] RegisterParticipantRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdateParticipantUseCase useCase, [FromRoute] Guid participantId, [FromBody] RegisterParticipantRequest request)
     {
         await useCase.Execute(participantId: participantId, request: request);
         return NoContent();
@@ -41,7 +41,7 @@ public class ParticipantController : ControllerBase
     [Route(template: "{participantId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeleteParticipantUseCase useCase, [FromRoute] long participantId)
+    public async Task<IActionResult> Delete([FromServices] IDeleteParticipantUseCase useCase, [FromRoute] Guid participantId)
     {
         await useCase.Execute(participantId: participantId);
         return NoContent();
@@ -59,7 +59,7 @@ public class ParticipantController : ControllerBase
     [Route(template: "{participantId}")]
     [ProducesResponseType(type: typeof(ParticipantDto), statusCode: StatusCodes.Status200OK)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById([FromServices] IGetParticipantByIdUseCase useCase, [FromRoute] long participantId)
+    public async Task<IActionResult> GetById([FromServices] IGetParticipantByIdUseCase useCase, [FromRoute] Guid participantId)
     {
         ParticipantDto response = await useCase.Execute(id: participantId);
         return Ok(value: response);

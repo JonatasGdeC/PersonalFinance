@@ -13,7 +13,7 @@ public class GetParticipantByIdUseCase(
     ILoggedUser loggedUser,
     IMapper mapper) : IGetParticipantByIdUseCase
 {
-    public async Task<ParticipantDto> Execute(long id)
+    public async Task<ParticipantDto> Execute(Guid id)
     {
         User user = await loggedUser.Get();
 

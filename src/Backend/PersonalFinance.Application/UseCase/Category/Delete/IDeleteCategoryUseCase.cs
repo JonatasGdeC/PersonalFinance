@@ -2,5 +2,5 @@ namespace PersonalFinance.Application.UseCase.Category.Delete;
 
 public interface IDeleteCategoryUseCase
 {
-    Task Execute(long categoryId);
+    Task Execute(Guid categoryId);
 }

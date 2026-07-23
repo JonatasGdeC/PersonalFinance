@@ -14,7 +14,7 @@ public class UpdateParticipantUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdateParticipantUseCase
 {
-    public async Task Execute(long participantId, RegisterParticipantRequest request)
+    public async Task Execute(Guid participantId, RegisterParticipantRequest request)
     {
         await Validate(request: request);
 

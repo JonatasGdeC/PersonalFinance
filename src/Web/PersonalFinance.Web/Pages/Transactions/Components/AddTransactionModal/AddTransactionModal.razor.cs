@@ -99,7 +99,7 @@ public partial class AddTransactionModal : ComponentBase
 
         bool isAmountValid = double.TryParse(s: _amountText, result: out double amount) && amount > 0;
         bool isDateValid = DateTime.TryParseExact(s: _dateText, format: "yyyy-MM-dd", provider: CultureInfo.InvariantCulture, style: DateTimeStyles.None, result: out DateTime date);
-        bool isParticipantValid = long.TryParse(s: _participantValue, result: out long participantId);
+        bool isParticipantValid = Guid.TryParse(input: _participantValue, result: out Guid participantId);
 
         if (!isAmountValid || !isDateValid || !isParticipantValid)
         {
@@ -114,7 +114,7 @@ public partial class AddTransactionModal : ComponentBase
             Date = DateTime.SpecifyKind(value: date, kind: DateTimeKind.Utc),
             Type = Enum.TryParse(value: _typeValue, result: out TransactionType type) ? type : TransactionType.Expense,
             Amount = amount,
-            CategoryId = long.TryParse(s: _categoryValue, result: out long categoryId) ? categoryId : null,
+            CategoryId = Guid.TryParse(input: _categoryValue, result: out Guid categoryId) ? categoryId : null,
             ParticipantId = participantId
         };
 

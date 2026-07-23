@@ -19,7 +19,7 @@ public class GetTransactionByCategoryIdUseCase(
     ILoggedUser loggedUser,
     IMapper mapper) : IGetTransactionByCategoryIdUseCase
 {
-    public async Task<GetListTransactionsResponse> Execute(long categoryId, DateTime date, PaginationRequest pagination)
+    public async Task<GetListTransactionsResponse> Execute(Guid categoryId, DateTime date, PaginationRequest pagination)
     {
         User user = await loggedUser.Get();
 

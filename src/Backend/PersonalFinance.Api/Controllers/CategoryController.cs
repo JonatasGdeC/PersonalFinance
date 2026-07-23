@@ -31,7 +31,7 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdateCategoryUseCase useCase, [FromRoute] long categoryId, [FromBody] RegisterCategoryRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdateCategoryUseCase useCase, [FromRoute] Guid categoryId, [FromBody] RegisterCategoryRequest request)
     {
         await useCase.Execute(categoryId: categoryId, request: request);
         return NoContent();
@@ -41,7 +41,7 @@ public class CategoryController : ControllerBase
     [Route(template: "{categoryId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeleteCategoryUseCase useCase, [FromRoute] long categoryId)
+    public async Task<IActionResult> Delete([FromServices] IDeleteCategoryUseCase useCase, [FromRoute] Guid categoryId)
     {
         await useCase.Execute(categoryId: categoryId);
         return NoContent();

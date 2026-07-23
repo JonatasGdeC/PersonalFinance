@@ -10,12 +10,12 @@ public class Version00000005 : ForwardOnlyMigration
     public override void Up()
     {
         Create.Table(tableName: MigrationContants.TableName.TRANSACTIONS)
-            .WithColumn(name: nameof(Transaction.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
+            .WithColumn(name: nameof(Transaction.Id)).AsGuid().PrimaryKey().NotNullable()
             .WithColumn(name: nameof(Transaction.Date)).AsDateTime().NotNullable()
             .WithColumn(name: nameof(Transaction.Type)).AsInt32().NotNullable()
             .WithColumn(name: nameof(Transaction.Amount)).AsDouble().NotNullable()
-            .WithColumn(name: nameof(Transaction.CategoryId)).AsInt64().Nullable()
-            .WithColumn(name: nameof(Transaction.ParticipantId)).AsInt64().NotNullable()
+            .WithColumn(name: nameof(Transaction.CategoryId)).AsGuid().Nullable()
+            .WithColumn(name: nameof(Transaction.ParticipantId)).AsGuid().NotNullable()
             .WithColumn(name: nameof(Transaction.UserId)).AsGuid().NotNullable();
 
         Create.ForeignKey(foreignKeyName: "FK_Transactions_Categories_CategoryId")

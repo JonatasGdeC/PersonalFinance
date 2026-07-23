@@ -10,15 +10,15 @@ internal class ParticipantServiceApi(HttpClient httpClient) : ApiServiceBase(htt
     public async Task<ParticipantDto> Register(RegisterParticipantRequest request) =>
         await PostAsync<RegisterParticipantRequest, ParticipantDto>(request: request);
 
-    public async Task Update(long participantId, RegisterParticipantRequest request) =>
+    public async Task Update(Guid participantId, RegisterParticipantRequest request) =>
         await PutAsync(request: request, route: $"/{participantId}");
 
-    public async Task Delete(long participantId) =>
+    public async Task Delete(Guid participantId) =>
         await DeleteAsync(route: $"/{participantId}");
 
     public async Task<GetAllParticipantResponse?> GetAll() =>
         await GetAsync<GetAllParticipantResponse>();
 
-    public async Task<ParticipantDto?> GetById(long participantId) =>
+    public async Task<ParticipantDto?> GetById(Guid participantId) =>
         await GetAsync<ParticipantDto>(route: $"/{participantId}");
 }

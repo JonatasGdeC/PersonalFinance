@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Budget.Update;
 
 public interface IUpdateBudgetUseCase
 {
-    Task Execute(long budgetId, RegisterBudgetRequest request);
+    Task Execute(Guid budgetId, RegisterBudgetRequest request);
 }

@@ -32,7 +32,7 @@ public class BillController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdateBillUseCase useCase, [FromRoute] long billId, [FromBody] RegisterBillRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdateBillUseCase useCase, [FromRoute] Guid billId, [FromBody] RegisterBillRequest request)
     {
         await useCase.Execute(billId: billId, request: request);
         return NoContent();
@@ -42,7 +42,7 @@ public class BillController : ControllerBase
     [Route(template: "{billId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeleteBillUseCase useCase, [FromRoute] long billId)
+    public async Task<IActionResult> Delete([FromServices] IDeleteBillUseCase useCase, [FromRoute] Guid billId)
     {
         await useCase.Execute(billId: billId);
         return NoContent();

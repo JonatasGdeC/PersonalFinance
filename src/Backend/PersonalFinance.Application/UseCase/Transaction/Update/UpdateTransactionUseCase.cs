@@ -19,7 +19,7 @@ public class UpdateTransactionUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdateTransactionUseCase
 {
-    public async Task Execute(long transaction, RegisterTransactionRequest request)
+    public async Task Execute(Guid transaction, RegisterTransactionRequest request)
     {
         await Validate(request: request);
 
@@ -44,7 +44,7 @@ public class UpdateTransactionUseCase(
         await unitOfWork.Commit();
     }
 
-    private async Task<Participant> GetParticipant(long participantId, Guid userId)
+    private async Task<Participant> GetParticipant(Guid participantId, Guid userId)
     {
         Participant? participant = await participantWriteRepository.GetById(participantId: participantId, userId: userId);
         if (participant == null)
@@ -55,7 +55,7 @@ public class UpdateTransactionUseCase(
         return participant;
     }
 
-    private async Task<Category?> GetCategory(long? categoryId, Guid userId)
+    private async Task<Category?> GetCategory(Guid? categoryId, Guid userId)
     {
         if (!categoryId.HasValue)
         {

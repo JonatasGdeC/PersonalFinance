@@ -18,7 +18,7 @@ public class UpdateBillUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdateBillUseCase
 {
-    public async Task Execute(long billId, RegisterBillRequest request)
+    public async Task Execute(Guid billId, RegisterBillRequest request)
     {
         await Validate(request: request);
 
@@ -44,7 +44,7 @@ public class UpdateBillUseCase(
         await unitOfWork.Commit();
     }
 
-    private async Task<Participant> GetParticipant(long participantId, Guid userId)
+    private async Task<Participant> GetParticipant(Guid participantId, Guid userId)
     {
         Participant? participant = await participantWriteRepository.GetById(participantId: participantId, userId: userId);
         if (participant == null)
@@ -55,7 +55,7 @@ public class UpdateBillUseCase(
         return participant;
     }
 
-    private async Task<Category?> GetCategory(long? categoryId, Guid userId)
+    private async Task<Category?> GetCategory(Guid? categoryId, Guid userId)
     {
         if (!categoryId.HasValue)
         {

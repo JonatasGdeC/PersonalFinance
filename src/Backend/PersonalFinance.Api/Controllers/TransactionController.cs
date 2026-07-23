@@ -34,7 +34,7 @@ public class TransactionController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdateTransactionUseCase useCase, [FromRoute] long transactionId, [FromBody] RegisterTransactionRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdateTransactionUseCase useCase, [FromRoute] Guid transactionId, [FromBody] RegisterTransactionRequest request)
     {
         await useCase.Execute(transaction: transactionId, request: request);
         return NoContent();
@@ -44,7 +44,7 @@ public class TransactionController : ControllerBase
     [Route(template: "{transactionId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeleteTransactionUseCase useCase, [FromRoute] long transactionId)
+    public async Task<IActionResult> Delete([FromServices] IDeleteTransactionUseCase useCase, [FromRoute] Guid transactionId)
     {
         await useCase.Execute(transactionId: transactionId);
         return NoContent();
@@ -71,7 +71,7 @@ public class TransactionController : ControllerBase
     [Route(template: "category/{categoryId}")]
     [ProducesResponseType(type: typeof(GetListTransactionsResponse), statusCode: StatusCodes.Status200OK)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetByCategory([FromServices] IGetTransactionByCategoryIdUseCase useCase, [FromRoute] long categoryId, [FromQuery] DateTime date, [FromQuery] PaginationRequest pagination)
+    public async Task<IActionResult> GetByCategory([FromServices] IGetTransactionByCategoryIdUseCase useCase, [FromRoute] Guid categoryId, [FromQuery] DateTime date, [FromQuery] PaginationRequest pagination)
     {
         GetListTransactionsResponse response = await useCase.Execute(categoryId: categoryId, date: date, pagination: pagination);
         return Ok(value: response);

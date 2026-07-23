@@ -12,7 +12,7 @@ public class DeleteCategoryUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IDeleteCategoryUseCase
 {
-    public async Task Execute(long categoryId)
+    public async Task Execute(Guid categoryId)
     {
         User user = await loggedUser.Get();
 

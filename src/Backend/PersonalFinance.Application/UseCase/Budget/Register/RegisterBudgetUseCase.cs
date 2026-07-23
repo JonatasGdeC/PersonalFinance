@@ -37,7 +37,7 @@ public class RegisterBudgetUseCase(
         return mapper.Map<BudgetDto>(source: budget);
     }
 
-    private async Task<Category> GetCategory(long categoryId, Guid userId)
+    private async Task<Category> GetCategory(Guid categoryId, Guid userId)
     {
         Category? category = await categoryWriteRepository.GetById(categoryId: categoryId, userId: userId);
         if (category == null)

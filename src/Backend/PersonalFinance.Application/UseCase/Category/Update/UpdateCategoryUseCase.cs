@@ -14,7 +14,7 @@ public class UpdateCategoryUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdateCategoryUseCase
 {
-    public async Task Execute(long categoryId, RegisterCategoryRequest request)
+    public async Task Execute(Guid categoryId, RegisterCategoryRequest request)
     {
         await Validate(request: request);
 

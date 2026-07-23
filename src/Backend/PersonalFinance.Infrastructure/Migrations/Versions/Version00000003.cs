@@ -10,7 +10,7 @@ public class Version00000003 : ForwardOnlyMigration
     public override void Up()
     {
         Create.Table(tableName: MigrationContants.TableName.PARTICIPANTS)
-            .WithColumn(name: nameof(Participant.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
+            .WithColumn(name: nameof(Participant.Id)).AsGuid().PrimaryKey().NotNullable()
             .WithColumn(name: nameof(Participant.Name)).AsString(size: 100).NotNullable()
             .WithColumn(name: nameof(Participant.Image)).AsString().Nullable()
             .WithColumn(name: nameof(Participant.UserId)).AsGuid().NotNullable();

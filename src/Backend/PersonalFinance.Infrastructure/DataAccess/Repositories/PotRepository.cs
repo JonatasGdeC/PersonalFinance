@@ -26,7 +26,7 @@ internal class PotRepository(PersonalFinanceDbContext context) : IPotReadReposit
         context.Pots.Remove(entity: pot);
     }
 
-    public async Task<Pot?> GetById(long potId, Guid userId)
+    public async Task<Pot?> GetById(Guid potId, Guid userId)
     {
         return await context.Pots.AsTracking().FirstOrDefaultAsync(predicate: pot => pot.Id == potId && pot.UserId == userId);
     }

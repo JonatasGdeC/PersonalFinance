@@ -10,10 +10,10 @@ internal class BudgetServiceApi(HttpClient httpClient) : ApiServiceBase(httpClie
     public async Task<BudgetDto> Register(RegisterBudgetRequest request) =>
         await PostAsync<RegisterBudgetRequest, BudgetDto>(request: request);
 
-    public async Task Update(long budgetId, RegisterBudgetRequest request) =>
+    public async Task Update(Guid budgetId, RegisterBudgetRequest request) =>
         await PutAsync(request: request, route: $"/{budgetId}");
 
-    public async Task Delete(long budgetId) =>
+    public async Task Delete(Guid budgetId) =>
         await DeleteAsync(route: $"/{budgetId}");
 
     public async Task<GetAllBudgetResponse?> GetAll() =>

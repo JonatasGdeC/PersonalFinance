@@ -90,7 +90,7 @@ public partial class Transactions : ComponentBase
 
     private async Task HandleCategoryChanged(string? value)
     {
-        _filterRequest.CategoryId = long.TryParse(s: value, result: out long categoryId) ? categoryId : null;
+        _filterRequest.CategoryId = Guid.TryParse(input: value, result: out Guid categoryId) ? categoryId : null;
         _filterRequest.Pagination.PageNumber = 1;
         await LoadTransactions();
     }

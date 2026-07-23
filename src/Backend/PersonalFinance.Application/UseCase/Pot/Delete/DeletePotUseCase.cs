@@ -12,7 +12,7 @@ public class DeletePotUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IDeletePotUseCase
 {
-    public async Task Execute(long potId)
+    public async Task Execute(Guid potId)
     {
         User user = await loggedUser.Get();
 

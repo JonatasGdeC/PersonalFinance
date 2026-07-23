@@ -12,7 +12,7 @@ public class DeleteBudgetUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IDeleteBudgetUseCase
 {
-    public async Task Execute(long budgetId)
+    public async Task Execute(Guid budgetId)
     {
         User user = await loggedUser.Get();
 

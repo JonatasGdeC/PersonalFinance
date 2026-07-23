@@ -4,5 +4,5 @@ public record RegisterBudgetRequest
 {
     public double MaximumSpend { get; set; }
     public required string Color { get; set; }
-    public long CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 }

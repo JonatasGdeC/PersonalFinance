@@ -2,7 +2,7 @@ namespace PersonalFinance.Domain.Entities;
 
 public class Pot
 {
-    public long Id { get; set; }
+    public Guid Id { get; set; }
     public required string Name { get; set; }
     public double CurrentAmount { get; set; }
     public double Target { get; set; }

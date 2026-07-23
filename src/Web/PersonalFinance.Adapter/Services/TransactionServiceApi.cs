@@ -11,10 +11,10 @@ internal class TransactionServiceApi(HttpClient httpClient) : ApiServiceBase(htt
     public async Task<TransactionDto> Register(RegisterTransactionRequest request) =>
         await PostAsync<RegisterTransactionRequest, TransactionDto>(request: request);
 
-    public async Task Update(long transactionId, RegisterTransactionRequest request) =>
+    public async Task Update(Guid transactionId, RegisterTransactionRequest request) =>
         await PutAsync(request: request, route: $"/{transactionId}");
 
-    public async Task Delete(long transactionId) =>
+    public async Task Delete(Guid transactionId) =>
         await DeleteAsync(route: $"/{transactionId}");
 
     public async Task<GetListTransactionsResponse?> GetAll(TransactionFilterRequest request)
@@ -37,7 +37,7 @@ internal class TransactionServiceApi(HttpClient httpClient) : ApiServiceBase(htt
         return await GetAsync<GetTransactionDashboardResponse>(route: $"/dashboard{query}");
     }
 
-    public async Task<GetListTransactionsResponse?> GetByCategory(long categoryId, DateTime date, PaginationRequest pagination)
+    public async Task<GetListTransactionsResponse?> GetByCategory(Guid categoryId, DateTime date, PaginationRequest pagination)
     {
         string query = BuildQueryString(
             ("date", date),

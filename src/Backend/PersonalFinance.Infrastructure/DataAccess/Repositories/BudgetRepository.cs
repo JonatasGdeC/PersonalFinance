@@ -30,7 +30,7 @@ internal class BudgetRepository(PersonalFinanceDbContext context) : IBudgetReadR
         context.Budgets.Remove(entity: budget);
     }
 
-    public async Task<Budget?> GetById(long budgetId, Guid userId)
+    public async Task<Budget?> GetById(Guid budgetId, Guid userId)
     {
         return await context.Budgets.AsTracking()
             .FirstOrDefaultAsync(predicate: budget => budget.Id == budgetId && budget.UserId == userId);

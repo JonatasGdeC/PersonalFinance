@@ -16,7 +16,7 @@ public class UpdateBudgetUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdateBudgetUseCase
 {
-    public async Task Execute(long budgetId, RegisterBudgetRequest request)
+    public async Task Execute(Guid budgetId, RegisterBudgetRequest request)
     {
         await Validate(request: request);
 
@@ -38,7 +38,7 @@ public class UpdateBudgetUseCase(
         await unitOfWork.Commit();
     }
 
-    private async Task<Category> GetCategory(long categoryId, Guid userId)
+    private async Task<Category> GetCategory(Guid categoryId, Guid userId)
     {
         Category? category = await categoryWriteRepository.GetById(categoryId: categoryId, userId: userId);
         if (category == null)

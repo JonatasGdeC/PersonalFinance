@@ -78,7 +78,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
         };
     }
 
-    public async Task<PagedList<Transaction>> GetByCategory(Guid userId, long categoryId, DateTime date, Pagination pagination)
+    public async Task<PagedList<Transaction>> GetByCategory(Guid userId, Guid categoryId, DateTime date, Pagination pagination)
     {
         IQueryable<Transaction> query = context.Transactions
             .AsNoTracking()
@@ -92,7 +92,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
         return await CreatePageList<Transaction>.Execute(query: query, page: pagination);
     }
 
-    public async Task<double> GetTotalAmountByCategory(Guid userId, long categoryId, DateTime date)
+    public async Task<double> GetTotalAmountByCategory(Guid userId, Guid categoryId, DateTime date)
     {
         return await context.Transactions
             .Where(predicate: transaction => transaction.UserId == userId && transaction.CategoryId == categoryId && transaction.Date.Month == date.Month && transaction.Date.Year == date.Year)
@@ -114,7 +114,7 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
         context.Transactions.Remove(entity: transaction);
     }
 
-    public async Task<Transaction?> GetById(long transactionId, Guid userId)
+    public async Task<Transaction?> GetById(Guid transactionId, Guid userId)
     {
         return await context.Transactions.AsTracking()
             .FirstOrDefaultAsync(predicate: transaction =>

@@ -41,7 +41,7 @@ public class RegisterTransactionUseCase(
         return mapper.Map<TransactionDto>(source: transaction);
     }
 
-    private async Task<Participant> GetParticipant(long participantId, Guid userId)
+    private async Task<Participant> GetParticipant(Guid participantId, Guid userId)
     {
         Participant? participant = await participantWriteRepository.GetById(participantId: participantId, userId: userId);
         if (participant == null)
@@ -52,7 +52,7 @@ public class RegisterTransactionUseCase(
         return participant;
     }
 
-    private async Task<Category?> GetCategory(long? categoryId, Guid userId)
+    private async Task<Category?> GetCategory(Guid? categoryId, Guid userId)
     {
         if (!categoryId.HasValue)
         {

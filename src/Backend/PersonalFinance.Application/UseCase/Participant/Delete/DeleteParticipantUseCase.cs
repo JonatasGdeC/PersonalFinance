@@ -12,7 +12,7 @@ public class DeleteParticipantUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IDeleteParticipantUseCase
 {
-    public async Task Execute(long participantId)
+    public async Task Execute(Guid participantId)
     {
         User user = await loggedUser.Get();
 

@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Pot.Update;
 
 public interface IUpdatePotUseCase
 {
-    Task Execute(long potId, RegisterPotRequest request);
+    Task Execute(Guid potId, RegisterPotRequest request);
 }

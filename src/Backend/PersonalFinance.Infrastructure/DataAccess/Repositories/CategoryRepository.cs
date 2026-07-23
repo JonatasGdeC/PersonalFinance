@@ -27,7 +27,7 @@ internal class CategoryRepository(PersonalFinanceDbContext context) : ICategoryR
         context.Categories.Remove(entity: category);
     }
 
-    public async Task<Category?> GetById(long categoryId, Guid userId)
+    public async Task<Category?> GetById(Guid categoryId, Guid userId)
     {
         return await context.Categories.AsTracking()
             .FirstOrDefaultAsync(predicate: category => category.Id == categoryId && userId == category.UserId);

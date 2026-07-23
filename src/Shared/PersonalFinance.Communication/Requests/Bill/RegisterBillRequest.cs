@@ -6,6 +6,6 @@ public record RegisterBillRequest
     public double Amount { get; set; }
     public int InstallmentsTotal { get; set; }
     public int InstallmentsPaid { get; set; }
-    public long? CategoryId { get; set; }
-    public long ParticipantId { get; set; }
+    public Guid? CategoryId { get; set; }
+    public Guid ParticipantId { get; set; }
 }

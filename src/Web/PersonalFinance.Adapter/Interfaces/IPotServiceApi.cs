@@ -7,7 +7,7 @@ namespace PersonalFinance.Adapter.Interfaces;
 public interface IPotServiceApi
 {
     Task<PotDto> Register(RegisterPotRequest request);
-    Task Update(long potId, RegisterPotRequest request);
-    Task Delete(long potId);
+    Task Update(Guid potId, RegisterPotRequest request);
+    Task Delete(Guid potId);
     Task<GetAllPotsResponse?> GetAll();
 }

@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Participant.GetById;
 
 public interface IGetParticipantByIdUseCase
 {
-    Task<ParticipantDto> Execute(long id);
+    Task<ParticipantDto> Execute(Guid id);
 }

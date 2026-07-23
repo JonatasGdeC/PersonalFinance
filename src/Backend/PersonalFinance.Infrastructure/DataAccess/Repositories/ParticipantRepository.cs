@@ -41,7 +41,7 @@ internal class ParticipantRepository(PersonalFinanceDbContext context) : IPartic
         context.Participants.Remove(entity: participant);
     }
 
-    public async Task<Participant?> GetById(long participantId, Guid userId)
+    public async Task<Participant?> GetById(Guid participantId, Guid userId)
     {
         return await context.Participants.AsTracking()
             .FirstOrDefaultAsync(predicate: participant =>

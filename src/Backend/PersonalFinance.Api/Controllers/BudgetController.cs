@@ -31,7 +31,7 @@ public class BudgetController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdateBudgetUseCase useCase, [FromRoute] long budgetId, [FromBody] RegisterBudgetRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdateBudgetUseCase useCase, [FromRoute] Guid budgetId, [FromBody] RegisterBudgetRequest request)
     {
         await useCase.Execute(budgetId: budgetId, request: request);
         return NoContent();
@@ -41,7 +41,7 @@ public class BudgetController : ControllerBase
     [Route(template: "{budgetId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeleteBudgetUseCase useCase, [FromRoute] long budgetId)
+    public async Task<IActionResult> Delete([FromServices] IDeleteBudgetUseCase useCase, [FromRoute] Guid budgetId)
     {
         await useCase.Execute(budgetId: budgetId);
         return NoContent();

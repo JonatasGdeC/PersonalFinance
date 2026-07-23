@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Transaction.Update;
 
 public interface IUpdateTransactionUseCase
 {
-    Task Execute(long transaction, RegisterTransactionRequest request);
+    Task Execute(Guid transaction, RegisterTransactionRequest request);
 }

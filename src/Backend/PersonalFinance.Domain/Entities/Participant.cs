@@ -2,7 +2,7 @@ namespace PersonalFinance.Domain.Entities;
 
 public class Participant
 {
-    public long Id { get; set; }
+    public Guid Id { get; set; }
     public required string Name { get; set; }
     public string? Image { get; set; }
     

@@ -10,10 +10,10 @@ public class Version00000006 : ForwardOnlyMigration
     public override void Up()
     {
         Create.Table(tableName: MigrationContants.TableName.BUDGETS)
-            .WithColumn(name: nameof(Budget.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
+            .WithColumn(name: nameof(Budget.Id)).AsGuid().PrimaryKey().NotNullable()
             .WithColumn(name: nameof(Budget.MaximumSpend)).AsDouble().NotNullable()
             .WithColumn(name: nameof(Budget.Color)).AsString(size: 20).NotNullable()
-            .WithColumn(name: nameof(Budget.CategoryId)).AsInt64().NotNullable()
+            .WithColumn(name: nameof(Budget.CategoryId)).AsGuid().NotNullable()
             .WithColumn(name: nameof(Budget.UserId)).AsGuid().NotNullable();
 
         Create.ForeignKey(foreignKeyName: "FK_Budgets_Categories_CategoryId")

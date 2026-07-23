@@ -14,7 +14,7 @@ public class UpdatePotUseCase(
     ILoggedUser loggedUser,
     IUnitOfWork unitOfWork) : IUpdatePotUseCase
 {
-    public async Task Execute(long potId, RegisterPotRequest request)
+    public async Task Execute(Guid potId, RegisterPotRequest request)
     {
         await Validate(request: request);
 

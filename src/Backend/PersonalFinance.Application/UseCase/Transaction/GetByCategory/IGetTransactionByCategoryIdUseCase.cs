@@ -5,5 +5,5 @@ namespace PersonalFinance.Application.UseCase.Transaction.GetByCategory;
 
 public interface IGetTransactionByCategoryIdUseCase
 {
-    Task<GetListTransactionsResponse> Execute(long categoryId, DateTime date, PaginationRequest pagination);
+    Task<GetListTransactionsResponse> Execute(Guid categoryId, DateTime date, PaginationRequest pagination);
 }

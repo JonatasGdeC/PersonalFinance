@@ -30,7 +30,7 @@ public class PotController : ControllerBase
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status400BadRequest)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Update([FromServices] IUpdatePotUseCase useCase, [FromRoute] long potId, [FromBody] RegisterPotRequest request)
+    public async Task<IActionResult> Update([FromServices] IUpdatePotUseCase useCase, [FromRoute] Guid potId, [FromBody] RegisterPotRequest request)
     {
         await useCase.Execute(potId: potId, request: request);
         return NoContent();
@@ -40,7 +40,7 @@ public class PotController : ControllerBase
     [Route(template: "{potId}")]
     [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromServices] IDeletePotUseCase useCase, [FromRoute] long potId)
+    public async Task<IActionResult> Delete([FromServices] IDeletePotUseCase useCase, [FromRoute] Guid potId)
     {
         await useCase.Execute(potId: potId);
         return NoContent();

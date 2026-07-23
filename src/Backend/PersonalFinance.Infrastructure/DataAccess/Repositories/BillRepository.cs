@@ -80,7 +80,7 @@ internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepos
         context.Bills.Remove(entity: bill);
     }
 
-    public async Task<Bill?> GetById(long billId, Guid userId)
+    public async Task<Bill?> GetById(Guid billId, Guid userId)
     {
         return await context.Bills.AsTracking()
             .FirstOrDefaultAsync(predicate: bill => bill.Id == billId && bill.UserId == userId);

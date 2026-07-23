@@ -2,7 +2,7 @@ namespace PersonalFinance.Communication.Dtos;
 
 public record BillDto
 {
-    public long Id { get; init; }
+    public Guid Id { get; init; }
     public DateTime DueDate { get; init; }
     public double Amount { get; init; }
     public int InstallmentsTotal { get; init; }

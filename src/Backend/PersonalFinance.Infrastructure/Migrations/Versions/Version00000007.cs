@@ -10,13 +10,13 @@ public class Version00000007 : ForwardOnlyMigration
     public override void Up()
     {
         Create.Table(tableName: MigrationContants.TableName.BILLS)
-            .WithColumn(name: nameof(Bill.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
+            .WithColumn(name: nameof(Bill.Id)).AsGuid().PrimaryKey().NotNullable()
             .WithColumn(name: nameof(Bill.DueDate)).AsDateTime().NotNullable()
             .WithColumn(name: nameof(Bill.Amount)).AsDouble().NotNullable()
             .WithColumn(name: nameof(Bill.InstallmentsTotal)).AsInt32().NotNullable()
             .WithColumn(name: nameof(Bill.InstallmentsPaid)).AsInt32().NotNullable()
-            .WithColumn(name: nameof(Bill.CategoryId)).AsInt64().Nullable()
-            .WithColumn(name: nameof(Bill.ParticipantId)).AsInt64().NotNullable()
+            .WithColumn(name: nameof(Bill.CategoryId)).AsGuid().Nullable()
+            .WithColumn(name: nameof(Bill.ParticipantId)).AsGuid().NotNullable()
             .WithColumn(name: nameof(Bill.UserId)).AsGuid().NotNullable();
 
         Create.ForeignKey(foreignKeyName: "FK_Bills_Categories_CategoryId")

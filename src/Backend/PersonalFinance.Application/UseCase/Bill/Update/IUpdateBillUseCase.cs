@@ -4,5 +4,5 @@ namespace PersonalFinance.Application.UseCase.Bill.Update;
 
 public interface IUpdateBillUseCase
 {
-    Task Execute(long billId, RegisterBillRequest request);
+    Task Execute(Guid billId, RegisterBillRequest request);
 }

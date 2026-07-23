@@ -8,7 +8,7 @@ namespace PersonalFinance.Adapter.Interfaces;
 public interface ICategoryServiceApi
 {
     Task<CategoryDto> Register(RegisterCategoryRequest request);
-    Task Update(long categoryId, RegisterCategoryRequest request);
-    Task Delete(long categoryId);
+    Task Update(Guid categoryId, RegisterCategoryRequest request);
+    Task Delete(Guid categoryId);
     Task<GetAllCategoryResponse?> GetAll(TransactionType? transactionType = null);
 }

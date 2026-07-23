@@ -10,10 +10,10 @@ internal class BillServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient
     public async Task<BillDto> Register(RegisterBillRequest request) =>
         await PostAsync<RegisterBillRequest, BillDto>(request: request);
 
-    public async Task Update(long billId, RegisterBillRequest request) =>
+    public async Task Update(Guid billId, RegisterBillRequest request) =>
         await PutAsync(request: request, route: $"/{billId}");
 
-    public async Task Delete(long billId) =>
+    public async Task Delete(Guid billId) =>
         await DeleteAsync(route: $"/{billId}");
 
     public async Task<GetAllBillResponse?> GetAll(BillFilterRequest filter)
