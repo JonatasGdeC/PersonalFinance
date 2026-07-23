@@ -1,6 +1,7 @@
 @page "/budgets"
+@using PersonalFinance.Web.Pages.Budgets.Components.BudgetChart
 @using PersonalFinance.Web.Resources.Common
-@using PersonalFinance.Web.Resources.Transactions
+@using PersonalFinance.Web.Utils.HandlerBudgetChart
 @using PersonalFinance.Web.Utils.HandlerNotFound
 
 <PageTitle>Finance - @CommonResources.Budgets</PageTitle>
@@ -13,4 +14,9 @@
 @if (_allBudgetResponse?.ListBudgets.Any() == false)
 {
     <HandlerNotFound Text="No budget recorded."/>
+}
+else
+{
+    <BudgetChart IsLoading="@_isLoading"
+                 ListBudgets="@_allBudgetResponse!.ListBudgets"/>
 }

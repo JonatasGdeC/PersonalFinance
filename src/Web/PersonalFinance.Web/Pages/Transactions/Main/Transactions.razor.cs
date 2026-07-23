@@ -35,7 +35,7 @@ public partial class Transactions : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        GetAllCategoryResponse? categories = await PersonalFinanceApi.Category.GetAll();
+        GetAllCategoryResponse? categories = await PersonalFinanceApi.Category.GetAll(transactionType: _filterRequest.TransactionType);
 
         _categoryFormOptions = (categories?.ListCategories ?? [])
             .Select(selector: category => new AddInputOption { Value = category.Id.ToString(), Label = category.Name })

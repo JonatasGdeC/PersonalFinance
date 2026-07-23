@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Enums;
 using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Web.Resources.Transactions;
 
@@ -11,6 +12,7 @@ public partial class AddCategoryModal : ComponentBase
     [Parameter] public bool IsOpen { get; set; }
     [Parameter] public EventCallback OnClose { get; set; }
     [Parameter] public EventCallback<CategoryDto> OnRegistered { get; set; }
+    [Parameter] public required string CategoryType { get; set; }
 
     private string? _name;
     private List<string> _errorMessages = [];
@@ -28,7 +30,11 @@ public partial class AddCategoryModal : ComponentBase
 
         _isSubmitting = true;
 
-        RegisterCategoryRequest request = new() { Name = _name };
+        RegisterCategoryRequest request = new()
+        {
+            Name = _name,
+            Type = Enum.TryParse(value: CategoryType, result: out TransactionType type) ? type : TransactionType.Expense
+        };
 
         try
         {

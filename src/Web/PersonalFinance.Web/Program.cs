@@ -1,4 +1,5 @@
 using System.Globalization;
+using ApexCharts;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
@@ -11,6 +12,7 @@ builder.RootComponents.Add<HeadOutlet>(selector: "head::after");
 
 builder.Services.AddScoped(implementationFactory: sp => new HttpClient { BaseAddress = new Uri(uriString: builder.HostEnvironment.BaseAddress) });
 builder.Services.AddAdapter(builder: builder);
+builder.Services.AddApexCharts();
 
 WebAssemblyHost host = builder.Build();
 
