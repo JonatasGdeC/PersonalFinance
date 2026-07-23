@@ -1,0 +1,14 @@
+@using PersonalFinance.Communication.Dtos
+@using ApexCharts
+
+<section class="handler-budget-chart">
+    <ApexChart TItem="BudgetDto" Options="ChartOptions">
+        <ApexPointSeries TItem="BudgetDto"
+                         Items="ListBudgets"
+                         SeriesType="SeriesType.Donut"
+                         XValue="@(e => e.Category.Name)"
+                         YAggregate="@(e => (decimal?)e.Sum(selector: e => e.MaximumSpend))"
+                         OrderByDescending="e=>e.Y"
+                         DataPointMutator="@((DataPoint<BudgetDto> point) => point.FillColor = point.Items.First().Color)"/>
+    </ApexChart>
+</section>
