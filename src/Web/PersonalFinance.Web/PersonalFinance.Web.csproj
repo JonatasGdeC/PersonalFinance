@@ -10,15 +10,13 @@
 
     <ItemGroup>
         <PackageReference Include="Blazor-ApexCharts" Version="6.1.0" />
+        <PackageReference Include="Fluxor" Version="6.10.0" />
+        <PackageReference Include="Fluxor.Blazor.Web" Version="6.10.0" />
+        <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="6.10.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.9"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.9" PrivateAssets="all"/>
     </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
-      <_ContentIncludedByDefault Remove="Pages\Budgets\Components\ModalRegisterBudget\ModalRegisterBudget.razor" />
-    </ItemGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\PersonalFinance.Adapter\PersonalFinance.Adapter.csproj" />
     </ItemGroup>
@@ -102,9 +100,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\Home\Components\SummaryBudgets\" />
-      <Folder Include="Pages\Home\Components\SummaryPots\" />
-      <Folder Include="Pages\Home\Components\SummaryRecurringBills\" />
+      <Folder Include="UseState\" />
     </ItemGroup>
-
 </Project>
