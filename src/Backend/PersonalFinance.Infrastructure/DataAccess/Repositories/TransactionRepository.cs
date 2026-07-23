@@ -92,6 +92,13 @@ internal class TransactionRepository(PersonalFinanceDbContext context) : ITransa
         return await CreatePageList<Transaction>.Execute(query: query, page: pagination);
     }
 
+    public async Task<double> GetTotalAmountByCategory(Guid userId, long categoryId, DateTime date)
+    {
+        return await context.Transactions
+            .Where(predicate: transaction => transaction.UserId == userId && transaction.CategoryId == categoryId && transaction.Date.Month == date.Month && transaction.Date.Year == date.Year)
+            .SumAsync(selector: transaction => transaction.Amount);
+    }
+
     public async Task Add(Transaction transaction)
     {
         await context.Transactions.AddAsync(entity: transaction);

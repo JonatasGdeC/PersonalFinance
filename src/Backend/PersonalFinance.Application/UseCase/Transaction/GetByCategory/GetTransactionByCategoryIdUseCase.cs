@@ -40,13 +40,16 @@ public class GetTransactionByCategoryIdUseCase(
             categoryId: categoryId,
             date: date,
             pagination: domainPagination);
+        
+        double totalAmount = await readRepository.GetTotalAmountByCategory(userId: user.Id, categoryId: categoryId, date: date);
 
         return new GetListTransactionsResponse
         {
             ListTransactions = mapper.Map<List<TransactionDto>>(source: paged.Items),
             PageNumber = paged.PageNumber,
             PageSize = paged.PageSize,
-            TotalItems = paged.TotalItems
+            TotalItems = paged.TotalItems,
+            TotalAmount = totalAmount
         };
     }
 }

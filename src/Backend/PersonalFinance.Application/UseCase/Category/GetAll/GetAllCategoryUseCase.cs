@@ -1,5 +1,6 @@
 using AutoMapper;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Enums;
 using PersonalFinance.Communication.Responses.Category;
 using PersonalFinance.Domain.Repositories.Category;
 using PersonalFinance.Domain.Services.LoggedUser;
@@ -12,11 +13,11 @@ public class GetAllCategoryUseCase(
     ILoggedUser loggedUser,
     IMapper mapper) : IGetAllCategoryUseCase
 {
-    public async Task<GetAllCategoryResponse> Execute()
+    public async Task<GetAllCategoryResponse> Execute(TransactionType? transactionType = null)
     {
         User user = await loggedUser.Get();
 
-        List<Category> categories = await readRepository.GetAll(userId: user.Id);
+        List<Category> categories = await readRepository.GetAll(userId: user.Id, transactionType: transactionType.HasValue ? (Domain.Enums.TransactionType)transactionType : null);
 
         return new GetAllCategoryResponse
         {

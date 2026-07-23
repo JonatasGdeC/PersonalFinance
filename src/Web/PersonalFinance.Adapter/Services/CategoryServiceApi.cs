@@ -1,5 +1,6 @@
 using PersonalFinance.Adapter.Interfaces;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Enums;
 using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Communication.Responses.Category;
 
@@ -16,6 +17,10 @@ internal class CategoryServiceApi(HttpClient httpClient) : ApiServiceBase(httpCl
     public async Task Delete(long categoryId) =>
         await DeleteAsync(route: $"/{categoryId}");
 
-    public async Task<GetAllCategoryResponse?> GetAll() =>
-        await GetAsync<GetAllCategoryResponse>();
+    public async Task<GetAllCategoryResponse?> GetAll(TransactionType? transactionType = null)
+    {
+        string query = BuildQueryString(("TransactionType", transactionType));
+
+        return await GetAsync<GetAllCategoryResponse>(route: query);
+    }
 }
