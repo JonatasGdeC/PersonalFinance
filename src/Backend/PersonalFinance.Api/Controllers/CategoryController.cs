@@ -5,6 +5,7 @@ using PersonalFinance.Application.UseCase.Category.GetAll;
 using PersonalFinance.Application.UseCase.Category.Register;
 using PersonalFinance.Application.UseCase.Category.Update;
 using PersonalFinance.Communication.Dtos;
+using PersonalFinance.Communication.Enums;
 using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Communication.Responses;
 using PersonalFinance.Communication.Responses.Category;
@@ -48,9 +49,9 @@ public class CategoryController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(type: typeof(GetAllCategoryResponse), statusCode: StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAll([FromServices] IGetAllCategoryUseCase useCase)
+    public async Task<IActionResult> GetAll([FromServices] IGetAllCategoryUseCase useCase, [FromQuery] TransactionType? transactionType = null)
     {
-        GetAllCategoryResponse response = await useCase.Execute();
+        GetAllCategoryResponse response = await useCase.Execute(transactionType: transactionType);
         return Ok(value: response);
     }
 }

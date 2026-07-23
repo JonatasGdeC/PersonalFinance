@@ -12,6 +12,7 @@ public class Version00000004 : ForwardOnlyMigration
         Create.Table(tableName: MigrationContants.TableName.CATEGORIES)
             .WithColumn(name: nameof(Category.Id)).AsInt64().PrimaryKey().Identity().NotNullable()
             .WithColumn(name: nameof(Category.Name)).AsString(size: 100).NotNullable()
+            .WithColumn(name: nameof(Category.Type)).AsInt32().NotNullable()
             .WithColumn(name: nameof(Category.UserId)).AsGuid().NotNullable();
         
         Create.ForeignKey(foreignKeyName: "FK_Category_Users_UserId")
