@@ -1,0 +1,12 @@
+@using System.Globalization
+
+@if (_transactions == null || _isLoading)
+{
+    <AddSkeleton Width="65px" Height="24px"/>
+}
+else
+{
+    <AddText Text="@_transactions.TotalAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)"
+             Preset="TextPreset.Preset3"/>
+}
+
