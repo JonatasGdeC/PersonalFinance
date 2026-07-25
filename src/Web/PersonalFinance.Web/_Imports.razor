@@ -1,5 +1,6 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using Fluxor
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
@@ -24,6 +25,31 @@
 
 @using PersonalFinance.Web.Extensions
 @using PersonalFinance.Web.Resources
+@using PersonalFinance.Web.UseState.Category.State
+@using PersonalFinance.Web.UseState.Modal
+@using PersonalFinance.Web.UseState.Modal.State
+@using PersonalFinance.Web.UseState.Transaction.State
+@using PersonalFinance.Web.UseState.Participant.State
+@using PersonalFinance.Web.UseState.Budget.State
+@using PersonalFinance.Web.UseState.Pot.State
+@using PersonalFinance.Web.UseState.Bill.State
+@using PersonalFinance.Web.UseState.Date.State
+
+@inject IDispatcher Dispatcher
+@inject IState<CategoryState> CategoryState
+@inject IState<CategoryListState> CategoryListState
+@inject IState<ModalState> ModalState
+@inject IState<TransactionState> TransactionState
+@inject IState<TransactionListState> TransactionListState
+@inject IState<ParticipantState> ParticipantState
+@inject IState<ParticipantListState> ParticipantListState
+@inject IState<BudgetState> BudgetState
+@inject IState<BudgetListState> BudgetListState
+@inject IState<PotState> PotState
+@inject IState<PotListState> PotListState
+@inject IState<BillState> BillState
+@inject IState<BillListState> BillListState
+@inject IState<DateState> DateState
 
 @inject PersonalFinanceApi PersonalFinanceApi
 @inject CookieAuthenticationStateProvider AuthenticationStateProvider
