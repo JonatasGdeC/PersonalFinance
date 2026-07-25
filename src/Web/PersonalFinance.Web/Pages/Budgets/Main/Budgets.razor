@@ -1,22 +1,25 @@
 @page "/budgets"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 @using PersonalFinance.Web.Pages.Budgets.Components.BudgetChart
+@using PersonalFinance.Web.Pages.Budgets.Components.ModalRegisterBudget
+@using PersonalFinance.Web.Resources.Budgets
 @using PersonalFinance.Web.Resources.Common
-@using PersonalFinance.Web.Utils.HandlerBudgetChart
 @using PersonalFinance.Web.Utils.HandlerNotFound
 
 <PageTitle>Finance - @CommonResources.Budgets</PageTitle>
 
 <header class="budgets-header">
     <AddText Text="@CommonResources.Budgets" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
-    <AddButton Text="+ Add New Budget"/>
+    <AddButton Text="@BudgetsResources.AddBudgetCta" OnClick="@OpenAddBudgetModal"/>
 </header>
 
-@if (_allBudgetResponse?.ListBudgets.Any() == false)
+@if (!_isLoading && !BudgetListState.Value.Budgets.Any())
 {
-    <HandlerNotFound Text="No budget recorded."/>
+    <HandlerNotFound Text="@BudgetsResources.NoBudgetRecorded"/>
 }
 else
 {
-    <BudgetChart IsLoading="@_isLoading"
-                 ListBudgets="@_allBudgetResponse!.ListBudgets"/>
+    <BudgetChart IsLoading="@_isLoading" ListBudgets="@BudgetListState.Value.Budgets"/>
 }
+
+<ModalRegisterBudget/>

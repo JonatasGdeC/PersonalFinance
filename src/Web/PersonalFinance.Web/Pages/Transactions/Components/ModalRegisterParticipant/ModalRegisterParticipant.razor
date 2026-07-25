@@ -1,9 +1,12 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 @using PersonalFinance.Web.Resources.Transactions
 
-<AddModal IsOpen="@IsOpen" Title="@TransactionsResources.AddParticipantTitle" Subtitle="@TransactionsResources.AddParticipantSubtitle"
-          OnClose="HandleClose">
+<AddModal IsOpen="@(ModalState.Value.IsOpen(modal: ModalType.AddParticipant))" 
+          Title="@TransactionsResources.AddParticipantTitle" 
+          Subtitle="@TransactionsResources.AddParticipantSubtitle"
+          OnClose="@HandleClose">
     <Body>
-        <form class="add-participant-modal" @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+        <form class="add-participant-modal" @onsubmit="@HandleRegisterParticipant" @onsubmit:preventDefault="true">
             <AddInput Label="@TransactionsResources.ParticipantNameLabel" Placeholder="@TransactionsResources.ParticipantNamePlaceholder"
                       @bind-Value="_name" Required="true" Disabled="_isSubmitting"/>
 

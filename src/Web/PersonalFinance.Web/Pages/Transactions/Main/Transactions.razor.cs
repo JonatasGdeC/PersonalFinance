@@ -6,13 +6,14 @@ using PersonalFinance.Communication.Responses.Category;
 using PersonalFinance.Communication.Responses.Transaction;
 using PersonalFinance.Web.Components.AddInput;
 using PersonalFinance.Web.Resources.Transactions;
+using PersonalFinance.Web.UseState.Category;
+using PersonalFinance.Web.UseState.Modal;
+using PersonalFinance.Web.UseState.Transaction;
 
 namespace PersonalFinance.Web.Pages.Transactions.Main;
 
 public partial class Transactions : ComponentBase
 {
-    private const string AllCategoriesValue = "";
-
     private static readonly List<AddInputOption> SortOptions =
     [
         new() { Value = ((int)ListOrder.Latest).ToString(), Label = TransactionsResources.Latest },
@@ -26,51 +27,48 @@ public partial class Transactions : ComponentBase
     private bool _isLoading = true;
     private readonly TransactionFilterRequest _filterRequest = new();
     private GetListTransactionsResponse? _transactions;
-    private List<AddInputOption> _categoryOptions = [];
-    private List<AddInputOption> _categoryFormOptions = [];
-    private bool _isAddTransactionModalOpen;
+    
+    private List<AddInputOption> CategoryOptions => CategoryListState.Value.Categories
+        .Select(selector: category => new AddInputOption { Value = category.Id.ToString(), Label = category.Name })
+        .ToList();
+
 
     private string SortValue => ((int)_filterRequest.ListOrder).ToString();
-    private string CategoryValue => _filterRequest.CategoryId?.ToString() ?? AllCategoriesValue;
+    private string CategoryValue => _filterRequest.CategoryId?.ToString() ?? string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
-        GetAllCategoryResponse? categories = await PersonalFinanceApi.Category.GetAll(transactionType: _filterRequest.TransactionType);
+        Dispatcher.Dispatch(action: new CategoryActions.GetAllCategoriesAction());
 
-        _categoryFormOptions = (categories?.ListCategories ?? [])
-            .Select(selector: category => new AddInputOption { Value = category.Id.ToString(), Label = category.Name })
-            .ToList();
-
-        _categoryOptions =
-        [
-            new AddInputOption { Value = AllCategoriesValue, Label = TransactionsResources.AllTransactions },
-            .. _categoryFormOptions
-        ];
-
-        await LoadTransactions();
+        try
+        {
+            if (!CategoryListState.Value.Categories.Any())
+            {
+                Dispatcher.Dispatch(action: new CategoryActions.GetAllCategoriesAction());
+                GetAllCategoryResponse? response = await PersonalFinanceApi.Category.GetAll();
+                if (response != null)
+                {
+                    Dispatcher.Dispatch(action: new CategoryActions.GetAllCategoriesSuccessAction(Categories: response.ListCategories));
+                }
+            }
+            
+            await LoadTransactions();
+            
+            _isLoading = false;
+        }
+        catch { /* ignored */ }
     }
 
-    private void OpenAddTransactionModal() => _isAddTransactionModalOpen = true;
-
-    private void CloseAddTransactionModal() => _isAddTransactionModalOpen = false;
-
-    private async Task HandleTransactionRegistered()
-    {
-        _isAddTransactionModalOpen = false;
-        await LoadTransactions();
-    }
-
-    private void HandleCategoryRegistered(CategoryDto category)
-    {
-        AddInputOption option = new() { Value = category.Id.ToString(), Label = category.Name };
-        _categoryFormOptions.Add(item: option);
-        _categoryOptions.Add(item: option);
-    }
+    private void OpenAddTransactionModal() => Dispatcher.Dispatch(action: new ModalActions.OpenModalAction(Modal: ModalType.AddTransaction));
 
     private async Task LoadTransactions()
     {
         _isLoading = true;
         _transactions = await PersonalFinanceApi.Transaction.GetAll(request: _filterRequest);
+        if (_transactions != null)
+        {
+            Dispatcher.Dispatch(action: new TransactionActions.GetAllTransactionsSuccessAction(Transactions: _transactions.ListTransactions));
+        }
         _isLoading = false;
     }
 

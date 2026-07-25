@@ -1,5 +1,5 @@
 @page "/transactions"
-@using PersonalFinance.Web.Pages.Transactions.Components.AddTransactionModal
+@using PersonalFinance.Web.Pages.Transactions.Components.ModalRegisterTransaction
 @using PersonalFinance.Web.Pages.Transactions.Components.TransactionsTable
 @using PersonalFinance.Web.Resources.Common
 @using PersonalFinance.Web.Resources.Transactions
@@ -8,7 +8,7 @@
 
 <header class="transactions-header">
     <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
-    <AddButton Text="@TransactionsResources.AddTransactionCta" OnClick="OpenAddTransactionModal"/>
+    <AddButton Text="@TransactionsResources.AddTransactionCta" OnClick="@OpenAddTransactionModal"/>
 </header>
 
 <AddCard>
@@ -34,7 +34,7 @@
                     <div class="transactions__filter">
                         <AddText Text="@TransactionsResources.Category" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
                         <div class="transactions__filter-control">
-                            <AddInput Options="_categoryOptions" 
+                            <AddInput Options="CategoryOptions" 
                                       Value="@CategoryValue" ValueChanged="HandleCategoryChanged" 
                                       CompactIcon="Icon.FILTER" IsLoading="@_isLoading"/>
                         </div>
@@ -48,13 +48,11 @@
             }
             else
             {
-                <TransactionsTable ListTransactions="@(_transactions?.ListTransactions ?? [])"/>
+                <TransactionsTable/>
                 <AddPagination TotalPages="@(_transactions?.TotalPages ?? 1)" CurrentPage="@(_transactions?.PageNumber ?? 1)" OnPageChanged="HandlePageChanged"/>
             }
         </div>
     </Body>
 </AddCard>
 
-<AddTransactionModal IsOpen="@_isAddTransactionModalOpen" CategoryOptions="_categoryFormOptions"
-                     OnClose="CloseAddTransactionModal" OnRegistered="HandleTransactionRegistered"
-                     OnCategoryRegistered="HandleCategoryRegistered"/>
+<ModalRegisterTransaction/>

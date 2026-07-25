@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Components;
-using PersonalFinance.Communication.Dtos;
-
 namespace PersonalFinance.Web.Pages.Transactions.Components.TransactionsTable;
 
-public partial class TransactionsTable : ComponentBase
+public partial class TransactionsTable
 {
-    [Parameter] public List<TransactionDto> ListTransactions { get; set; } = [];
 }

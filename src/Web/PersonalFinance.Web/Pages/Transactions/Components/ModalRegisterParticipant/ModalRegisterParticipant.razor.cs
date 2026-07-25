@@ -1,51 +1,46 @@
-using Microsoft.AspNetCore.Components;
+using FluentValidation.Results;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.Participant;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Web.Resources.Transactions;
+using PersonalFinance.Web.UseState.Modal;
+using PersonalFinance.Web.UseState.Participant;
 
-namespace PersonalFinance.Web.Pages.Transactions.Components.AddParticipantModal;
+namespace PersonalFinance.Web.Pages.Transactions.Components.ModalRegisterParticipant;
 
-public partial class AddParticipantModal : ComponentBase
+public partial class ModalRegisterParticipant
 {
-    [Parameter] public bool IsOpen { get; set; }
-    [Parameter] public EventCallback OnClose { get; set; }
-    [Parameter] public EventCallback<ParticipantDto> OnRegistered { get; set; }
-
-    private string? _name;
+    private string _name = string.Empty;
     private string? _image;
     private List<string> _errorMessages = [];
     private bool _isSubmitting;
 
-    private async Task HandleSubmit()
+    private async Task HandleRegisterParticipant()
     {
         _errorMessages = [];
-
-        if (string.IsNullOrWhiteSpace(value: _name))
-        {
-            _errorMessages = [TransactionsResources.RequiredFieldsError];
-            return;
-        }
-
-        _isSubmitting = true;
-
+        
         RegisterParticipantRequest request = new()
         {
             Name = _name,
             Image = string.IsNullOrWhiteSpace(value: _image) ? null : _image
         };
 
+        ParticipantValidator validator = new();
+        ValidationResult? result = await validator.ValidateAsync(instance: request);
+
+        if (!result.IsValid)
+        {
+            _errorMessages = result.Errors.Select(selector: error => error.ErrorMessage).ToList();
+        }
+        
+        _isSubmitting = true;
+
         try
         {
             ParticipantDto participant = await PersonalFinanceApi.Participant.Register(request: request);
-
-            _name = null;
-            _image = null;
-
-            if (OnRegistered.HasDelegate)
-            {
-                await OnRegistered.InvokeAsync(arg: participant);
-            }
+            Dispatcher.Dispatch(action: new ParticipantActions.RegisterParticipantSuccessAction(Participant: participant));
+            HandleClose();
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -61,13 +56,9 @@ public partial class AddParticipantModal : ComponentBase
         }
     }
 
-    private async Task HandleClose()
+    private void HandleClose()
     {
         _errorMessages = [];
-
-        if (OnClose.HasDelegate)
-        {
-            await OnClose.InvokeAsync();
-        }
+        Dispatcher.Dispatch(action: new ModalActions.CloseModalAction(Modal: ModalType.AddParticipant));
     }
 }
