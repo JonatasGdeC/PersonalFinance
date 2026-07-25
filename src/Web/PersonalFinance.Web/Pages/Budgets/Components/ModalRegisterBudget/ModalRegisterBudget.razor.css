@@ -1,0 +1,45 @@
+.modal-register-budget {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-register-budget__field {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+
+.modal-register-budget__custom-color {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--beige-100);
+    border-radius: 8px;
+}
+
+.modal-register-budget__custom-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-register-budget__custom-color-picker-label {
+    font-weight: bold;
+}
+
+.modal-register-budget__custom-color-picker input[type="color"] {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--beige-100);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modal-register-budget__custom-color-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
