@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation.Results;
 using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.Category;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Category;
 using PersonalFinance.Domain.Services.LoggedUser;

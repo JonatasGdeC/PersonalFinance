@@ -1,5 +1,6 @@
 using FluentValidation.Results;
 using PersonalFinance.Communication.Requests.Transaction;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Category;
 using PersonalFinance.Domain.Repositories.Participant;

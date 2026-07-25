@@ -1,5 +1,6 @@
 using FluentValidation.Results;
 using PersonalFinance.Communication.Requests.Pot;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.Pot;
 using PersonalFinance.Domain.Services.LoggedUser;

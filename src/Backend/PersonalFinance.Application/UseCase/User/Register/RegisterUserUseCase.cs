@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Domain.Repositories;
 using PersonalFinance.Domain.Repositories.User;
 using PersonalFinance.Domain.Security.Cryptography;
