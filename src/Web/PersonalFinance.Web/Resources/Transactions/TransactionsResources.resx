@@ -135,4 +135,22 @@
     <data name="AddCategoryButton" xml:space="preserve">
         <value>Add Category</value>
     </data>
+    <data name="NoTransactionRecord" xml:space="preserve">
+        <value>There is no transaction record.</value>
+    </data>
+    <data name="NoParticipantsRegisteredPlaceholder" xml:space="preserve">
+        <value>No participants registered</value>
+    </data>
+    <data name="NoCategoriesRegisteredPlaceholder" xml:space="preserve">
+        <value>No categories registered</value>
+    </data>
+    <data name="TransactionRegisteredSuccessMessage" xml:space="preserve">
+        <value>Transaction added successfully</value>
+    </data>
+    <data name="CategoryRegisteredSuccessMessage" xml:space="preserve">
+        <value>Category added successfully</value>
+    </data>
+    <data name="ParticipantRegisteredSuccessMessage" xml:space="preserve">
+        <value>Participant added successfully</value>
+    </data>
 </root>

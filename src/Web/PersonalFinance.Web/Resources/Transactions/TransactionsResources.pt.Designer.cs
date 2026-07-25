@@ -409,5 +409,59 @@ namespace PersonalFinance.Web.Resources.Transactions {
                 return ResourceManager.GetString("ZToA", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Não há registro de transação..
+        /// </summary>
+        public static string NoTransactionRecord {
+            get {
+                return ResourceManager.GetString("NoTransactionRecord", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Não há participantes registrados.
+        /// </summary>
+        public static string NoParticipantsRegisteredPlaceholder {
+            get {
+                return ResourceManager.GetString("NoParticipantsRegisteredPlaceholder", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Não há categorias registradas.
+        /// </summary>
+        public static string NoCategoriesRegisteredPlaceholder {
+            get {
+                return ResourceManager.GetString("NoCategoriesRegisteredPlaceholder", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Transação adicionada com sucesso.
+        /// </summary>
+        public static string TransactionRegisteredSuccessMessage {
+            get {
+                return ResourceManager.GetString("TransactionRegisteredSuccessMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria adicionada com sucesso.
+        /// </summary>
+        public static string CategoryRegisteredSuccessMessage {
+            get {
+                return ResourceManager.GetString("CategoryRegisteredSuccessMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Participante adicionado com sucesso.
+        /// </summary>
+        public static string ParticipantRegisteredSuccessMessage {
+            get {
+                return ResourceManager.GetString("ParticipantRegisteredSuccessMessage", resourceCulture);
+            }
+        }
+
     }
 }

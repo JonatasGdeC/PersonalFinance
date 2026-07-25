@@ -64,5 +64,5 @@
 
 @if (!TransactionListState.Value.Transactions.Any())
 {
-    <HandlerNotFound Text="There is no transaction record."/>
+    <HandlerNotFound Text="@TransactionsResources.NoTransactionRecord"/>
 }

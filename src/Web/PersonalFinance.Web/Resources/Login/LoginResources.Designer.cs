@@ -175,5 +175,23 @@ namespace PersonalFinance.Web.Resources.Login {
                 return ResourceManager.GetString("UnknownError", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Email and password are required..
+        /// </summary>
+        public static string EmailAndPasswordRequiredError {
+            get {
+                return ResourceManager.GetString("EmailAndPasswordRequiredError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to All fields are required..
+        /// </summary>
+        public static string AllFieldsRequiredError {
+            get {
+                return ResourceManager.GetString("AllFieldsRequiredError", resourceCulture);
+            }
+        }
+
     }
 }

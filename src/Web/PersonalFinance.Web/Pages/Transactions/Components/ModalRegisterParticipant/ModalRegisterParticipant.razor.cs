@@ -4,6 +4,7 @@ using PersonalFinance.Communication.Dtos;
 using PersonalFinance.Communication.Requests.Participant;
 using PersonalFinance.Communication.Validators;
 using PersonalFinance.Web.Resources.Transactions;
+using PersonalFinance.Web.Services.SnackbarService;
 using PersonalFinance.Web.UseState.Modal;
 using PersonalFinance.Web.UseState.Participant;
 
@@ -41,6 +42,7 @@ public partial class ModalRegisterParticipant
             ParticipantDto participant = await PersonalFinanceApi.Participant.Register(request: request);
             Dispatcher.Dispatch(action: new ParticipantActions.RegisterParticipantSuccessAction(Participant: participant));
             HandleClose();
+            SnackbarService.Show(message: TransactionsResources.ParticipantRegisteredSuccessMessage, severity: SnackbarSeverity.Success);
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -48,7 +50,7 @@ public partial class ModalRegisterParticipant
         }
         catch
         {
-            _errorMessages = [TransactionsResources.UnknownError];
+            SnackbarService.Show(message: TransactionsResources.UnknownError, severity: SnackbarSeverity.Error);
         }
         finally
         {

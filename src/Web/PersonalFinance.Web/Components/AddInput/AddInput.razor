@@ -1,3 +1,5 @@
+@using PersonalFinance.Web.Resources.Common
+
 <div class="add-input">
     @if (!string.IsNullOrWhiteSpace(value: Label))
     {
@@ -96,7 +98,7 @@
                 {
                     <button type="button" class="add-input__icon-button" disabled="@Disabled"
                             @onclick="TogglePasswordVisibility"
-                            aria-label="@(_isPasswordVisible ? "Hide password" : "Show password")">
+                            aria-label="@(_isPasswordVisible ? CommonResources.HidePassword : CommonResources.ShowPassword)">
                         @if (_isPasswordVisible)
                         {
                             <AddIcon Icon="Icon.EYE_SLASH"/>

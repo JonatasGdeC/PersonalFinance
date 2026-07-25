@@ -12,7 +12,7 @@
         <div class="add-transaction-modal__field">
             
             <AddInput Label="@TransactionsResources.Participant"
-                      Placeholder="@(!ParticipantOptions.Any() ? "Não há participantes registrados" : TransactionsResources.ParticipantPlaceholder)"
+                      Placeholder="@(!ParticipantOptions.Any() ? TransactionsResources.NoParticipantsRegisteredPlaceholder : TransactionsResources.ParticipantPlaceholder)"
                       Options="ParticipantOptions" @bind-Value="_participantValue" 
                       Disabled="@(_isSubmitting || !ParticipantOptions.Any())"/>
 
@@ -24,8 +24,8 @@
                   Disabled="_isSubmitting"/>
 
         <div class="add-transaction-modal__field">
-            <AddInput Label="@TransactionsResources.Category" 
-                      Placeholder="@(!CategoryOptions.Any() ? "Não há categorias registradas" : TransactionsResources.CategoryPlaceholder)"
+            <AddInput Label="@TransactionsResources.Category"
+                      Placeholder="@(!CategoryOptions.Any() ? TransactionsResources.NoCategoriesRegisteredPlaceholder : TransactionsResources.CategoryPlaceholder)"
                       Options="CategoryOptions" @bind-Value="_categoryValue" 
                       Disabled="@(_isSubmitting || !CategoryOptions.Any())"/>
 

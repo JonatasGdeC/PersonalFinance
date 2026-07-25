@@ -39,4 +39,34 @@
     <data name="MinimizeMenu" xml:space="preserve">
         <value>Minimizar Menu</value>
     </data>
+    <data name="AppTitlePrefix" xml:space="preserve">
+        <value>Finance - </value>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Fechar</value>
+    </data>
+    <data name="PaginationLabel" xml:space="preserve">
+        <value>Paginação</value>
+    </data>
+    <data name="PreviousPage" xml:space="preserve">
+        <value>Anterior</value>
+    </data>
+    <data name="NextPage" xml:space="preserve">
+        <value>Próximo</value>
+    </data>
+    <data name="ShowPassword" xml:space="preserve">
+        <value>Mostrar senha</value>
+    </data>
+    <data name="HidePassword" xml:space="preserve">
+        <value>Ocultar senha</value>
+    </data>
+    <data name="NotFoundDefaultText" xml:space="preserve">
+        <value>Não encontrado.</value>
+    </data>
+    <data name="PageNotFoundTitle" xml:space="preserve">
+        <value>Página Não Encontrada</value>
+    </data>
+    <data name="PageNotFoundMessage" xml:space="preserve">
+        <value>Desculpe, o conteúdo que você está procurando não existe.</value>
+    </data>
 </root>

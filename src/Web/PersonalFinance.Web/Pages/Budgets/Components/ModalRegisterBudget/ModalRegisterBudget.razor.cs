@@ -7,6 +7,7 @@ using PersonalFinance.Communication.Responses.Category;
 using PersonalFinance.Communication.Validators;
 using PersonalFinance.Web.Components.AddInput;
 using PersonalFinance.Web.Resources.Budgets;
+using PersonalFinance.Web.Services.SnackbarService;
 using PersonalFinance.Web.UseState.Budget;
 using PersonalFinance.Web.UseState.Category;
 using PersonalFinance.Web.UseState.Modal;
@@ -147,6 +148,7 @@ public partial class ModalRegisterBudget
             Dispatcher.Dispatch(action: new BudgetActions.RegisterBudgetSuccessAction(Budget: budget));
             ResetForm();
             HandleClose();
+            SnackbarService.Show(message: BudgetsResources.BudgetRegisteredSuccessMessage, severity: SnackbarSeverity.Success);
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -154,7 +156,7 @@ public partial class ModalRegisterBudget
         }
         catch
         {
-            _errorMessages = [BudgetsResources.UnknownError];
+            SnackbarService.Show(message: BudgetsResources.UnknownError, severity: SnackbarSeverity.Error);
         }
         finally
         {

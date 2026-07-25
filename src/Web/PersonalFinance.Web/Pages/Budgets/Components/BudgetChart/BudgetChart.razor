@@ -1,5 +1,6 @@
 @using System.Globalization
 @using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Resources.Budgets
 @using PersonalFinance.Web.Utils.HandlerBudgetChart
 @using PersonalFinance.Web.Utils.HandlerExpensesByBudget
 
@@ -8,7 +9,7 @@
     <div class="budget-chart">
         <HandlerBudgetChart ListBudgets="@ListBudgets"/>
         <div class="budget-chart__summary">
-            <AddText Text="Spending Summary" Preset="TextPreset.Preset2"/>
+            <AddText Text="@BudgetsResources.SpendingSummaryTitle" Preset="TextPreset.Preset2"/>
             
             <ul class="budget-chart__list">
                 @foreach (BudgetDto budget in ListBudgets)
@@ -20,7 +21,7 @@
                         </div>
                         <div class="budget-chart__item--value">
                             <HandlerExpensesByBudget Budget="budget"/>
-                            <AddText Text="@($"of {budget.MaximumSpend.ToString(format: "C2", provider: CultureInfo.CurrentCulture)}")" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                            <AddText Text="@(string.Format(format: BudgetsResources.OfMaximumSpendFormat, arg0: budget.MaximumSpend.ToString(format: "C2", provider: CultureInfo.CurrentCulture)))" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
                         </div>
                     </li>
                 }

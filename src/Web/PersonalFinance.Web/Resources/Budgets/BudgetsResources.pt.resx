@@ -123,4 +123,13 @@
     <data name="ColorOrange" xml:space="preserve">
         <value>Laranja</value>
     </data>
+    <data name="SpendingSummaryTitle" xml:space="preserve">
+        <value>Resumo de Gastos</value>
+    </data>
+    <data name="OfMaximumSpendFormat" xml:space="preserve">
+        <value>de {0}</value>
+    </data>
+    <data name="BudgetRegisteredSuccessMessage" xml:space="preserve">
+        <value>Orçamento adicionado com sucesso</value>
+    </data>
 </root>

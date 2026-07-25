@@ -85,5 +85,23 @@ namespace PersonalFinance.Web.Resources.Home {
                 return ResourceManager.GetString("Income", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to View All.
+        /// </summary>
+        public static string ViewAllCta {
+            get {
+                return ResourceManager.GetString("ViewAllCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to There is no transaction record..
+        /// </summary>
+        public static string NoTransactionRecord {
+            get {
+                return ResourceManager.GetString("NoTransactionRecord", resourceCulture);
+            }
+        }
+
     }
 }

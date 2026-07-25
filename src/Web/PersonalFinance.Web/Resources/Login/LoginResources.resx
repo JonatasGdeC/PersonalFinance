@@ -57,4 +57,10 @@
     <data name="UnknownError" xml:space="preserve">
         <value>An unknown error occurred. Please try again later.</value>
     </data>
+    <data name="EmailAndPasswordRequiredError" xml:space="preserve">
+        <value>Email and password are required.</value>
+    </data>
+    <data name="AllFieldsRequiredError" xml:space="preserve">
+        <value>All fields are required.</value>
+    </data>
 </root>

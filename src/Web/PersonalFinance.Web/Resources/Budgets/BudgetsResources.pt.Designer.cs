@@ -373,5 +373,32 @@ namespace PersonalFinance.Web.Resources.Budgets {
                 return ResourceManager.GetString("ColorOrange", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Resumo de Gastos.
+        /// </summary>
+        public static string SpendingSummaryTitle {
+            get {
+                return ResourceManager.GetString("SpendingSummaryTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to de {0}.
+        /// </summary>
+        public static string OfMaximumSpendFormat {
+            get {
+                return ResourceManager.GetString("OfMaximumSpendFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Orçamento adicionado com sucesso.
+        /// </summary>
+        public static string BudgetRegisteredSuccessMessage {
+            get {
+                return ResourceManager.GetString("BudgetRegisteredSuccessMessage", resourceCulture);
+            }
+        }
+
     }
 }

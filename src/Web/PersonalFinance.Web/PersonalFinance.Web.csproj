@@ -122,4 +122,8 @@
       <Folder Include="Pages\Pots\Components\" />
       <Folder Include="UseState\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="AddSnackbar\AddSnackbar.razor" />
+    </ItemGroup>
 </Project>

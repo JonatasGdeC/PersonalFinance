@@ -3,6 +3,7 @@ using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
 using PersonalFinance.Web.Resources.Login;
+using PersonalFinance.Web.Services.SnackbarService;
 
 namespace PersonalFinance.Web.Pages.Login.Components.FormLogin;
 
@@ -25,7 +26,7 @@ public partial class FormLogin : ComponentBase
 
         if (string.IsNullOrWhiteSpace(value: _loginRequest.Email) || string.IsNullOrWhiteSpace(value: _loginRequest.Password))
         {
-            _errorMessage = ["Email and password are required."];
+            _errorMessage = [LoginResources.EmailAndPasswordRequiredError];
             return;
         }
 
@@ -36,6 +37,7 @@ public partial class FormLogin : ComponentBase
             LoginResponse response = await PersonalFinanceApi.User.Login(request: _loginRequest);
             await AuthenticationStateProvider.SetTokenAsync(token: response.Token);
             NavigationManager.NavigateTo(uri: "/");
+            SnackbarService.Show(message: "Bem-vindo de volta", severity: SnackbarSeverity.Success);
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -43,7 +45,7 @@ public partial class FormLogin : ComponentBase
         }
         catch
         {
-            _errorMessage = [LoginResources.UnknownError];
+            SnackbarService.Show(message: LoginResources.UnknownError, severity: SnackbarSeverity.Error);
         }
         finally
         {

@@ -121,5 +121,95 @@ namespace PersonalFinance.Web.Resources.Common {
                 return ResourceManager.GetString("Transactions", resourceCulture);
             }
         }
+        /// <summary>
+        ///   Looks up a localized string similar to Finance - .
+        /// </summary>
+        public static string AppTitlePrefix {
+            get {
+                return ResourceManager.GetString("AppTitlePrefix", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pagination.
+        /// </summary>
+        public static string PaginationLabel {
+            get {
+                return ResourceManager.GetString("PaginationLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Prev.
+        /// </summary>
+        public static string PreviousPage {
+            get {
+                return ResourceManager.GetString("PreviousPage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string NextPage {
+            get {
+                return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Show password.
+        /// </summary>
+        public static string ShowPassword {
+            get {
+                return ResourceManager.GetString("ShowPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hide password.
+        /// </summary>
+        public static string HidePassword {
+            get {
+                return ResourceManager.GetString("HidePassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Not found..
+        /// </summary>
+        public static string NotFoundDefaultText {
+            get {
+                return ResourceManager.GetString("NotFoundDefaultText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Not Found.
+        /// </summary>
+        public static string PageNotFoundTitle {
+            get {
+                return ResourceManager.GetString("PageNotFoundTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, the content you are looking for does not exist..
+        /// </summary>
+        public static string PageNotFoundMessage {
+            get {
+                return ResourceManager.GetString("PageNotFoundMessage", resourceCulture);
+            }
+        }
+
     }
 }

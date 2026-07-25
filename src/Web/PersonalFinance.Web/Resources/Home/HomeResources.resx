@@ -27,4 +27,10 @@
     <data name="Expenses" xml:space="preserve">
         <value>Expenses</value>
     </data>
+    <data name="ViewAllCta" xml:space="preserve">
+        <value>View All</value>
+    </data>
+    <data name="NoTransactionRecord" xml:space="preserve">
+        <value>There is no transaction record.</value>
+    </data>
 </root>

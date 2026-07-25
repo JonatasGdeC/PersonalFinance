@@ -1,5 +1,6 @@
 @using PersonalFinance.Communication.Dtos
 @using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Home
 @using PersonalFinance.Web.Utils.HandlerFormatAmountTransaction
 @using PersonalFinance.Web.Utils.HandlerFormatDateTransaction
 @using PersonalFinance.Web.Utils.HandlerNotFound
@@ -9,11 +10,11 @@
     <Body>
     <header class="summary-transaction-header">
         <AddText Text="@CommonResources.Transactions" Preset="TextPreset.Preset2"/>
-        <AddButton Text="View All" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToTransaction"/>
+        <AddButton Text="@HomeResources.ViewAllCta" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToTransaction"/>
     </header>
     @if (!LastestTransactions.Any())
     {
-        <HandlerNotFound Text="There is no transaction record."/>
+        <HandlerNotFound Text="@HomeResources.NoTransactionRecord"/>
     }
     else
     {

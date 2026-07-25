@@ -1,9 +1,11 @@
-<nav class="add-pagination" aria-label="Pagination">
+@using PersonalFinance.Web.Resources.Common
+
+<nav class="add-pagination" aria-label="@CommonResources.PaginationLabel">
     <button type="button" class="add-pagination__nav" disabled="@(CurrentPage <= 1)" @onclick="() => GoToPage(page: CurrentPage - 1)">
         <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
             <path d="M5 1L1 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        <span>Prev</span>
+        <span>@CommonResources.PreviousPage</span>
     </button>
 
     <div class="add-pagination__pages">
@@ -18,7 +20,7 @@
     </div>
 
     <button type="button" class="add-pagination__nav" disabled="@(CurrentPage >= TotalPages)" @onclick="() => GoToPage(page: CurrentPage + 1)">
-        <span>Next</span>
+        <span>@CommonResources.NextPage</span>
         <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
             <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>

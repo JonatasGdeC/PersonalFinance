@@ -10,6 +10,7 @@ using PersonalFinance.Web.Components.AddInput;
 using PersonalFinance.Web.Resources.Transactions;
 using PersonalFinance.Web.UseState.Category;
 using PersonalFinance.Web.UseState.Modal;
+using PersonalFinance.Web.Services.SnackbarService;
 using PersonalFinance.Web.UseState.Participant;
 using PersonalFinance.Web.UseState.Transaction;
 
@@ -98,6 +99,7 @@ public partial class ModalRegisterTransaction
             TransactionDto response = await PersonalFinanceApi.Transaction.Register(request: request);
             Dispatcher.Dispatch(action: new TransactionActions.RegisterTransactionSuccessAction(Transaction: response));
             HandleClose();
+            SnackbarService.Show(message: TransactionsResources.TransactionRegisteredSuccessMessage, severity: SnackbarSeverity.Success);
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -105,7 +107,7 @@ public partial class ModalRegisterTransaction
         }
         catch
         {
-            _errorMessages = [TransactionsResources.UnknownError];
+            SnackbarService.Show(message: TransactionsResources.UnknownError, severity: SnackbarSeverity.Error);
         }
         finally
         {

@@ -6,6 +6,7 @@ using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Communication.Validators;
 using PersonalFinance.Web.Components.AddInput;
 using PersonalFinance.Web.Resources.Transactions;
+using PersonalFinance.Web.Services.SnackbarService;
 using PersonalFinance.Web.UseState.Category;
 using PersonalFinance.Web.UseState.Modal;
 
@@ -50,6 +51,7 @@ public partial class ModalRegisterCategory
             CategoryDto category = await PersonalFinanceApi.Category.Register(request: request);
             Dispatcher.Dispatch(action: new CategoryActions.RegisterCategorySuccessAction(Category: category));
             HandleClose();
+            SnackbarService.Show(message: TransactionsResources.CategoryRegisteredSuccessMessage, severity: SnackbarSeverity.Success);
         }
         catch (ApiException exception) when (exception.ErrorMessages.Count > 0)
         {
@@ -57,7 +59,7 @@ public partial class ModalRegisterCategory
         }
         catch
         {
-            _errorMessages = [TransactionsResources.UnknownError];
+            SnackbarService.Show(message: TransactionsResources.UnknownError, severity: SnackbarSeverity.Error);
         }
         finally
         {
