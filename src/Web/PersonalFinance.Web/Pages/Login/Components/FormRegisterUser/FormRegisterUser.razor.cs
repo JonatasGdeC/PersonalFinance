@@ -1,7 +1,9 @@
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Components;
 using PersonalFinance.Adapter.Exceptions;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Communication.Responses.User;
+using PersonalFinance.Communication.Validators;
 using PersonalFinance.Web.Resources.Login;
 
 namespace PersonalFinance.Web.Pages.Login.Components.FormRegisterUser;
@@ -23,10 +25,13 @@ public partial class FormRegisterUser : ComponentBase
     private async Task HandleRegisterUser()
     {
         _errorMessage = [];
-
-        if (string.IsNullOrWhiteSpace(value: _registerUserRequest.Name) || string.IsNullOrWhiteSpace(value: _registerUserRequest.Email) || string.IsNullOrWhiteSpace(value: _registerUserRequest.Password))
+        
+        UserValidator validator = new();
+        ValidationResult? result = await validator.ValidateAsync(instance: _registerUserRequest);
+        
+        if (!result.IsValid)
         {
-            _errorMessage = ["All fields are required."];
+            _errorMessage = result.Errors.Select(selector: error => error.ErrorMessage).ToList();
             return;
         }
 
