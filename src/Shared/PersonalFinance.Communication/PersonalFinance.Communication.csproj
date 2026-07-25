@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="12.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Backend\PersonalFinance.Domain\PersonalFinance.Domain.csproj" />
+      <ProjectReference Include="..\PersonalFinance.Exception\PersonalFinance.Exception.csproj" />
+    </ItemGroup>
+
 </Project>

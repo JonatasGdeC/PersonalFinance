@@ -54,6 +54,14 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>TransactionsResources.pt.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Budgets\BudgetsResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>BudgetsResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Budgets\BudgetsResources.pt.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>BudgetsResources.pt.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -97,9 +105,21 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>TransactionsResources.pt.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Budgets\BudgetsResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BudgetsResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Budgets\BudgetsResources.pt.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BudgetsResources.pt.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\Bills\Components\" />
+      <Folder Include="Pages\Pots\Components\" />
       <Folder Include="UseState\" />
     </ItemGroup>
 </Project>
