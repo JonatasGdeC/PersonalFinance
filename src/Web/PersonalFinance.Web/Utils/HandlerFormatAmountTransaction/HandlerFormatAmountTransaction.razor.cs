@@ -11,7 +11,7 @@ public partial class HandlerFormatAmountTransaction : ComponentBase
     
     private static string FormatAmount(TransactionDto transaction)
     {
-        string sign = transaction.Type == TransactionType.Income ? "+" : "-";
+        string sign = transaction.Type == FinancialType.Income ? "+" : "-";
 
         return $"{sign}{Math.Abs(value: transaction.Amount).ToString(format: "C2", provider: CultureInfo.CurrentCulture)}";
     }

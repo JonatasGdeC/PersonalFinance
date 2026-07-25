@@ -13,7 +13,7 @@ public class GetAllCategoryUseCase(
     ILoggedUser loggedUser,
     IMapper mapper) : IGetAllCategoryUseCase
 {
-    public async Task<GetAllCategoryResponse> Execute(TransactionType? transactionType = null)
+    public async Task<GetAllCategoryResponse> Execute(FinancialType? transactionType = null)
     {
         User user = await loggedUser.Get();
 

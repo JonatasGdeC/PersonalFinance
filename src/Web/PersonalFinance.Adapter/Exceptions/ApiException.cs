@@ -1,6 +1,7 @@
 using System.Net;
 
 namespace PersonalFinance.Adapter.Exceptions;
+using System;
 
 public sealed class ApiException(HttpStatusCode statusCode, IReadOnlyList<string> errorMessages) : Exception(message: string.Join(separator: Environment.NewLine, values: errorMessages))
 {

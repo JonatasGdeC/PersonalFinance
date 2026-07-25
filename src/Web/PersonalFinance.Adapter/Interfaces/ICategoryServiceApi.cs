@@ -10,5 +10,5 @@ public interface ICategoryServiceApi
     Task<CategoryDto> Register(RegisterCategoryRequest request);
     Task Update(Guid categoryId, RegisterCategoryRequest request);
     Task Delete(Guid categoryId);
-    Task<GetAllCategoryResponse?> GetAll(TransactionType? transactionType = null);
+    Task<GetAllCategoryResponse?> GetAll(FinancialType? transactionType = null);
 }

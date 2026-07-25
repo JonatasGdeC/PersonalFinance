@@ -17,7 +17,7 @@ internal class CategoryServiceApi(HttpClient httpClient) : ApiServiceBase(httpCl
     public async Task Delete(Guid categoryId) =>
         await DeleteAsync(route: $"/{categoryId}");
 
-    public async Task<GetAllCategoryResponse?> GetAll(TransactionType? transactionType = null)
+    public async Task<GetAllCategoryResponse?> GetAll(FinancialType? transactionType = null)
     {
         string query = BuildQueryString(("TransactionType", transactionType));
 

@@ -1,6 +1,6 @@
 namespace PersonalFinance.Infrastructure.Migrations;
 
-internal sealed class MigrationContants
+internal static class MigrationContants
 {
     internal static class Version
     {

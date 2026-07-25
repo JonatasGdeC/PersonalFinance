@@ -49,7 +49,7 @@ public class CategoryController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(type: typeof(GetAllCategoryResponse), statusCode: StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAll([FromServices] IGetAllCategoryUseCase useCase, [FromQuery] TransactionType? transactionType = null)
+    public async Task<IActionResult> GetAll([FromServices] IGetAllCategoryUseCase useCase, [FromQuery] FinancialType? transactionType = null)
     {
         GetAllCategoryResponse response = await useCase.Execute(transactionType: transactionType);
         return Ok(value: response);

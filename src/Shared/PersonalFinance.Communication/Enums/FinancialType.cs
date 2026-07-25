@@ -1,6 +1,6 @@
 namespace PersonalFinance.Communication.Enums;
 
-public enum TransactionType
+public enum FinancialType
 {
     Income = 0,
     Expense = 1,

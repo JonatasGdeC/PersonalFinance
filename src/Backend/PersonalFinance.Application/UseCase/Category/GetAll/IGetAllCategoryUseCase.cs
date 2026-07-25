@@ -5,5 +5,5 @@ namespace PersonalFinance.Application.UseCase.Category.GetAll;
 
 public interface IGetAllCategoryUseCase
 {
-    Task<GetAllCategoryResponse> Execute(TransactionType? transactionType = null);
+    Task<GetAllCategoryResponse> Execute(FinancialType? transactionType = null);
 }
