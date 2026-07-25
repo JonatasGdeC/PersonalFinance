@@ -1,10 +1,28 @@
 .header-main {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     padding: 10px 32px;
-    
-    & > .add-input {
-        width: 120px;
+
+    & > .select-date {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        & > button {
+            width: 25px;
+            height: 25px;
+            border: none;
+            border-radius: 100%;
+            background-color: var(--beige-100);
+            color: var(--grey-900);
+            cursor: pointer;
+            transition: background-color 0.2s;
+            
+            &:hover {
+                background-color: var(--beige-500);
+            }
+        }
     }
 }

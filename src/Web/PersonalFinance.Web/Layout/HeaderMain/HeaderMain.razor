@@ -1,3 +1,22 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using System.Globalization
+
 <header class="header-main">
-    <AddSetLanguage/>
+    <div class="select-date">
+        <button @onclick="@NavigateToLastDate">
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+                <path d="M5 1L1 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+        <AddText Text="@(DateState.Value.CurrentDate.ToString(format: "MM/yyyy", provider: CultureInfo.CurrentCulture))" Preset="TextPreset.Preset3"/>
+        <button @onclick="@NavigateToNextDate">
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+    
+    <div>
+        <AddSetLanguage/>
+    </div>
 </header>
