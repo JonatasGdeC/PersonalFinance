@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.Bill;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.Bill;
+namespace PersonalFinance.Communication.Validators;
 
 public class BillValidator : AbstractValidator<RegisterBillRequest>
 {

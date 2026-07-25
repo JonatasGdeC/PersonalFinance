@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.Participant;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.Participant;
+namespace PersonalFinance.Communication.Validators;
 
 public class ParticipantValidator : AbstractValidator<RegisterParticipantRequest>
 {

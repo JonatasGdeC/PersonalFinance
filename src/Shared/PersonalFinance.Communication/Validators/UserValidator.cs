@@ -1,8 +1,7 @@
 using FluentValidation;
-using PersonalFinance.Application.UseCase.User.Update;
 using PersonalFinance.Communication.Requests.User;
 
-namespace PersonalFinance.Application.UseCase.User;
+namespace PersonalFinance.Communication.Validators;
 
 public class UserValidator : AbstractValidator<RegisterUserRequest>
 {

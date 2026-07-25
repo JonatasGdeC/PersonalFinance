@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.User;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.User.Update;
+namespace PersonalFinance.Communication.Validators;
 
 public class UpdateUserValidator : AbstractValidator<UpdateUserRequest>
 {

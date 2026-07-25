@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.Transaction;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.Transaction;
+namespace PersonalFinance.Communication.Validators;
 
 public class TransactionValidator : AbstractValidator<RegisterTransactionRequest>
 {

@@ -1,7 +1,7 @@
 using FluentValidation;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.User;
+namespace PersonalFinance.Communication.Validators;
 
 public class PasswordValidator : AbstractValidator<string>
 {

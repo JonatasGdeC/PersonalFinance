@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.Category;
+namespace PersonalFinance.Communication.Validators;
 
 public class CategoryValidator : AbstractValidator<RegisterCategoryRequest>
 {

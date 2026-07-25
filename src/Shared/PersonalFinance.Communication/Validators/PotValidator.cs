@@ -2,7 +2,7 @@ using FluentValidation;
 using PersonalFinance.Communication.Requests.Pot;
 using PersonalFinance.Exception;
 
-namespace PersonalFinance.Application.UseCase.Pot;
+namespace PersonalFinance.Communication.Validators;
 
 public class PotValidator : AbstractValidator<RegisterPotRequest>
 {
