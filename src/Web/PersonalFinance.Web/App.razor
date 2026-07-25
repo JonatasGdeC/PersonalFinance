@@ -1,5 +1,7 @@
-﻿@using PersonalFinance.Web.Layout.MainLayout
+﻿@using PersonalFinance.Web.Components.AddSnackbar
+@using PersonalFinance.Web.Layout.MainLayout
 
+<AddSnackbar/>
 <Fluxor.Blazor.Web.StoreInitializer/>
 <Router AppAssembly="@typeof(App).Assembly" NotFoundPage="typeof(Pages.NotFound)">
     <Found Context="routeData">

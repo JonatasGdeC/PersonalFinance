@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.JSInterop;
 using PersonalFinance.Adapter;
 using PersonalFinance.Web;
+using PersonalFinance.Web.Services.SnackbarService;
 
 WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args: args);
 builder.RootComponents.Add<App>(selector: "#app");
 builder.RootComponents.Add<HeadOutlet>(selector: "head::after");
+builder.Services.AddScoped<SnackbarService>();
 
 builder.Services.AddScoped(implementationFactory: sp => new HttpClient { BaseAddress = new Uri(uriString: builder.HostEnvironment.BaseAddress) });
 builder.Services.AddAdapter(builder: builder);
