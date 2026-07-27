@@ -35,6 +35,7 @@
 @using PersonalFinance.Web.UseState.Pot.State
 @using PersonalFinance.Web.UseState.Bill.State
 @using PersonalFinance.Web.UseState.Date.State
+@using PersonalFinance.Web.UseState.User.State
 
 @inject IDispatcher Dispatcher
 @inject IState<CategoryState> CategoryState
@@ -51,6 +52,7 @@
 @inject IState<BillState> BillState
 @inject IState<BillListState> BillListState
 @inject IState<DateState> DateState
+@inject IState<UserState> UserState
 
 @inject PersonalFinanceApi PersonalFinanceApi
 @inject CookieAuthenticationStateProvider AuthenticationStateProvider

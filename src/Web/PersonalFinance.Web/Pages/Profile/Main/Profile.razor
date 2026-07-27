@@ -1,0 +1,76 @@
+@page "/profile"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Web.Pages.Profile.Components.ModalDeleteAccount
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Profile
+
+<PageTitle>@CommonResources.AppTitlePrefix@ProfileResources.PageTitle</PageTitle>
+
+<header class="profile-header">
+    <AddText Text="@ProfileResources.PageTitle" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+</header>
+
+<div class="profile-container">
+    <AddCard>
+        <Body>
+        <form class="profile-form" @onsubmit="HandleUpdateProfile" @onsubmit:preventDefault="true">
+            <AddText Text="@ProfileResources.ProfileInfoTitle" Preset="TextPreset.Preset2"/>
+
+            <AddInput Label="@ProfileResources.NameLabel" Placeholder="@ProfileResources.NamePlaceholder"
+                      @bind-Value="_name" Required="true" Disabled="_isSubmittingProfile"/>
+
+            <AddInput Label="@ProfileResources.EmailLabel" Placeholder="@ProfileResources.EmailPlaceholder" IsEmail="true"
+                      @bind-Value="_email" Required="true" Disabled="_isSubmittingProfile"/>
+
+            <AddInput Label="@ProfileResources.ProfileImageLabel" Placeholder="@ProfileResources.ProfileImagePlaceholder"
+                      @bind-Value="_profileImage" Disabled="_isSubmittingProfile"/>
+
+            <label class="profile-form__checkbox">
+                <input type="checkbox" checked="@_receiveEmailNotifications"
+                       @onchange="HandleEmailNotificationsChanged" disabled="@_isSubmittingProfile"/>
+                <AddText Text="@ProfileResources.ReceiveEmailNotificationsLabel" Preset="TextPreset.Preset4"/>
+            </label>
+
+            @foreach (string errorMessage in _profileErrorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@ProfileResources.SaveChangesButton" Type="submit" FullWidth="true" Disabled="_isSubmittingProfile"/>
+        </form>
+        </Body>
+    </AddCard>
+
+    <AddCard>
+        <Body>
+        <form class="profile-form" @onsubmit="HandleChangePassword" @onsubmit:preventDefault="true">
+            <AddText Text="@ProfileResources.ChangePasswordTitle" Preset="TextPreset.Preset2"/>
+
+            <AddInput Label="@ProfileResources.CurrentPasswordLabel" IsPassword="true"
+                      @bind-Value="_oldPassword" Required="true" Disabled="_isSubmittingPassword"/>
+
+            <AddInput Label="@ProfileResources.NewPasswordLabel" IsPassword="true"
+                      @bind-Value="_newPassword" Required="true" Disabled="_isSubmittingPassword"/>
+
+            @foreach (string errorMessage in _passwordErrorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@ProfileResources.ChangePasswordButton" Type="submit" FullWidth="true" Disabled="_isSubmittingPassword"/>
+        </form>
+        </Body>
+    </AddCard>
+
+    <AddCard>
+        <Body>
+        <div class="profile-danger-zone">
+            <AddText Text="@ProfileResources.DangerZoneTitle" Preset="TextPreset.Preset2" Color="ThemeColor.Red"/>
+            <AddText Text="@ProfileResources.DeleteAccountDescription" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+            <AddButton Text="@ProfileResources.DeleteAccountCta" Variant="ButtonVariant.Destructive" OnClick="@OpenDeleteAccountModal"/>
+        </div>
+        </Body>
+    </AddCard>
+</div>
+
+<ModalDeleteAccount/>
