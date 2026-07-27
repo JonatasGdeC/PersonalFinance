@@ -42,10 +42,3 @@
 .add-dropdown-menu__item--destructive:hover {
     color: color-mix(in srgb, var(--red) 70%, var(--white));
 }
-
-.add-dropdown-menu__divider {
-    width: 100%;
-    border: none;
-    border-top: 1px solid var(--grey-100);
-    margin: 0;
-}

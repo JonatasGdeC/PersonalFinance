@@ -45,6 +45,6 @@ public partial class HeaderMain
     {
         _isUserMenuOpen = false;
         await AuthenticationStateProvider.RemoveTokenAsync();
-        NavigationManager.NavigateTo(uri: "/", forceLoad: true);
+        NavigationManager.NavigateTo(uri: "/");
     }
 }

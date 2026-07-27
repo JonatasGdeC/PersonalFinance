@@ -15,11 +15,10 @@
                     <AddIcon Icon="Icon.DOTS_THREE_OUTLINE" Size="20" Color="ThemeColor.Grey300"/>
                 </button>
 
-                <AddDropdownMenu IsOpen="_isMenuOpen" OnClose="CloseMenu">
-                    <button type="button" class="add-dropdown-menu__item" @onclick="HandleEditClick">@PotsResources.EditPotCta</button>
-                    <hr class="add-dropdown-menu__divider"/>
-                    <button type="button" class="add-dropdown-menu__item add-dropdown-menu__item--destructive" @onclick="HandleDeleteClick">@PotsResources.DeletePotCta</button>
-                </AddDropdownMenu>
+                <AddDropdownMenu IsOpen="_isMenuOpen" OnClose="@CloseMenu"
+                                 TextOption1="@PotsResources.EditPotCta" OnClick1="@HandleEditClick"
+                                 TextOption2="@PotsResources.DeletePotCta" OnClick2="@HandleDeleteClick"
+                                 Option2IsDestructive="true"/>
             </div>
         </header>
 

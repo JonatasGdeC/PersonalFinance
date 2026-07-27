@@ -1,8 +1,12 @@
 @if (IsOpen)
 {
-    <div class="add-dropdown-menu__backdrop" @onclick="HandleClose"></div>
+    <div class="add-dropdown-menu__backdrop" @onclick="@HandleClose"></div>
 
     <div class="add-dropdown-menu">
-        @ChildContent
+        <button type="button" class="add-dropdown-menu__item" @onclick="@HandleClick1">@TextOption1</button>
+        <hr class="add-dropdown-menu__divider"/>
+        <button type="button"
+                class="@($"add-dropdown-menu__item {(Option2IsDestructive ? "add-dropdown-menu__item--destructive" : string.Empty)}")"
+                @onclick="@HandleClick2">@TextOption2</button>
     </div>
 }

@@ -35,11 +35,9 @@
                 <AddText Text="@(UserState.Value.User?.Name ?? string.Empty)" Preset="TextPreset.Preset4Bold"/>
             </button>
 
-            <AddDropdownMenu IsOpen="_isUserMenuOpen" OnClose="CloseUserMenu">
-                <button type="button" class="add-dropdown-menu__item" @onclick="HandleEditProfileClick">@CommonResources.EditProfileCta</button>
-                <hr class="add-dropdown-menu__divider"/>
-                <button type="button" class="add-dropdown-menu__item" @onclick="HandleLogoutClick">@CommonResources.LogoutCta</button>
-            </AddDropdownMenu>
+            <AddDropdownMenu IsOpen="_isUserMenuOpen" OnClose="@CloseUserMenu"
+                             TextOption1="@CommonResources.EditProfileCta" OnClick1="@HandleEditProfileClick"
+                             TextOption2="@CommonResources.LogoutCta" OnClick2="@HandleLogoutClick"/>
         </div>
     </div>
 </header>
