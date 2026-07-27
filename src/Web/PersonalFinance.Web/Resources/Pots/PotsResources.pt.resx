@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AddPotCta" xml:space="preserve">
+        <value>+ Adicionar Novo Pote</value>
+    </data>
+    <data name="AddPotTitle" xml:space="preserve">
+        <value>Adicionar Novo Pote</value>
+    </data>
+    <data name="AddPotSubtitle" xml:space="preserve">
+        <value>Crie um pote para definir metas de economia. Isso pode ajudar você a se manter no caminho certo enquanto economiza para compras especiais.</value>
+    </data>
+    <data name="PotNameLabel" xml:space="preserve">
+        <value>Nome do Pote</value>
+    </data>
+    <data name="PotNamePlaceholder" xml:space="preserve">
+        <value>ex. Dias de Chuva</value>
+    </data>
+    <data name="CharactersLeftFormat" xml:space="preserve">
+        <value>{0} caracteres restantes</value>
+    </data>
+    <data name="TargetLabel" xml:space="preserve">
+        <value>Meta</value>
+    </data>
+    <data name="TargetPlaceholder" xml:space="preserve">
+        <value>ex. 2000</value>
+    </data>
+    <data name="ThemeLabel" xml:space="preserve">
+        <value>Tema</value>
+    </data>
+    <data name="ThemePlaceholder" xml:space="preserve">
+        <value>Selecione o Tema</value>
+    </data>
+    <data name="AlreadyUsedBadge" xml:space="preserve">
+        <value>Já utilizado</value>
+    </data>
+    <data name="AddPotButton" xml:space="preserve">
+        <value>Adicionar Pote</value>
+    </data>
+    <data name="AddNewThemeTitle" xml:space="preserve">
+        <value>Nova Cor de Tema</value>
+    </data>
+    <data name="CustomColorNameLabel" xml:space="preserve">
+        <value>Nome da Cor</value>
+    </data>
+    <data name="CustomColorNamePlaceholder" xml:space="preserve">
+        <value>ex. Azul Céu</value>
+    </data>
+    <data name="CustomColorValueLabel" xml:space="preserve">
+        <value>Cor</value>
+    </data>
+    <data name="AddThemeButton" xml:space="preserve">
+        <value>Adicionar Tema</value>
+    </data>
+    <data name="CancelButton" xml:space="preserve">
+        <value>Cancelar</value>
+    </data>
+    <data name="RequiredFieldsError" xml:space="preserve">
+        <value>Por favor, preencha todos os campos obrigatórios.</value>
+    </data>
+    <data name="UnknownError" xml:space="preserve">
+        <value>Algo deu errado. Tente novamente.</value>
+    </data>
+    <data name="NoPotRecorded" xml:space="preserve">
+        <value>Nenhum pote registrado.</value>
+    </data>
+    <data name="TotalSavedLabel" xml:space="preserve">
+        <value>Total Economizado</value>
+    </data>
+    <data name="TargetOfFormat" xml:space="preserve">
+        <value>Meta de {0}</value>
+    </data>
+    <data name="AddMoneyCta" xml:space="preserve">
+        <value>+ Adicionar Dinheiro</value>
+    </data>
+    <data name="WithdrawCta" xml:space="preserve">
+        <value>Retirar</value>
+    </data>
+    <data name="PotOptionsAriaLabel" xml:space="preserve">
+        <value>Opções do pote</value>
+    </data>
+    <data name="EditPotCta" xml:space="preserve">
+        <value>Editar Pote</value>
+    </data>
+    <data name="DeletePotCta" xml:space="preserve">
+        <value>Excluir Pote</value>
+    </data>
+    <data name="EditPotTitle" xml:space="preserve">
+        <value>Editar Pote</value>
+    </data>
+    <data name="EditPotSubtitle" xml:space="preserve">
+        <value>Se suas metas de economia mudarem, sinta-se à vontade para atualizar seus potes.</value>
+    </data>
+    <data name="SaveChangesButton" xml:space="preserve">
+        <value>Salvar Alterações</value>
+    </data>
+    <data name="DeletePotTitleFormat" xml:space="preserve">
+        <value>Excluir '{0}'?</value>
+    </data>
+    <data name="DeletePotMessage" xml:space="preserve">
+        <value>Tem certeza de que deseja excluir este pote? Esta ação não pode ser desfeita, e todos os dados dentro dele serão removidos para sempre.</value>
+    </data>
+    <data name="ConfirmDeletionButton" xml:space="preserve">
+        <value>Sim, Confirmar Exclusão</value>
+    </data>
+    <data name="GoBackButton" xml:space="preserve">
+        <value>Não, Voltar</value>
+    </data>
+    <data name="PotRegisteredSuccessMessage" xml:space="preserve">
+        <value>Pote adicionado com sucesso</value>
+    </data>
+    <data name="PotUpdatedSuccessMessage" xml:space="preserve">
+        <value>Pote atualizado com sucesso</value>
+    </data>
+    <data name="PotDeletedSuccessMessage" xml:space="preserve">
+        <value>Pote excluído com sucesso</value>
+    </data>
+    <data name="ColorGreen" xml:space="preserve">
+        <value>Verde</value>
+    </data>
+    <data name="ColorYellow" xml:space="preserve">
+        <value>Amarelo</value>
+    </data>
+    <data name="ColorCyan" xml:space="preserve">
+        <value>Ciano</value>
+    </data>
+    <data name="ColorNavy" xml:space="preserve">
+        <value>Azul Marinho</value>
+    </data>
+    <data name="ColorRed" xml:space="preserve">
+        <value>Vermelho</value>
+    </data>
+    <data name="ColorPurple" xml:space="preserve">
+        <value>Roxo</value>
+    </data>
+    <data name="ColorPurpleLight" xml:space="preserve">
+        <value>Roxo Claro</value>
+    </data>
+    <data name="ColorTurquoise" xml:space="preserve">
+        <value>Turquesa</value>
+    </data>
+    <data name="ColorBrown" xml:space="preserve">
+        <value>Marrom</value>
+    </data>
+    <data name="ColorMagenta" xml:space="preserve">
+        <value>Magenta</value>
+    </data>
+    <data name="ColorBlue" xml:space="preserve">
+        <value>Azul</value>
+    </data>
+    <data name="ColorNavyGrey" xml:space="preserve">
+        <value>Cinza Azulado</value>
+    </data>
+    <data name="ColorArmyGreen" xml:space="preserve">
+        <value>Verde Militar</value>
+    </data>
+    <data name="ColorGold" xml:space="preserve">
+        <value>Dourado</value>
+    </data>
+    <data name="ColorOrange" xml:space="preserve">
+        <value>Laranja</value>
+    </data>
+</root>
