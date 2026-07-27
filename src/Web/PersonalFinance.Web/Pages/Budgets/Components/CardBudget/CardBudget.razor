@@ -1,0 +1,56 @@
+@using System.Globalization
+@using PersonalFinance.Web.Components.AddDropdownMenu
+@using PersonalFinance.Web.Resources.Budgets
+@using PersonalFinance.Web.Utils.HandlerExpensesByBudget
+
+<AddCard>
+    <Body>
+    <div class="card-budget">
+        <header class="card-budget__header">
+            <div class="card-budget__identity">
+                <div class="card-budget__color-dot" style="@($"background-color: {Budget.Color};")"></div>
+                <AddText Text="@Budget.Category.Name" Preset="TextPreset.Preset2"/>
+            </div>
+            <div class="card-budget__menu-wrapper">
+                <button type="button" class="card-budget__menu" aria-label="@BudgetsResources.BudgetOptionsAriaLabel" @onclick="ToggleMenu">
+                    <AddIcon Icon="Icon.DOTS_THREE_OUTLINE" Size="20" Color="ThemeColor.Grey300"/>
+                </button>
+
+                <AddDropdownMenu IsOpen="_isMenuOpen" OnClose="CloseMenu">
+                    <button type="button" class="add-dropdown-menu__item" @onclick="HandleEditClick">@BudgetsResources.EditBudgetCta</button>
+                    <hr class="add-dropdown-menu__divider"/>
+                    <button type="button" class="add-dropdown-menu__item add-dropdown-menu__item--destructive" @onclick="HandleDeleteClick">@BudgetsResources.DeleteBudgetCta</button>
+                </AddDropdownMenu>
+            </div>
+        </header>
+
+        <AddText Text="@string.Format(format: BudgetsResources.MaximumSpendFormat, arg0: Budget.MaximumSpend.ToString(format: "C2", provider: CultureInfo.CurrentCulture))"
+                 Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+
+        <div class="card-budget__progress">
+            <div class="card-budget__progress-fill" style="@($"width: {SpentPercentage.ToString(format: "0.##", provider: CultureInfo.InvariantCulture)}%; background-color: {Budget.Color};")"></div>
+        </div>
+
+        <div class="card-budget__stats">
+            <div class="card-budget__stat" style="@($"border-left-color: {Budget.Color};")">
+                <AddText Text="@BudgetsResources.SpentLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                <HandlerExpensesByBudget Budget="Budget" TextPreset="TextPreset.Preset4Bold" OnSpentLoaded="HandleSpentLoaded"/>
+            </div>
+            <div class="card-budget__stat card-budget__stat--remaining">
+                <AddText Text="@BudgetsResources.RemainingLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                <HandlerExpensesByBudget Budget="Budget" ShowRemaining="true" TextPreset="TextPreset.Preset4Bold"/>
+            </div>
+        </div>
+
+        <div class="card-budget__latest-spending">
+            <header class="card-budget__latest-spending-header">
+                <AddText Text="@BudgetsResources.LatestSpendingTitle" Preset="TextPreset.Preset3"/>
+                <AddButton Text="@BudgetsResources.SeeAllCta" Variant="ButtonVariant.Tertiary"
+                           OnClick="@( () => NavigationManager.NavigateTo(uri: "/transactions"))"/>
+            </header>
+
+            <HandlerExpensesByBudget Budget="Budget" ShowList="true"/>
+        </div>
+    </div>
+    </Body>
+</AddCard>
