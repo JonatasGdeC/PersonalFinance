@@ -3,16 +3,17 @@
 @using PersonalFinance.Web.Resources.Budgets
 @using PersonalFinance.Web.Utils.HandlerBudgetChart
 @using PersonalFinance.Web.Utils.HandlerExpensesByBudget
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 <AddCard IsLoading="@IsLoading">
     <Body>
     <div class="budget-chart">
-        <HandlerBudgetChart ListBudgets="@ListBudgets"/>
+        <HandlerBudgetChart/>
         <div class="budget-chart__summary">
             <AddText Text="@BudgetsResources.SpendingSummaryTitle" Preset="TextPreset.Preset2"/>
             
             <ul class="budget-chart__list">
-                @foreach (BudgetDto budget in ListBudgets)
+                @foreach (BudgetDto budget in BudgetListState.Value.Budgets)
                 {
                     <li class="budget-chart__list-item">
                         <div class="budget-chart__item-identify">

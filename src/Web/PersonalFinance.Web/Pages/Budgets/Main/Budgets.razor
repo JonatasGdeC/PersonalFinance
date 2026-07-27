@@ -1,7 +1,11 @@
 @page "/budgets"
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Communication.Dtos
 @using PersonalFinance.Web.Pages.Budgets.Components.BudgetChart
+@using PersonalFinance.Web.Pages.Budgets.Components.CardBudget
+@using PersonalFinance.Web.Pages.Budgets.Components.ModalDeleteBudget
 @using PersonalFinance.Web.Pages.Budgets.Components.ModalRegisterBudget
+@using PersonalFinance.Web.Pages.Budgets.Components.ModalUpdateBudget
 @using PersonalFinance.Web.Resources.Budgets
 @using PersonalFinance.Web.Resources.Common
 @using PersonalFinance.Web.Utils.HandlerNotFound
@@ -19,7 +23,19 @@
 }
 else
 {
-    <BudgetChart IsLoading="@_isLoading" ListBudgets="@BudgetListState.Value.Budgets"/>
+    <div class="budgets-container">
+        <BudgetChart IsLoading="@_isLoading"/>
+        <ul class="budgets-list">
+            @foreach (BudgetDto budget in BudgetListState.Value.Budgets)
+            {
+                <li>
+                    <CardBudget Budget="@budget"/>
+                </li>
+            }
+        </ul>
+    </div>
 }
 
 <ModalRegisterBudget/>
+<ModalUpdateBudget/>
+<ModalDeleteBudget/>

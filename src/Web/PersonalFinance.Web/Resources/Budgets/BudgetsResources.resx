@@ -132,4 +132,55 @@
     <data name="BudgetRegisteredSuccessMessage" xml:space="preserve">
         <value>Budget added successfully</value>
     </data>
+    <data name="MaximumSpendFormat" xml:space="preserve">
+        <value>Maximum of {0}</value>
+    </data>
+    <data name="SpentLabel" xml:space="preserve">
+        <value>Spent</value>
+    </data>
+    <data name="RemainingLabel" xml:space="preserve">
+        <value>Remaining</value>
+    </data>
+    <data name="LatestSpendingTitle" xml:space="preserve">
+        <value>Latest Spending</value>
+    </data>
+    <data name="SeeAllCta" xml:space="preserve">
+        <value>See All</value>
+    </data>
+    <data name="BudgetOptionsAriaLabel" xml:space="preserve">
+        <value>Budget options</value>
+    </data>
+    <data name="EditBudgetCta" xml:space="preserve">
+        <value>Edit Budget</value>
+    </data>
+    <data name="DeleteBudgetCta" xml:space="preserve">
+        <value>Delete Budget</value>
+    </data>
+    <data name="EditBudgetTitle" xml:space="preserve">
+        <value>Edit Budget</value>
+    </data>
+    <data name="EditBudgetSubtitle" xml:space="preserve">
+        <value>As your budgets change, feel free to update your spending limits.</value>
+    </data>
+    <data name="SaveChangesButton" xml:space="preserve">
+        <value>Save Changes</value>
+    </data>
+    <data name="DeleteBudgetTitleFormat" xml:space="preserve">
+        <value>Delete '{0}'?</value>
+    </data>
+    <data name="DeleteBudgetMessage" xml:space="preserve">
+        <value>Are you sure you want to delete this budget? This action cannot be reversed, and all the data inside it will be removed forever.</value>
+    </data>
+    <data name="ConfirmDeletionButton" xml:space="preserve">
+        <value>Yes, Confirm Deletion</value>
+    </data>
+    <data name="GoBackButton" xml:space="preserve">
+        <value>No, Go Back</value>
+    </data>
+    <data name="BudgetUpdatedSuccessMessage" xml:space="preserve">
+        <value>Budget updated successfully</value>
+    </data>
+    <data name="BudgetDeletedSuccessMessage" xml:space="preserve">
+        <value>Budget deleted successfully</value>
+    </data>
 </root>

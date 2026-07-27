@@ -132,4 +132,55 @@
     <data name="BudgetRegisteredSuccessMessage" xml:space="preserve">
         <value>Orçamento adicionado com sucesso</value>
     </data>
+    <data name="MaximumSpendFormat" xml:space="preserve">
+        <value>Máximo de {0}</value>
+    </data>
+    <data name="SpentLabel" xml:space="preserve">
+        <value>Gasto</value>
+    </data>
+    <data name="RemainingLabel" xml:space="preserve">
+        <value>Restante</value>
+    </data>
+    <data name="LatestSpendingTitle" xml:space="preserve">
+        <value>Últimos Gastos</value>
+    </data>
+    <data name="SeeAllCta" xml:space="preserve">
+        <value>Ver Tudo</value>
+    </data>
+    <data name="BudgetOptionsAriaLabel" xml:space="preserve">
+        <value>Opções do orçamento</value>
+    </data>
+    <data name="EditBudgetCta" xml:space="preserve">
+        <value>Editar Orçamento</value>
+    </data>
+    <data name="DeleteBudgetCta" xml:space="preserve">
+        <value>Excluir Orçamento</value>
+    </data>
+    <data name="EditBudgetTitle" xml:space="preserve">
+        <value>Editar Orçamento</value>
+    </data>
+    <data name="EditBudgetSubtitle" xml:space="preserve">
+        <value>Conforme seus orçamentos mudam, sinta-se à vontade para atualizar seus limites de gastos.</value>
+    </data>
+    <data name="SaveChangesButton" xml:space="preserve">
+        <value>Salvar Alterações</value>
+    </data>
+    <data name="DeleteBudgetTitleFormat" xml:space="preserve">
+        <value>Excluir '{0}'?</value>
+    </data>
+    <data name="DeleteBudgetMessage" xml:space="preserve">
+        <value>Tem certeza de que deseja excluir este orçamento? Esta ação não pode ser desfeita, e todos os dados dentro dele serão removidos para sempre.</value>
+    </data>
+    <data name="ConfirmDeletionButton" xml:space="preserve">
+        <value>Sim, Confirmar Exclusão</value>
+    </data>
+    <data name="GoBackButton" xml:space="preserve">
+        <value>Não, Voltar</value>
+    </data>
+    <data name="BudgetUpdatedSuccessMessage" xml:space="preserve">
+        <value>Orçamento atualizado com sucesso</value>
+    </data>
+    <data name="BudgetDeletedSuccessMessage" xml:space="preserve">
+        <value>Orçamento excluído com sucesso</value>
+    </data>
 </root>

@@ -400,5 +400,158 @@ namespace PersonalFinance.Web.Resources.Budgets {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Máximo de {0}.
+        /// </summary>
+        public static string MaximumSpendFormat {
+            get {
+                return ResourceManager.GetString("MaximumSpendFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Gasto.
+        /// </summary>
+        public static string SpentLabel {
+            get {
+                return ResourceManager.GetString("SpentLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restante.
+        /// </summary>
+        public static string RemainingLabel {
+            get {
+                return ResourceManager.GetString("RemainingLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Últimos Gastos.
+        /// </summary>
+        public static string LatestSpendingTitle {
+            get {
+                return ResourceManager.GetString("LatestSpendingTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ver Tudo.
+        /// </summary>
+        public static string SeeAllCta {
+            get {
+                return ResourceManager.GetString("SeeAllCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Opções do orçamento.
+        /// </summary>
+        public static string BudgetOptionsAriaLabel {
+            get {
+                return ResourceManager.GetString("BudgetOptionsAriaLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Orçamento.
+        /// </summary>
+        public static string EditBudgetCta {
+            get {
+                return ResourceManager.GetString("EditBudgetCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Excluir Orçamento.
+        /// </summary>
+        public static string DeleteBudgetCta {
+            get {
+                return ResourceManager.GetString("DeleteBudgetCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Orçamento.
+        /// </summary>
+        public static string EditBudgetTitle {
+            get {
+                return ResourceManager.GetString("EditBudgetTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Conforme seus orçamentos mudam, sinta-se à vontade para atualizar seus limites de gastos..
+        /// </summary>
+        public static string EditBudgetSubtitle {
+            get {
+                return ResourceManager.GetString("EditBudgetSubtitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Salvar Alterações.
+        /// </summary>
+        public static string SaveChangesButton {
+            get {
+                return ResourceManager.GetString("SaveChangesButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Excluir '{0}'?.
+        /// </summary>
+        public static string DeleteBudgetTitleFormat {
+            get {
+                return ResourceManager.GetString("DeleteBudgetTitleFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tem certeza de que deseja excluir este orçamento? Esta ação não pode ser desfeita, e todos os dados dentro dele serão removidos para sempre..
+        /// </summary>
+        public static string DeleteBudgetMessage {
+            get {
+                return ResourceManager.GetString("DeleteBudgetMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sim, Confirmar Exclusão.
+        /// </summary>
+        public static string ConfirmDeletionButton {
+            get {
+                return ResourceManager.GetString("ConfirmDeletionButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Não, Voltar.
+        /// </summary>
+        public static string GoBackButton {
+            get {
+                return ResourceManager.GetString("GoBackButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Orçamento atualizado com sucesso.
+        /// </summary>
+        public static string BudgetUpdatedSuccessMessage {
+            get {
+                return ResourceManager.GetString("BudgetUpdatedSuccessMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Orçamento excluído com sucesso.
+        /// </summary>
+        public static string BudgetDeletedSuccessMessage {
+            get {
+                return ResourceManager.GetString("BudgetDeletedSuccessMessage", resourceCulture);
+            }
+        }
+
     }
 }

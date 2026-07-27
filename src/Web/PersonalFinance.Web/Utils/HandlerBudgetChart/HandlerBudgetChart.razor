@@ -1,10 +1,11 @@
 @using PersonalFinance.Communication.Dtos
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 @using ApexCharts
 
 <section class="handler-budget-chart">
     <ApexChart TItem="BudgetDto" Options="ChartOptions">
         <ApexPointSeries TItem="BudgetDto"
-                         Items="ListBudgets"
+                         Items="BudgetListState.Value.Budgets"
                          SeriesType="SeriesType.Donut"
                          XValue="@(e => e.Category.Name)"
                          YAggregate="@(e => (decimal?)e.Sum(selector: e => e.MaximumSpend))"
