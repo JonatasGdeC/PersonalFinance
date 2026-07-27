@@ -1,0 +1,62 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Web.Resources.Pots
+
+<AddModal IsOpen="@ModalState.Value.IsOpen(modal: ModalType.EditPot)"
+          Title="@PotsResources.EditPotTitle"
+          Subtitle="@PotsResources.EditPotSubtitle"
+          OnClose="@HandleClose">
+    <Body>
+        <form class="modal-update-pot" @onsubmit="HandleUpdatePot" @onsubmit:preventDefault="true">
+            <AddInput Label="@PotsResources.PotNameLabel"
+                      Placeholder="@PotsResources.PotNamePlaceholder"
+                      MaxLength="NameMaxLength" HelperText="@NameCharactersLeftText"
+                      @bind-Value="_name" Required="true" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@PotsResources.TargetLabel"
+                      Placeholder="@PotsResources.TargetPlaceholder"
+                      Prefix="$" @bind-Value="_targetText" Required="true" Disabled="_isSubmitting"/>
+
+            <div class="modal-update-pot__field">
+                <AddInput Label="@PotsResources.ThemeLabel"
+                          Placeholder="@PotsResources.ThemePlaceholder"
+                          Options="ColorOptions" @bind-Value="_colorValue" Disabled="_isSubmitting"/>
+
+                <AddButton Text="+" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddCustomColor" Size="40px"/>
+            </div>
+
+            @if (_isAddingCustomColor)
+            {
+                <div class="modal-update-pot__custom-color">
+                    <AddText Text="@PotsResources.AddNewThemeTitle" Preset="TextPreset.Preset4"/>
+
+                    <AddInput Label="@PotsResources.CustomColorNameLabel"
+                              Placeholder="@PotsResources.CustomColorNamePlaceholder"
+                              @bind-Value="_customColorName" Disabled="_isSubmitting"/>
+
+                    <div class="modal-update-pot__custom-color-picker">
+                        <label class="modal-update-pot__custom-color-picker-label" for="modal-update-pot-color-value">
+                            @PotsResources.CustomColorValueLabel
+                        </label>
+                        <input id="modal-update-pot-color-value" type="color" value="@_customColorValue"
+                               disabled="@_isSubmitting" @onchange="HandleCustomColorValueChanged"/>
+                    </div>
+
+                    <div class="modal-update-pot__custom-color-actions">
+                        <AddButton Text="@PotsResources.CancelButton" Variant="ButtonVariant.Tertiary"
+                                   Disabled="_isSubmitting" OnClick="@CancelAddCustomColor"/>
+                        <AddButton Text="@PotsResources.AddThemeButton" Variant="ButtonVariant.Secondary"
+                                   Disabled="_isSubmitting" OnClick="@ConfirmAddCustomColor"/>
+                    </div>
+                </div>
+            }
+
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@PotsResources.SaveChangesButton" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+        </form>
+    </Body>
+</AddModal>

@@ -1,0 +1,47 @@
+@using System.Globalization
+@using PersonalFinance.Web.Components.AddDropdownMenu
+@using PersonalFinance.Web.Resources.Pots
+
+<AddCard>
+    <Body>
+    <div class="card-pot">
+        <header class="card-pot__header">
+            <div class="card-pot__identity">
+                <div class="card-pot__color-dot" style="@($"background-color: {Pot.Color};")"></div>
+                <AddText Text="@Pot.Name" Preset="TextPreset.Preset2"/>
+            </div>
+            <div class="card-pot__menu-wrapper">
+                <button type="button" class="card-pot__menu" aria-label="@PotsResources.PotOptionsAriaLabel" @onclick="ToggleMenu">
+                    <AddIcon Icon="Icon.DOTS_THREE_OUTLINE" Size="20" Color="ThemeColor.Grey300"/>
+                </button>
+
+                <AddDropdownMenu IsOpen="_isMenuOpen" OnClose="CloseMenu">
+                    <button type="button" class="add-dropdown-menu__item" @onclick="HandleEditClick">@PotsResources.EditPotCta</button>
+                    <hr class="add-dropdown-menu__divider"/>
+                    <button type="button" class="add-dropdown-menu__item add-dropdown-menu__item--destructive" @onclick="HandleDeleteClick">@PotsResources.DeletePotCta</button>
+                </AddDropdownMenu>
+            </div>
+        </header>
+
+        <div class="card-pot__total">
+            <AddText Text="@PotsResources.TotalSavedLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+            <AddText Text="@Pot.CurrentAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset1"/>
+        </div>
+
+        <div class="card-pot__progress">
+            <div class="card-pot__progress-fill" style="@($"width: {SavedPercentage.ToString(format: "0.##", provider: CultureInfo.InvariantCulture)}%; background-color: {Pot.Color};")"></div>
+        </div>
+
+        <div class="card-pot__progress-info">
+            <AddText Text="@($"{SavedPercentage.ToString(format: "0.#", provider: CultureInfo.InvariantCulture)}%")" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+            <AddText Text="@string.Format(format: PotsResources.TargetOfFormat, arg0: Pot.Target.ToString(format: "C0", provider: CultureInfo.CurrentCulture))"
+                     Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+        </div>
+
+        <div class="card-pot__actions">
+            <AddButton Text="@PotsResources.AddMoneyCta" Variant="ButtonVariant.Secondary" FullWidth="true"/>
+            <AddButton Text="@PotsResources.WithdrawCta" Variant="ButtonVariant.Secondary" FullWidth="true"/>
+        </div>
+    </div>
+    </Body>
+</AddCard>

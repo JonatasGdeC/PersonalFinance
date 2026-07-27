@@ -1,7 +1,37 @@
 @page "/pots"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Pages.Pots.Components.CardPot
+@using PersonalFinance.Web.Pages.Pots.Components.ModalDeletePot
+@using PersonalFinance.Web.Pages.Pots.Components.ModalRegisterPot
+@using PersonalFinance.Web.Pages.Pots.Components.ModalUpdatePot
 @using PersonalFinance.Web.Resources.Common
-<h3>@CommonResources.Pots</h3>
+@using PersonalFinance.Web.Resources.Pots
+@using PersonalFinance.Web.Utils.HandlerNotFound
 
-@code {
+<PageTitle>@CommonResources.AppTitlePrefix@CommonResources.Pots</PageTitle>
 
+<header class="pots-header">
+    <AddText Text="@CommonResources.Pots" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddButton Text="@PotsResources.AddPotCta" OnClick="@OpenAddPotModal"/>
+</header>
+
+@if (!_isLoading && !PotListState.Value.Pots.Any())
+{
+    <HandlerNotFound Text="@PotsResources.NoPotRecorded"/>
 }
+else
+{
+    <ul class="pots-list">
+        @foreach (PotDto pot in PotListState.Value.Pots)
+        {
+            <li>
+                <CardPot Pot="@pot"/>
+            </li>
+        }
+    </ul>
+}
+
+<ModalRegisterPot/>
+<ModalUpdatePot/>
+<ModalDeletePot/>
