@@ -1,0 +1,61 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Web.Resources.Budgets
+
+<AddModal IsOpen="@ModalState.Value.IsOpen(modal: ModalType.EditBudget)"
+          Title="@BudgetsResources.EditBudgetTitle"
+          Subtitle="@BudgetsResources.EditBudgetSubtitle"
+          OnClose="@HandleClose">
+    <Body>
+        <form class="modal-update-budget" @onsubmit="HandleUpdateBudget" @onsubmit:preventDefault="true">
+            <AddInput Label="@BudgetsResources.BudgetCategoryLabel"
+                      Placeholder="@BudgetsResources.BudgetCategoryPlaceholder"
+                      Options="CategoryOptions" @bind-Value="_categoryValue" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@BudgetsResources.MaximumSpendLabel"
+                      Placeholder="@BudgetsResources.MaximumSpendPlaceholder"
+                      Prefix="$" @bind-Value="_maximumSpendText" Required="true" Disabled="_isSubmitting"/>
+
+            <div class="modal-update-budget__field">
+                <AddInput Label="@BudgetsResources.ThemeLabel"
+                          Placeholder="@BudgetsResources.ThemePlaceholder"
+                          Options="ColorOptions" @bind-Value="_colorValue" Disabled="_isSubmitting"/>
+
+                <AddButton Text="+" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddCustomColor" Size="40px"/>
+            </div>
+
+            @if (_isAddingCustomColor)
+            {
+                <div class="modal-update-budget__custom-color">
+                    <AddText Text="@BudgetsResources.AddNewThemeTitle" Preset="TextPreset.Preset4"/>
+
+                    <AddInput Label="@BudgetsResources.CustomColorNameLabel"
+                              Placeholder="@BudgetsResources.CustomColorNamePlaceholder"
+                              @bind-Value="_customColorName" Disabled="_isSubmitting"/>
+
+                    <div class="modal-update-budget__custom-color-picker">
+                        <label class="modal-update-budget__custom-color-picker-label" for="modal-update-budget-color-value">
+                            @BudgetsResources.CustomColorValueLabel
+                        </label>
+                        <input id="modal-update-budget-color-value" type="color" value="@_customColorValue"
+                               disabled="@_isSubmitting" @onchange="HandleCustomColorValueChanged"/>
+                    </div>
+
+                    <div class="modal-update-budget__custom-color-actions">
+                        <AddButton Text="@BudgetsResources.CancelButton" Variant="ButtonVariant.Tertiary"
+                                   Disabled="_isSubmitting" OnClick="@CancelAddCustomColor"/>
+                        <AddButton Text="@BudgetsResources.AddThemeButton" Variant="ButtonVariant.Secondary"
+                                   Disabled="_isSubmitting" OnClick="@ConfirmAddCustomColor"/>
+                    </div>
+                </div>
+            }
+
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@BudgetsResources.SaveChangesButton" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+        </form>
+    </Body>
+</AddModal>
