@@ -20,6 +20,7 @@ public partial class AddInput
     [Parameter] public bool Disabled { get; set; }
     [Parameter] public bool Required { get; set; }
     [Parameter] public bool IsLoading { get; set; }
+    [Parameter] public int? MaxLength { get; set; }
 
     private bool _isOpen;
     private bool _isPasswordVisible;

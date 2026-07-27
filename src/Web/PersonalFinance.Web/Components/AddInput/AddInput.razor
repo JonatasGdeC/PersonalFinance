@@ -92,7 +92,8 @@
                 }
 
                 <input type="@GetInputType()" class="add-input__field" placeholder="@Placeholder" value="@Value"
-                       disabled="@Disabled" @oninput="HandleValueChanged" required="@Required" id="@_addInputId"/>
+                       disabled="@Disabled" @oninput="HandleValueChanged" required="@Required" id="@_addInputId"
+                       maxlength="@MaxLength"/>
 
                 @if (IsPassword)
                 {
