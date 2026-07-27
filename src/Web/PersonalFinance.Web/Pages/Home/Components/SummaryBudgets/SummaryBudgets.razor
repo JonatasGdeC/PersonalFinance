@@ -1,0 +1,39 @@
+@using System.Globalization
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Home
+@using PersonalFinance.Web.Utils.HandlerBudgetChart
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<AddCard IsLoading="@_isLoading">
+    <Body>
+    <header class="summary-budgets-header">
+        <AddText Text="@CommonResources.Budgets" Preset="TextPreset.Preset2"/>
+        <AddButton Text="@HomeResources.SeeDetailsCta" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToBudgets"/>
+    </header>
+
+    <div class="summary-budgets">
+        <div class="summary-budgets__chart">
+            <HandlerBudgetChart/>
+            <div class="summary-budgets__chart-overlay">
+                <AddIcon Icon="Icon.LIST_BULLETS" Size="20" Color="ThemeColor.Grey900"/>
+                <AddText Text="@string.Format(format: HomeResources.BudgetLimitFormat, arg0: TotalLimit.ToString(format: "C0", provider: CultureInfo.CurrentCulture))"
+                         Preset="TextPreset.Preset5Bold" Color="ThemeColor.Grey500"/>
+            </div>
+        </div>
+
+        <ul class="summary-budgets__list">
+            @foreach (BudgetDto budget in BudgetListState.Value.Budgets)
+            {
+                <li>
+                    <div class="summary-budgets__item-identify">
+                        <div class="summary-budgets__item-color" style="@($"background-color: {budget.Color};")"></div>
+                        <AddText Text="@budget.Category.Name" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                    </div>
+                    <AddText Text="@budget.MaximumSpend.ToString(format: "C2", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset4Bold"/>
+                </li>
+            }
+        </ul>
+    </div>
+    </Body>
+</AddCard>

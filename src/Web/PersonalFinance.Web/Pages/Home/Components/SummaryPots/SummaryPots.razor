@@ -1,0 +1,37 @@
+@using System.Globalization
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Home
+@using PersonalFinance.Web.Resources.Pots
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<AddCard IsLoading="@_isLoading">
+    <Body>
+    <header class="summary-pots-header">
+        <AddText Text="@CommonResources.Pots" Preset="TextPreset.Preset2"/>
+        <AddButton Text="@HomeResources.SeeDetailsCta" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToPots"/>
+    </header>
+
+    <div class="summary-pots">
+        <div class="summary-pots__total">
+            <div class="summary-pots__icon">
+                <AddIcon Icon="Icon.JAR_FILL" Size="20" Color="ThemeColor.Green"/>
+            </div>
+            <div class="summary-pots__total-text">
+                <AddText Text="@PotsResources.TotalSavedLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                <AddText Text="@TotalSaved.ToString(format: "C0", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset1"/>
+            </div>
+        </div>
+
+        <ul class="summary-pots__list">
+            @foreach (PotDto pot in PotListState.Value.Pots.Take(count: 4))
+            {
+                <li style="@($"border-left-color: {pot.Color};")">
+                    <AddText Text="@pot.Name" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                    <AddText Text="@pot.CurrentAmount.ToString(format: "C0", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset4Bold"/>
+                </li>
+            }
+        </ul>
+    </div>
+    </Body>
+</AddCard>

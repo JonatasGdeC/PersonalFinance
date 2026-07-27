@@ -58,17 +58,11 @@ public partial class Bills
 
     private double TotalBillsAmount => BillListState.Value.Bills.Sum(selector: bill => bill.Amount);
 
-    private (int Count, double Amount) PaidSummary => Summarize(bills: BillListState.Value.Bills.Where(predicate: BillStatusHelper.IsPaid));
+    private (int Count, double Amount) PaidSummary => BillStatusHelper.Summarize(bills: BillListState.Value.Bills.Where(predicate: BillStatusHelper.IsPaid));
 
-    private (int Count, double Amount) UpcomingSummary => Summarize(bills: BillListState.Value.Bills.Where(predicate: bill => !BillStatusHelper.IsPaid(bill: bill)));
+    private (int Count, double Amount) UpcomingSummary => BillStatusHelper.Summarize(bills: BillListState.Value.Bills.Where(predicate: bill => !BillStatusHelper.IsPaid(bill: bill)));
 
-    private (int Count, double Amount) DueSoonSummary => Summarize(bills: BillListState.Value.Bills.Where(predicate: BillStatusHelper.IsDueSoon));
-
-    private static (int Count, double Amount) Summarize(IEnumerable<BillDto> bills)
-    {
-        List<BillDto> list = bills.ToList();
-        return (list.Count, list.Sum(selector: bill => bill.Amount));
-    }
+    private (int Count, double Amount) DueSoonSummary => BillStatusHelper.Summarize(bills: BillListState.Value.Bills.Where(predicate: BillStatusHelper.IsDueSoon));
 
     protected override async Task OnInitializedAsync()
     {

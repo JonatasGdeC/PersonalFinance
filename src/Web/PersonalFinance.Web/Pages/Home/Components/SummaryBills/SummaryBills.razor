@@ -1,0 +1,29 @@
+@using System.Globalization
+@using PersonalFinance.Web.Resources.Bills
+@using PersonalFinance.Web.Resources.Common
+@using PersonalFinance.Web.Resources.Home
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<AddCard IsLoading="@_isLoading">
+    <Body>
+    <header class="summary-bills-header">
+        <AddText Text="@CommonResources.RecurringBills" Preset="TextPreset.Preset2"/>
+        <AddButton Text="@HomeResources.SeeDetailsCta" Variant="ButtonVariant.Tertiary" OnClick="@NavigateToBills"/>
+    </header>
+
+    <ul class="summary-bills-list">
+        <li>
+            <AddText Text="@BillsResources.PaidBillsLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+            <AddText Text="@PaidAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset4Bold"/>
+        </li>
+        <li>
+            <AddText Text="@BillsResources.TotalUpcomingLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+            <AddText Text="@UpcomingAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset4Bold"/>
+        </li>
+        <li>
+            <AddText Text="@BillsResources.DueSoonLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+            <AddText Text="@DueSoonAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)" Preset="TextPreset.Preset4Bold"/>
+        </li>
+    </ul>
+    </Body>
+</AddCard>
