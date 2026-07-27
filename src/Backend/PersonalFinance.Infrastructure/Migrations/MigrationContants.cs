@@ -11,6 +11,7 @@ internal static class MigrationContants
         internal const long TABLE_REGISTER_TRANSACTION = 5;
         internal const long TABLE_REGISTER_BUDGET = 6;
         internal const long TABLE_REGISTER_BILL = 7;
+        internal const long ADD_USER_EMAIL_NOTIFICATIONS_COLUMN = 8;
     }
     
     internal static class TableName

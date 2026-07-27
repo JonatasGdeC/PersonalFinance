@@ -1,0 +1,26 @@
+.handler-expenses-by-budget__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.handler-expenses-by-budget__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--grey-100);
+}
+
+.handler-expenses-by-budget__list-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.handler-expenses-by-budget__list-amount {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: end;
+    text-align: end;
+}

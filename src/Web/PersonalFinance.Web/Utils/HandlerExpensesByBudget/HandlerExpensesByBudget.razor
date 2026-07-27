@@ -1,12 +1,37 @@
-@using System.Globalization
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Utils.HandlerFormatAmountTransaction
+@using PersonalFinance.Web.Utils.HandlerFormatDateTransaction
+@using PersonalFinance.Web.Utils.HandlerParticipant
 
-@if (_transactions == null || _isLoading)
+@if (ShowList)
+{
+    if (_isLoading)
+    {
+        <AddSkeleton Height="180px" BorderRadius="8px"/>
+    }
+    else
+    {
+        <ul class="handler-expenses-by-budget__list">
+            @foreach (TransactionDto transaction in _transactions)
+            {
+                <li class="handler-expenses-by-budget__list-item">
+                    <HandlerParticipant Participant="@transaction.ParticipantDto"/>
+                    
+                    <div class="handler-expenses-by-budget__list-amount">
+                        <HandlerFormatAmountTransaction Transaction="@transaction"/>
+                        <HandlerFormatDateTransaction Transaction="@transaction"/>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+}
+else if (string.IsNullOrEmpty(value: _showAmount) || _isLoading)
 {
     <AddSkeleton Width="65px" Height="24px"/>
 }
 else
 {
-    <AddText Text="@_transactions.TotalAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)"
-             Preset="TextPreset.Preset3"/>
+    <AddText Text="@_showAmount"
+             Preset="@TextPreset"/>
 }
-
