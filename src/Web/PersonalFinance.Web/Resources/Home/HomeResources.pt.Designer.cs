@@ -103,5 +103,23 @@ namespace PersonalFinance.Web.Resources.Home {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Ver Detalhes.
+        /// </summary>
+        public static string SeeDetailsCta {
+            get {
+                return ResourceManager.GetString("SeeDetailsCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to de limite de {0}.
+        /// </summary>
+        public static string BudgetLimitFormat {
+            get {
+                return ResourceManager.GetString("BudgetLimitFormat", resourceCulture);
+            }
+        }
+
     }
 }

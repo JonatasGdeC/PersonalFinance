@@ -33,4 +33,10 @@
     <data name="NoTransactionRecord" xml:space="preserve">
         <value>There is no transaction record.</value>
     </data>
+    <data name="SeeDetailsCta" xml:space="preserve">
+        <value>See Details</value>
+    </data>
+    <data name="BudgetLimitFormat" xml:space="preserve">
+        <value>of {0} limit</value>
+    </data>
 </root>
