@@ -23,6 +23,8 @@ public class UpdateUserUseCase(
 
         user.Name = request.Name;
         user.Email = request.Email;
+        user.ProfileImage = request.ProfileImage;
+        user.EmailNotificationsEnabled = request.EmailNotificationsEnabled;
 
         writeRepository.Update(user: user);
         await unitOfWork.Commit();
