@@ -1,7 +1,123 @@
 @page "/recurring-bills"
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using System.Globalization
+@using PersonalFinance.Communication.Dtos
+@using PersonalFinance.Web.Pages.Bills.Components.ModalRegisterBill
+@using PersonalFinance.Web.Resources.Bills
 @using PersonalFinance.Web.Resources.Common
-<h3>@CommonResources.RecurringBills</h3>
+@using PersonalFinance.Web.Utils.HandlerBillDueDate
+@using PersonalFinance.Web.Utils.HandlerNotFound
+@using PersonalFinance.Web.Utils.HandlerParticipant
 
-@code {
+<PageTitle>@CommonResources.AppTitlePrefix@CommonResources.RecurringBills</PageTitle>
 
+<header class="bills-header">
+    <AddText Text="@CommonResources.RecurringBills" Preset="TextPreset.Preset1" TagHtml="TagText.H1"/>
+    <AddButton Text="@BillsResources.AddBillCta" OnClick="@OpenAddBillModal"/>
+</header>
+
+@if (!_isLoading && !BillListState.Value.Bills.Any())
+{
+    <HandlerNotFound Text="@BillsResources.NoBillRecorded"/>
 }
+else
+{
+    <div class="bills-container">
+        <div class="bills-summary">
+            <AddCard BackgroundColor="ThemeColor.Grey900" Padding="24px" IsLoading="@_isLoading">
+                <Body>
+                <div class="bills-summary__total">
+                    <AddIcon Icon="Icon.RECEIPT" Size="32" Color="ThemeColor.White"/>
+                    <div class="bills-summary__total-text">
+                        <AddText Text="@BillsResources.TotalBillsLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey300"/>
+                        <AddText Text="@TotalBillsAmount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)"
+                                 Preset="TextPreset.Preset1" Color="ThemeColor.White"/>
+                    </div>
+                </div>
+                </Body>
+            </AddCard>
+
+            <AddCard IsLoading="@_isLoading">
+                <Body>
+                <div class="bills-summary__breakdown">
+                    <AddText Text="@BillsResources.SummaryTitle" Preset="TextPreset.Preset3"/>
+
+                    <div class="bills-summary__row">
+                        <AddText Text="@BillsResources.PaidBillsLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        <AddText Text="@($"{PaidSummary.Count} ({PaidSummary.Amount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)})")"
+                                 Preset="TextPreset.Preset5Bold"/>
+                    </div>
+
+                    <div class="bills-summary__row">
+                        <AddText Text="@BillsResources.TotalUpcomingLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        <AddText Text="@($"{UpcomingSummary.Count} ({UpcomingSummary.Amount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)})")"
+                                 Preset="TextPreset.Preset5Bold"/>
+                    </div>
+
+                    <div class="bills-summary__row">
+                        <AddText Text="@BillsResources.DueSoonLabel" Preset="TextPreset.Preset5" Color="ThemeColor.Red"/>
+                        <AddText Text="@($"{DueSoonSummary.Count} ({DueSoonSummary.Amount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)})")"
+                                 Preset="TextPreset.Preset5Bold" Color="ThemeColor.Red"/>
+                    </div>
+                </div>
+                </Body>
+            </AddCard>
+        </div>
+
+        <AddCard IsLoading="@_isLoading">
+            <Body>
+            <div class="bills-list">
+                <header class="bills-list__toolbar">
+                    <div class="bills-list__search">
+                        <AddInput Placeholder="@BillsResources.SearchPlaceholder" ShowSearchIcon="true"
+                                  Value="@_search" ValueChanged="HandleSearchChanged"/>
+                    </div>
+
+                    <div class="bills-list__sort">
+                        <AddText Text="@BillsResources.SortByLabel" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+                        <div class="bills-list__sort-control">
+                            <AddInput Options="SortOptions" Value="@SortValue" ValueChanged="HandleSortChanged"/>
+                        </div>
+                    </div>
+                </header>
+
+                <table class="bills-list__table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <AddText Text="@BillsResources.BillTitleColumn" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        </th>
+                        <th>
+                            <AddText Text="@BillsResources.DueDateColumn" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        </th>
+                        <th class="bills-list__amount-header">
+                            <AddText Text="@BillsResources.AmountColumn" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (BillDto bill in FilteredBills)
+                    {
+                        <tr>
+                            <td>
+                                <HandlerParticipant Participant="@bill.Participant"/>
+                            </td>
+                            <td>
+                                <HandlerBillDueDate Bill="@bill"/>
+                            </td>
+                            <td class="bills-list__amount-cell">
+                                <AddText Text="@bill.Amount.ToString(format: "C2", provider: CultureInfo.CurrentCulture)"
+                                         Preset="TextPreset.Preset4Bold"
+                                         Color="@(BillStatusHelper.IsDueSoon(bill: bill) ? ThemeColor.Red : ThemeColor.Grey900)"/>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            </Body>
+        </AddCard>
+    </div>
+}
+
+<ModalRegisterBill/>

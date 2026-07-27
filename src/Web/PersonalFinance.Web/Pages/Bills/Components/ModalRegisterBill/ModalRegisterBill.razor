@@ -1,0 +1,56 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Web.Pages.Category.Components.ModalRegisterCategory
+@using PersonalFinance.Web.Pages.Transactions.Components.ModalRegisterParticipant
+@using PersonalFinance.Web.Resources.Bills
+
+<AddModal IsOpen="@ModalState.Value.IsOpen(modal: ModalType.AddBill)"
+          Title="@BillsResources.AddBillTitle"
+          Subtitle="@BillsResources.AddBillSubtitle"
+          OnClose="@HandleClose">
+    <Body>
+        <form class="modal-register-bill" @onsubmit="HandleRegisterBill" @onsubmit:preventDefault="true">
+            <div class="modal-register-bill__field">
+                <AddInput Label="@BillsResources.ParticipantLabel"
+                          Placeholder="@(!ParticipantOptions.Any() ? BillsResources.NoParticipantsRegisteredPlaceholder : BillsResources.ParticipantPlaceholder)"
+                          Options="ParticipantOptions" @bind-Value="_participantValue"
+                          Disabled="@(_isSubmitting || !ParticipantOptions.Any())"/>
+
+                <AddButton Text="+" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddParticipantModal" Size="40px"/>
+            </div>
+
+            <div class="modal-register-bill__field">
+                <AddInput Label="@BillsResources.CategoryLabel"
+                          Placeholder="@(!CategoryOptions.Any() ? BillsResources.NoCategoriesRegisteredPlaceholder : BillsResources.CategoryPlaceholder)"
+                          Options="CategoryOptions" @bind-Value="_categoryValue"
+                          Disabled="@(_isSubmitting || !CategoryOptions.Any())"/>
+
+                <AddButton Text="+" Variant="ButtonVariant.Secondary" Disabled="_isSubmitting"
+                           OnClick="@OpenAddCategoryModal" Size="40px"/>
+            </div>
+
+            <AddInput Label="@BillsResources.AmountLabel" Placeholder="@BillsResources.AmountPlaceholder"
+                      Prefix="$" @bind-Value="_amountText" Required="true" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@BillsResources.DueDateLabel" IsDate="true" @bind-Value="_dueDateText"
+                      Required="true" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@BillsResources.InstallmentsTotalLabel" Placeholder="@BillsResources.InstallmentsTotalPlaceholder"
+                      @bind-Value="_installmentsTotalText" Required="true" Disabled="_isSubmitting"/>
+
+            <AddInput Label="@BillsResources.InstallmentsPaidLabel" Placeholder="@BillsResources.InstallmentsPaidPlaceholder"
+                      @bind-Value="_installmentsPaidText" Disabled="_isSubmitting"/>
+
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@BillsResources.AddBillButton" Type="submit" FullWidth="true" Disabled="_isSubmitting"/>
+        </form>
+    </Body>
+</AddModal>
+
+<ModalRegisterParticipant/>
+
+<ModalRegisterCategory/>

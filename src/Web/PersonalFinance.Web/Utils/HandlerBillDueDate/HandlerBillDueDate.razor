@@ -1,0 +1,12 @@
+<div class="handler-bill-due-date">
+    <AddText Text="@DueDateText" Preset="TextPreset.Preset5" Color="ThemeColor.Grey500"/>
+
+    @if (IsPaid)
+    {
+        <AddIcon Icon="Icon.CHECK_CIRCLE" Size="16" Color="ThemeColor.Green"/>
+    }
+    else if (IsDueSoon)
+    {
+        <AddIcon Icon="Icon.WARNING_CIRCLE" Size="16" Color="ThemeColor.Red"/>
+    }
+</div>
