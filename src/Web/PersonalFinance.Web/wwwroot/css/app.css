@@ -1,4 +1,5 @@
 @import "imports/design-system.css";
+@import "imports/loading-screen.css";
 
 *, *::before, *::after {
     box-sizing: border-box;

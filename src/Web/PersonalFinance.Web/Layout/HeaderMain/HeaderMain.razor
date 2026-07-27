@@ -1,5 +1,7 @@
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 @using System.Globalization
+@using PersonalFinance.Web.Components.AddDropdownMenu
+@using PersonalFinance.Web.Resources.Common
 
 <header class="header-main">
     <div class="select-date">
@@ -16,7 +18,28 @@
         </button>
     </div>
     
-    <div>
+    <div class="header-main__actions">
         <AddSetLanguage/>
+
+        <div class="header-main__user-menu-wrapper">
+            <button type="button" class="header-main__user-button" aria-label="@CommonResources.UserMenuAriaLabel" @onclick="ToggleUserMenu">
+                @if (!string.IsNullOrWhiteSpace(value: UserState.Value.User?.ProfileImage))
+                {
+                    <img class="header-main__user-avatar" src="@UserState.Value.User!.ProfileImage" alt="@UserState.Value.User.Name"/>
+                }
+                else
+                {
+                    <span class="header-main__user-avatar header-main__user-avatar--placeholder">@GetInitial(name: UserState.Value.User?.Name ?? string.Empty)</span>
+                }
+
+                <AddText Text="@(UserState.Value.User?.Name ?? string.Empty)" Preset="TextPreset.Preset4Bold"/>
+            </button>
+
+            <AddDropdownMenu IsOpen="_isUserMenuOpen" OnClose="CloseUserMenu">
+                <button type="button" class="add-dropdown-menu__item" @onclick="HandleEditProfileClick">@CommonResources.EditProfileCta</button>
+                <hr class="add-dropdown-menu__divider"/>
+                <button type="button" class="add-dropdown-menu__item" @onclick="HandleLogoutClick">@CommonResources.LogoutCta</button>
+            </AddDropdownMenu>
+        </div>
     </div>
 </header>

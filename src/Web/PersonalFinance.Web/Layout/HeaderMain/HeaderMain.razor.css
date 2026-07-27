@@ -25,4 +25,42 @@
             }
         }
     }
+
+    & > .header-main__actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+}
+
+.header-main__user-menu-wrapper {
+    position: relative;
+}
+
+.header-main__user-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.header-main__user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.header-main__user-avatar--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey-300);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
 }
