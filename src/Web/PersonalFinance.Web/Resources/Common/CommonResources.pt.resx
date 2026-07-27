@@ -69,4 +69,13 @@
     <data name="PageNotFoundMessage" xml:space="preserve">
         <value>Desculpe, o conteúdo que você está procurando não existe.</value>
     </data>
+    <data name="UserMenuAriaLabel" xml:space="preserve">
+        <value>Menu do usuário</value>
+    </data>
+    <data name="EditProfileCta" xml:space="preserve">
+        <value>Editar meu perfil</value>
+    </data>
+    <data name="LogoutCta" xml:space="preserve">
+        <value>Sair</value>
+    </data>
 </root>

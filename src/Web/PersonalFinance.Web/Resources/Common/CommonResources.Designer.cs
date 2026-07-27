@@ -211,5 +211,32 @@ namespace PersonalFinance.Web.Resources.Common {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to User menu.
+        /// </summary>
+        public static string UserMenuAriaLabel {
+            get {
+                return ResourceManager.GetString("UserMenuAriaLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Edit my profile.
+        /// </summary>
+        public static string EditProfileCta {
+            get {
+                return ResourceManager.GetString("EditProfileCta", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        public static string LogoutCta {
+            get {
+                return ResourceManager.GetString("LogoutCta", resourceCulture);
+            }
+        }
+
     }
 }
