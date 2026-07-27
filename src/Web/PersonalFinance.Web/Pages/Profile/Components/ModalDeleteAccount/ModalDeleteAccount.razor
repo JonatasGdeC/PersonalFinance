@@ -1,0 +1,22 @@
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@using PersonalFinance.Web.Resources.Profile
+
+<AddModal IsOpen="@ModalState.Value.IsOpen(modal: ModalType.DeleteAccount)"
+          Title="@ProfileResources.DeleteAccountTitle"
+          Subtitle="@ProfileResources.DeleteAccountMessage"
+          OnClose="@HandleClose">
+    <Body>
+        <div class="modal-delete-account">
+            @foreach (string errorMessage in _errorMessages)
+            {
+                <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+            }
+
+            <AddButton Text="@ProfileResources.ConfirmDeletionButton" Variant="ButtonVariant.Destructive"
+                       FullWidth="true" Disabled="_isSubmitting" OnClick="@HandleConfirmDeletion"/>
+
+            <AddButton Text="@ProfileResources.GoBackButton" Variant="ButtonVariant.Tertiary"
+                       FullWidth="true" Disabled="_isSubmitting" OnClick="@HandleClose"/>
+        </div>
+    </Body>
+</AddModal>
