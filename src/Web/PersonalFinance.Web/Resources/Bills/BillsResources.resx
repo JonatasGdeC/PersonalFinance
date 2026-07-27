@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AddBillCta" xml:space="preserve">
+        <value>+ Add New Recurring Bill</value>
+    </data>
+    <data name="NoBillRecorded" xml:space="preserve">
+        <value>No bill recorded.</value>
+    </data>
+    <data name="TotalBillsLabel" xml:space="preserve">
+        <value>Total Bills</value>
+    </data>
+    <data name="SummaryTitle" xml:space="preserve">
+        <value>Summary</value>
+    </data>
+    <data name="PaidBillsLabel" xml:space="preserve">
+        <value>Paid Bills</value>
+    </data>
+    <data name="TotalUpcomingLabel" xml:space="preserve">
+        <value>Total Upcoming</value>
+    </data>
+    <data name="DueSoonLabel" xml:space="preserve">
+        <value>Due Soon</value>
+    </data>
+    <data name="SearchPlaceholder" xml:space="preserve">
+        <value>Search bills</value>
+    </data>
+    <data name="SortByLabel" xml:space="preserve">
+        <value>Sort by</value>
+    </data>
+    <data name="BillTitleColumn" xml:space="preserve">
+        <value>Bill Title</value>
+    </data>
+    <data name="DueDateColumn" xml:space="preserve">
+        <value>Due Date</value>
+    </data>
+    <data name="AmountColumn" xml:space="preserve">
+        <value>Amount</value>
+    </data>
+    <data name="MonthlyDueDateFormat" xml:space="preserve">
+        <value>Monthly - {0}</value>
+    </data>
+    <data name="Latest" xml:space="preserve">
+        <value>Latest</value>
+    </data>
+    <data name="Oldest" xml:space="preserve">
+        <value>Oldest</value>
+    </data>
+    <data name="AToZ" xml:space="preserve">
+        <value>A to Z</value>
+    </data>
+    <data name="ZToA" xml:space="preserve">
+        <value>Z to A</value>
+    </data>
+    <data name="Highest" xml:space="preserve">
+        <value>Highest</value>
+    </data>
+    <data name="Lowest" xml:space="preserve">
+        <value>Lowest</value>
+    </data>
+    <data name="AddBillTitle" xml:space="preserve">
+        <value>Add New Recurring Bill</value>
+    </data>
+    <data name="AddBillSubtitle" xml:space="preserve">
+        <value>Add a new recurring bill to keep track of your regular payments.</value>
+    </data>
+    <data name="ParticipantLabel" xml:space="preserve">
+        <value>Recipient</value>
+    </data>
+    <data name="ParticipantPlaceholder" xml:space="preserve">
+        <value>Select Recipient</value>
+    </data>
+    <data name="NoParticipantsRegisteredPlaceholder" xml:space="preserve">
+        <value>No recipients registered</value>
+    </data>
+    <data name="CategoryLabel" xml:space="preserve">
+        <value>Category</value>
+    </data>
+    <data name="CategoryPlaceholder" xml:space="preserve">
+        <value>Select Category</value>
+    </data>
+    <data name="NoCategoriesRegisteredPlaceholder" xml:space="preserve">
+        <value>No categories registered</value>
+    </data>
+    <data name="AmountLabel" xml:space="preserve">
+        <value>Amount</value>
+    </data>
+    <data name="AmountPlaceholder" xml:space="preserve">
+        <value>e.g. 50</value>
+    </data>
+    <data name="DueDateLabel" xml:space="preserve">
+        <value>Due Date</value>
+    </data>
+    <data name="InstallmentsTotalLabel" xml:space="preserve">
+        <value>Total Installments</value>
+    </data>
+    <data name="InstallmentsTotalPlaceholder" xml:space="preserve">
+        <value>e.g. 12</value>
+    </data>
+    <data name="InstallmentsPaidLabel" xml:space="preserve">
+        <value>Installments Paid</value>
+    </data>
+    <data name="InstallmentsPaidPlaceholder" xml:space="preserve">
+        <value>e.g. 0</value>
+    </data>
+    <data name="AddBillButton" xml:space="preserve">
+        <value>Add Bill</value>
+    </data>
+    <data name="RequiredFieldsError" xml:space="preserve">
+        <value>Please fill in all required fields.</value>
+    </data>
+    <data name="UnknownError" xml:space="preserve">
+        <value>Something went wrong. Please try again.</value>
+    </data>
+    <data name="BillRegisteredSuccessMessage" xml:space="preserve">
+        <value>Bill added successfully</value>
+    </data>
+</root>
