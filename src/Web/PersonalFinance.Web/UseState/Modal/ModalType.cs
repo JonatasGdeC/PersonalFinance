@@ -6,4 +6,11 @@ public enum ModalType
     AddParticipant,
     AddCategory,
     AddBudget,
+    EditBudget,
+    DeleteBudget,
+    AddPot,
+    EditPot,
+    DeletePot,
+    AddBill,
+    DeleteAccount,
 }
