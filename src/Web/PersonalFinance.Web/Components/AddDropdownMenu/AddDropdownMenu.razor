@@ -1,0 +1,8 @@
+@if (IsOpen)
+{
+    <div class="add-dropdown-menu__backdrop" @onclick="HandleClose"></div>
+
+    <div class="add-dropdown-menu">
+        @ChildContent
+    </div>
+}
