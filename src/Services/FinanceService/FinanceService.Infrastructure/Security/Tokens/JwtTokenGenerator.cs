@@ -13,6 +13,7 @@ internal class JwtTokenGenerator(uint expirationTimeMinutes, string signingKey) 
     {
         List<Claim> claims = [
             new(type: ClaimTypes.Name, value: user.Name),
+            new(type: ClaimTypes.Email, value: user.Email),
             new(type: ClaimTypes.Sid, value: user.Id.ToString()),
         ];
         

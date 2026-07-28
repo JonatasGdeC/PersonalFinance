@@ -14,9 +14,9 @@ public class DeletePotUseCase(
 {
     public async Task Execute(Guid potId)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Pot? pot = await writeRepository.GetById(potId: potId, userId: user.Id);
+        Pot? pot = await writeRepository.GetById(potId: potId, userId: userId);
         if (pot == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.POT_NOT_FOUND);

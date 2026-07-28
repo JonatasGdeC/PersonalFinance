@@ -15,9 +15,9 @@ public class GetAllCategoryUseCase(
 {
     public async Task<GetAllCategoryResponse> Execute(FinancialType? transactionType = null)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        List<Category> categories = await readRepository.GetAll(userId: user.Id, transactionType: transactionType.HasValue ? (FinanceService.Domain.Enums.TransactionType)transactionType : null);
+        List<Category> categories = await readRepository.GetAll(userId: userId, transactionType: transactionType.HasValue ? (FinanceService.Domain.Enums.TransactionType)transactionType : null);
 
         return new GetAllCategoryResponse
         {

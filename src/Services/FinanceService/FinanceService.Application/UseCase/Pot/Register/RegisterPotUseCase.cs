@@ -21,10 +21,10 @@ public class RegisterPotUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         Pot pot = mapper.Map<Pot>(source: request);
-        pot.UserId = user.Id;
+        pot.UserId = userId;
 
         await writeRepository.Add(pot: pot);
         await unitOfWork.Commit();

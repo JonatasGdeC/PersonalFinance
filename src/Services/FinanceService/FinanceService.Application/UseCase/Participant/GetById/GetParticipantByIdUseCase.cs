@@ -15,9 +15,9 @@ public class GetParticipantByIdUseCase(
 {
     public async Task<ParticipantDto> Execute(Guid id)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Participant? participant = await writeRepository.GetById(participantId: id, userId: user.Id);
+        Participant? participant = await writeRepository.GetById(participantId: id, userId: userId);
         if (participant == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.PARTICIPANT_NOT_FOUND);

@@ -18,7 +18,7 @@ public class GetAllTransactionUseCase(
 {
     public async Task<GetListTransactionsResponse> Execute(TransactionFilterRequest request)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         TransactionFilter filter = new()
         {
@@ -33,7 +33,7 @@ public class GetAllTransactionUseCase(
             }
         };
 
-        PagedList<Transaction> paged = await readRepository.GetAll(userId: user.Id, filter: filter);
+        PagedList<Transaction> paged = await readRepository.GetAll(userId: userId, filter: filter);
 
         return new GetListTransactionsResponse
         {

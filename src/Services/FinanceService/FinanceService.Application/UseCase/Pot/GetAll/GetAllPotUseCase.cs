@@ -14,9 +14,9 @@ public class GetAllPotUseCase(
 {
     public async Task<GetAllPotsResponse> Execute()
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        List<Pot> pots = await readRepository.GetAll(userId: user.Id);
+        List<Pot> pots = await readRepository.GetAll(userId: userId);
 
         return new GetAllPotsResponse
         {

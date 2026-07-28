@@ -16,14 +16,14 @@ public class GetAllParticipantUseCase(
 {
     public async Task<GetAllParticipantResponse> Execute()
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         ParticipantFilter filter = new()
         {
             Pagination = new Pagination { PageNumber = 1, PageSize = int.MaxValue }
         };
 
-        PagedList<Participant> participants = await readRepository.GetAll(userId: user.Id, filter: filter);
+        PagedList<Participant> participants = await readRepository.GetAll(userId: userId, filter: filter);
 
         return new GetAllParticipantResponse
         {

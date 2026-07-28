@@ -21,9 +21,9 @@ public class GetTransactionByCategoryIdUseCase(
 {
     public async Task<GetListTransactionsResponse> Execute(Guid categoryId, DateTime date, PaginationRequest pagination)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Category? category = await categoryWriteRepository.GetById(categoryId: categoryId, userId: user.Id);
+        Category? category = await categoryWriteRepository.GetById(categoryId: categoryId, userId: userId);
         if (category == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.CATEGORY_NOT_FOUND);
@@ -36,12 +36,12 @@ public class GetTransactionByCategoryIdUseCase(
         };
 
         PagedList<Transaction> paged = await readRepository.GetByCategory(
-            userId: user.Id,
+            userId: userId,
             categoryId: categoryId,
             date: date,
             pagination: domainPagination);
-        
-        double totalAmount = await readRepository.GetTotalAmountByCategory(userId: user.Id, categoryId: categoryId, date: date);
+
+        double totalAmount = await readRepository.GetTotalAmountByCategory(userId: userId, categoryId: categoryId, date: date);
 
         return new GetListTransactionsResponse
         {

@@ -26,13 +26,13 @@ public class RegisterBillUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: user.Id);
-        Category? category = await GetCategory(categoryId: request.CategoryId, userId: user.Id);
+        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: userId);
+        Category? category = await GetCategory(categoryId: request.CategoryId, userId: userId);
 
         Bill bill = mapper.Map<Bill>(source: request);
-        bill.UserId = user.Id;
+        bill.UserId = userId;
         bill.Participant = participant;
         bill.Category = category;
 

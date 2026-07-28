@@ -21,10 +21,10 @@ public class RegisterParticipantUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         Participant participant = mapper.Map<Participant>(source: request);
-        participant.UserId = user.Id;
+        participant.UserId = userId;
 
         await writeRepository.Add(participant: participant);
         await unitOfWork.Commit();

@@ -24,16 +24,16 @@ public class UpdateTransactionUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Transaction? existingTransaction = await writeRepository.GetById(transactionId: transaction, userId: user.Id);
+        Transaction? existingTransaction = await writeRepository.GetById(transactionId: transaction, userId: userId);
         if (existingTransaction == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.TRANSACTION_NOT_FOUND);
         }
 
-        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: user.Id);
-        Category? category = await GetCategory(categoryId: request.CategoryId, userId: user.Id);
+        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: userId);
+        Category? category = await GetCategory(categoryId: request.CategoryId, userId: userId);
 
         existingTransaction.Date = request.Date;
         existingTransaction.Type = (TransactionType)(int)request.Type;

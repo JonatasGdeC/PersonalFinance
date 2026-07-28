@@ -21,10 +21,10 @@ public class RegisterCategoryUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         Category category = mapper.Map<Category>(source: request);
-        category.UserId = user.Id;
+        category.UserId = userId;
 
         await writeRepository.Add(category: category);
         await unitOfWork.Commit();

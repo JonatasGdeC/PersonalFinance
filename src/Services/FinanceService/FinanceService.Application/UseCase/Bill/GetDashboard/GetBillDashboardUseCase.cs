@@ -4,7 +4,6 @@ using FinanceService.Domain.Repositories.Bill;
 using FinanceService.Domain.Services.LoggedUser;
 
 namespace PersonalFinance.Application.UseCase.Bill.GetDashboard;
-using FinanceService.Domain.Entities;
 
 public class GetBillDashboardUseCase(
     IBillReadRepository readRepository,
@@ -12,9 +11,9 @@ public class GetBillDashboardUseCase(
 {
     public async Task<GetBillDashboardResponse> Execute()
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        BillDashboard dashboard = await readRepository.GetDashboard(userId: user.Id);
+        BillDashboard dashboard = await readRepository.GetDashboard(userId: userId);
 
         return new GetBillDashboardResponse
         {

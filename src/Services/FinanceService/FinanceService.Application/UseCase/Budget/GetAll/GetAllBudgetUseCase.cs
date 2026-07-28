@@ -14,9 +14,9 @@ public class GetAllBudgetUseCase(
 {
     public async Task<GetAllBudgetResponse> Execute()
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        List<Budget> budgets = await readRepository.GetAll(userId: user.Id);
+        List<Budget> budgets = await readRepository.GetAll(userId: userId);
 
         return new GetAllBudgetResponse
         {

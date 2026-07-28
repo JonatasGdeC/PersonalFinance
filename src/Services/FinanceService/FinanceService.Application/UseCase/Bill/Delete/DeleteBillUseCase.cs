@@ -14,9 +14,9 @@ public class DeleteBillUseCase(
 {
     public async Task Execute(Guid billId)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Bill? bill = await writeRepository.GetById(billId: billId, userId: user.Id);
+        Bill? bill = await writeRepository.GetById(billId: billId, userId: userId);
         if (bill == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.BILL_NOT_FOUND);

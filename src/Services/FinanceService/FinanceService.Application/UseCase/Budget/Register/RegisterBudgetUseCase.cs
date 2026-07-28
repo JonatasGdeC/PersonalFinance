@@ -24,12 +24,12 @@ public class RegisterBudgetUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Category category = await GetCategory(categoryId: request.CategoryId, userId: user.Id);
+        Category category = await GetCategory(categoryId: request.CategoryId, userId: userId);
 
         Budget budget = mapper.Map<Budget>(source: request);
-        budget.UserId = user.Id;
+        budget.UserId = userId;
         budget.Category = category;
 
         await writeRepository.Add(budget: budget);

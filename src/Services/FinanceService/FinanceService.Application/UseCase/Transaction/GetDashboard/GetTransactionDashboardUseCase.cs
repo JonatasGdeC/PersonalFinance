@@ -6,7 +6,6 @@ using FinanceService.Domain.Repositories.Transaction;
 using FinanceService.Domain.Services.LoggedUser;
 
 namespace PersonalFinance.Application.UseCase.Transaction.GetDashboard;
-using FinanceService.Domain.Entities;
 
 public class GetTransactionDashboardUseCase(
     ITransactionReadRepository readRepository,
@@ -15,9 +14,9 @@ public class GetTransactionDashboardUseCase(
 {
     public async Task<GetTransactionDashboardResponse> Execute(DateTime date)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        TransactionDashboard dashboard = await readRepository.GetDashboard(userId: user.Id, date: date);
+        TransactionDashboard dashboard = await readRepository.GetDashboard(userId: userId, date: date);
 
         return new GetTransactionDashboardResponse
         {

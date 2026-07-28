@@ -14,9 +14,9 @@ public class DeleteCategoryUseCase(
 {
     public async Task Execute(Guid categoryId)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Category? category = await writeRepository.GetById(categoryId: categoryId, userId: user.Id);
+        Category? category = await writeRepository.GetById(categoryId: categoryId, userId: userId);
         if (category == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.CATEGORY_NOT_FOUND);

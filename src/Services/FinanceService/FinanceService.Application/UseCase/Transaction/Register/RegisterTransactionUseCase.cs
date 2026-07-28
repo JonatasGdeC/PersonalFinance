@@ -26,13 +26,13 @@ public class RegisterTransactionUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: user.Id);
-        Category? category = await GetCategory(categoryId: request.CategoryId, userId: user.Id);
+        Participant participant = await GetParticipant(participantId: request.ParticipantId, userId: userId);
+        Category? category = await GetCategory(categoryId: request.CategoryId, userId: userId);
 
         Transaction transaction = mapper.Map<Transaction>(source: request);
-        transaction.UserId = user.Id;
+        transaction.UserId = userId;
         transaction.Participant = participant;
         transaction.Category = category;
 

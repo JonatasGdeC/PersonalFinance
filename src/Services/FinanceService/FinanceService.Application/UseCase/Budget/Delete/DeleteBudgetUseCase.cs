@@ -14,9 +14,9 @@ public class DeleteBudgetUseCase(
 {
     public async Task Execute(Guid budgetId)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Budget? budget = await writeRepository.GetById(budgetId: budgetId, userId: user.Id);
+        Budget? budget = await writeRepository.GetById(budgetId: budgetId, userId: userId);
         if (budget == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.BUDGET_NOT_FOUND);

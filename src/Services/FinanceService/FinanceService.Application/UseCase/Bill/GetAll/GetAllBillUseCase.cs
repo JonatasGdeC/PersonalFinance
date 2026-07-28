@@ -18,7 +18,7 @@ public class GetAllBillUseCase(
 {
     public async Task<GetAllBillResponse> Execute(BillFilterRequest filter)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
         BillFilter billFilter = new()
         {
@@ -31,7 +31,7 @@ public class GetAllBillUseCase(
             }
         };
 
-        PagedList<Bill> paged = await readRepository.GetAll(userId: user.Id, filter: billFilter);
+        PagedList<Bill> paged = await readRepository.GetAll(userId: userId, filter: billFilter);
 
         return new GetAllBillResponse
         {

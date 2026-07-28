@@ -14,9 +14,9 @@ public class DeleteTransactionUseCase(
 {
     public async Task Execute(Guid transactionId)
     {
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Transaction? transaction = await writeRepository.GetById(transactionId: transactionId, userId: user.Id);
+        Transaction? transaction = await writeRepository.GetById(transactionId: transactionId, userId: userId);
         if (transaction == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.TRANSACTION_NOT_FOUND);

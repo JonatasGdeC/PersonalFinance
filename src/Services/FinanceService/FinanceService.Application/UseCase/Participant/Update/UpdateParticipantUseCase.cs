@@ -19,9 +19,9 @@ public class UpdateParticipantUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Participant? participant = await writeRepository.GetById(participantId: participantId, userId: user.Id);
+        Participant? participant = await writeRepository.GetById(participantId: participantId, userId: userId);
         if (participant == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.PARTICIPANT_NOT_FOUND);

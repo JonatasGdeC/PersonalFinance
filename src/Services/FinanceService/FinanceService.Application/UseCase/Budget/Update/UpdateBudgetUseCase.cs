@@ -21,15 +21,15 @@ public class UpdateBudgetUseCase(
     {
         await Validate(request: request);
 
-        User user = await loggedUser.Get();
+        Guid userId = loggedUser.GetUserId();
 
-        Budget? budget = await writeRepository.GetById(budgetId: budgetId, userId: user.Id);
+        Budget? budget = await writeRepository.GetById(budgetId: budgetId, userId: userId);
         if (budget == null)
         {
             throw new NotFoundException(message: ResourceErrorMessages.BUDGET_NOT_FOUND);
         }
 
-        Category category = await GetCategory(categoryId: request.CategoryId, userId: user.Id);
+        Category category = await GetCategory(categoryId: request.CategoryId, userId: userId);
 
         budget.MaximumSpend = request.MaximumSpend;
         budget.Color = request.Color;
