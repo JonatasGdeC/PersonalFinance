@@ -53,7 +53,7 @@ public partial class ModalUpdatePot : IDisposable
                     Value = color.Hex,
                     Label = color.GetName(),
                     ColorTag = color.Hex,
-                    Badge = usedColors.Contains(color.Hex) ? PotsResources.AlreadyUsedBadge : null
+                    Badge = usedColors.Contains(item: color.Hex) ? PotsResources.AlreadyUsedBadge : null
                 })
                 .ToList();
 
@@ -62,7 +62,7 @@ public partial class ModalUpdatePot : IDisposable
                 Value = option.Value,
                 Label = option.Label,
                 ColorTag = option.ColorTag,
-                Badge = usedColors.Contains(option.Value) ? PotsResources.AlreadyUsedBadge : null
+                Badge = usedColors.Contains(item: option.Value) ? PotsResources.AlreadyUsedBadge : null
             }));
 
             return options;

@@ -38,8 +38,8 @@ public partial class Bills
             {
                 string search = _search.ToLower();
                 bills = bills.Where(predicate: bill =>
-                    bill.Participant.Name.ToLower().Contains(search) ||
-                    (bill.Category != null && bill.Category.Name.ToLower().Contains(search)));
+                    bill.Participant.Name.ToLower().Contains(value: search) ||
+                    (bill.Category != null && bill.Category.Name.ToLower().Contains(value: search)));
             }
 
             bills = _listOrder switch

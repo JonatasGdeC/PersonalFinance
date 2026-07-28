@@ -56,7 +56,7 @@ public partial class ModalUpdateBudget : IDisposable
                     Value = color.Hex,
                     Label = color.GetName(),
                     ColorTag = color.Hex,
-                    Badge = usedColors.Contains(color.Hex) ? BudgetsResources.AlreadyUsedBadge : null
+                    Badge = usedColors.Contains(item: color.Hex) ? BudgetsResources.AlreadyUsedBadge : null
                 })
                 .ToList();
 
@@ -65,7 +65,7 @@ public partial class ModalUpdateBudget : IDisposable
                 Value = option.Value,
                 Label = option.Label,
                 ColorTag = option.ColorTag,
-                Badge = usedColors.Contains(option.Value) ? BudgetsResources.AlreadyUsedBadge : null
+                Badge = usedColors.Contains(item: option.Value) ? BudgetsResources.AlreadyUsedBadge : null
             }));
 
             return options;
