@@ -1,4 +1,4 @@
-using PersonalFinance.Domain.Enums;
+using FinanceService.Domain.Enums;
 
 namespace PersonalFinance.Communication.Dtos;
 

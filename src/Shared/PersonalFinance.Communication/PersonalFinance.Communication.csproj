@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Backend\PersonalFinance.Domain\PersonalFinance.Domain.csproj" />
+      <ProjectReference Include="..\..\Services\FinanceService\FinanceService.Domain\FinanceService.Domain.csproj" />
       <ProjectReference Include="..\PersonalFinance.Exception\PersonalFinance.Exception.csproj" />
     </ItemGroup>
 

@@ -1,0 +1,10 @@
+namespace FinanceService.Domain.Repositories.Category;
+using Entities;
+
+public interface ICategoryWriteRepository
+{
+    Task Add(Category category);
+    void Update(Category category);
+    void Delete(Category category);
+    Task<Category?> GetById(Guid categoryId, Guid userId);
+}
