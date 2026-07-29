@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentMigrator.Runner;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,18 @@ public static class DependencyInjectionExtension
         
         services.AddScoped<IEncrypter,BCrypt>();
         services.AddScoped<ILoggedUser, LoggedUser>();
+        
+        services.AddMassTransit(configure: x =>
+        {
+            x.UsingRabbitMq(configure: (context, cfg) =>
+            {
+                cfg.Host(host: "rabbitmq", port: 5672, virtualHost: "/", configure: h =>
+                {
+                    h.Username(username: configurationManager[key: "RabbitMq:Username"] ?? "guest");
+                    h.Password(password: configurationManager[key: "RabbitMq:Password"] ?? "guest");
+                });
+            });
+        });
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

@@ -15,6 +15,22 @@ services:
       retries: 10
     networks:
       - backend
+  
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
 
   financeservice:
     build:
@@ -27,7 +43,12 @@ services:
       Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
       Settings__Jwt__ExpiresMinutes: ${JWT_EXPIRES_MINUTES}
       Settings__PasswordResetToken__ExpiresMinutes: ${PASSWORD_RESET_EXPIRES_MINUTES}
+      RabbitMq__Username: ${RABBITMQ_USER}
+      RabbitMq__Password: ${RABBITMQ_PASSWORD}
+      RabbitMq__Host: rabbitmq
     depends_on:
+      rabbitmq:
+        condition: service_healthy
       postgres:
         condition: service_healthy
     networks:
@@ -44,7 +65,12 @@ services:
       Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
       Settings__Jwt__ExpiresMinutes: ${JWT_EXPIRES_MINUTES}
       Settings__PasswordResetToken__ExpiresMinutes: ${PASSWORD_RESET_EXPIRES_MINUTES}
+      RabbitMq__Username: ${RABBITMQ_USER}
+      RabbitMq__Password: ${RABBITMQ_PASSWORD}
+      RabbitMq__Host: rabbitmq
     depends_on:
+      rabbitmq:
+        condition: service_healthy
       postgres:
         condition: service_healthy
     networks:

@@ -85,4 +85,9 @@ internal class BillRepository(FinanceServiceDbContext context) : IBillReadReposi
         return await context.Bills.AsTracking()
             .FirstOrDefaultAsync(predicate: bill => bill.Id == billId && bill.UserId == userId);
     }
+
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

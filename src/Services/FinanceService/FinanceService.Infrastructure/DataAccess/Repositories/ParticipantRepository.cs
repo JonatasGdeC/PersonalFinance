@@ -47,4 +47,9 @@ internal class ParticipantRepository(FinanceServiceDbContext context) : IPartici
             .FirstOrDefaultAsync(predicate: participant =>
                 participant.Id == participantId && participant.UserId == userId);
     }
+    
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

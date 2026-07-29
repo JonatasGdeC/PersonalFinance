@@ -30,4 +30,9 @@ internal class PotRepository(FinanceServiceDbContext context) : IPotReadReposito
     {
         return await context.Pots.AsTracking().FirstOrDefaultAsync(predicate: pot => pot.Id == potId && pot.UserId == userId);
     }
+    
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

@@ -7,4 +7,5 @@ public interface IParticipantWriteRepository
     void Update(Participant participant);
     void Delete(Participant participant);
     Task<Participant?> GetById(Guid participantId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }

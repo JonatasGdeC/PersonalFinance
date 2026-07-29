@@ -7,4 +7,5 @@ public interface IPotWriteRepository
     void Update(Pot pot);
     void Delete(Pot pot);
     Task<Pot?> GetById(Guid potId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }

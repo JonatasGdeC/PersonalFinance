@@ -7,4 +7,5 @@ public interface ICategoryWriteRepository
     void Update(Category category);
     void Delete(Category category);
     Task<Category?> GetById(Guid categoryId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }

@@ -14,7 +14,9 @@ using FinanceService.Domain.Security.Cryptography;
 using FinanceService.Domain.Services.LoggedUser;
 using FinanceService.Infrastructure.DataAccess;
 using FinanceService.Infrastructure.DataAccess.Repositories;
+using FinanceService.Infrastructure.Messaging.Consumers;
 using FinanceService.Infrastructure.Services.LoggedUser;
+using MassTransit;
 using Shared.Infrastructure.Extensions;
 
 namespace FinanceService.Infrastructure;
@@ -30,6 +32,22 @@ public static class DependencyInjectionExtension
         
         services.AddScoped<IEncrypter, BCrypt>();
         services.AddScoped<ILoggedUser, LoggedUser>();
+        
+        services.AddMassTransit(configure: x =>
+        {
+            x.AddConsumer<UserDeletedEventConsumer>();
+        
+            x.UsingRabbitMq(configure: (context, cfg) =>
+            {
+                cfg.Host(host: "rabbitmq", port: 5672, virtualHost: "/", configure: h =>
+                {
+                    h.Username(username: configurationManager[key: "RabbitMq:Username"] ?? "guest");
+                    h.Password(password: configurationManager[key: "RabbitMq:Password"] ?? "guest");
+                });
+            
+                cfg.ConfigureEndpoints(registration: context);
+            });
+        });
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

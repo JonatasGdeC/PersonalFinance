@@ -32,4 +32,9 @@ internal class CategoryRepository(FinanceServiceDbContext context) : ICategoryRe
         return await context.Categories.AsTracking()
             .FirstOrDefaultAsync(predicate: category => category.Id == categoryId && userId == category.UserId);
     }
+    
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

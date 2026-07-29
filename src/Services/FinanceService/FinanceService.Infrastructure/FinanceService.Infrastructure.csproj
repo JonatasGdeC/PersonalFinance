@@ -7,19 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
-      <PackageReference Include="Dapper" Version="2.1.79" />
-      <PackageReference Include="FluentMigrator" Version="8.0.1" />
-      <PackageReference Include="FluentMigrator.Runner" Version="8.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.9" />
-      <PackageReference Include="Npgsql" Version="10.0.3" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+        <PackageReference Include="MassTransit" Version="9.2.0"/>
+        <PackageReference Include="MassTransit.RabbitMQ" Version="9.2.0"/>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.2.0"/>
+        <PackageReference Include="Dapper" Version="2.1.79"/>
+        <PackageReference Include="FluentMigrator" Version="8.0.1"/>
+        <PackageReference Include="FluentMigrator.Runner" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.9"/>
+        <PackageReference Include="Npgsql" Version="10.0.3"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\BuildingBlocks\Shared.Infrastructure\Shared.Infrastructure.csproj" />
-      <ProjectReference Include="..\FinanceService.Domain\FinanceService.Domain.csproj" />
+        <ProjectReference Include="..\..\BuildingBlocks\PersonalFinance.Contracts\PersonalFinance.Contracts.csproj" />
+        <ProjectReference Include="..\..\BuildingBlocks\Shared.Infrastructure\Shared.Infrastructure.csproj"/>
+        <ProjectReference Include="..\FinanceService.Domain\FinanceService.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

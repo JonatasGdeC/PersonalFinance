@@ -7,4 +7,5 @@ public interface ITransactionWhiteRepository
     void Update(Transaction transaction);
     void Delete(Transaction transaction);
     Task<Transaction?> GetById(Guid transactionId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }

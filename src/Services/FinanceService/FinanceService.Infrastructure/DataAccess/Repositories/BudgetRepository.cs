@@ -35,4 +35,9 @@ internal class BudgetRepository(FinanceServiceDbContext context) : IBudgetReadRe
         return await context.Budgets.AsTracking()
             .FirstOrDefaultAsync(predicate: budget => budget.Id == budgetId && budget.UserId == userId);
     }
+    
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

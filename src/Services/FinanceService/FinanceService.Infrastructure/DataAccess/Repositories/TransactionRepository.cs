@@ -120,4 +120,9 @@ internal class TransactionRepository(FinanceServiceDbContext context) : ITransac
             .FirstOrDefaultAsync(predicate: transaction =>
                 transaction.Id == transactionId && transaction.UserId == userId);
     }
+    
+    public async Task DeleteByUserId(Guid userId)
+    {
+        await context.Bills.Where(predicate: bill => bill.UserId == userId).ExecuteDeleteAsync();
+    }
 }

@@ -7,4 +7,5 @@ public interface IBudgetWriteRepository
     void Update(Budget budget);
     void Delete(Budget budget);
     Task<Budget?> GetById(Guid budgetId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }

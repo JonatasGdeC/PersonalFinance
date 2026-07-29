@@ -7,4 +7,5 @@ public interface IBillWriteRepository
     void Update(Bill bill);
     void Delete(Bill bill);
     Task<Bill?> GetById(Guid billId, Guid userId);
+    Task DeleteByUserId(Guid userId);
 }
