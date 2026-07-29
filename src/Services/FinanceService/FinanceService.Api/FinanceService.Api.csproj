@@ -14,6 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\PersonalFinance.Communication\PersonalFinance.Communication.csproj" />
+      <ProjectReference Include="..\..\BuildingBlocks\Shared.Infrastructure\Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\FinanceService.Application\FinanceService.Application.csproj" />
       <ProjectReference Include="..\FinanceService.Infrastructure\FinanceService.Infrastructure.csproj" />
     </ItemGroup>

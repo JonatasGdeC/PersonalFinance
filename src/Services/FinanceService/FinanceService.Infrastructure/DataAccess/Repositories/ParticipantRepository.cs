@@ -7,7 +7,7 @@ using FinanceService.Infrastructure.DataAccess.Utils;
 
 namespace FinanceService.Infrastructure.DataAccess.Repositories;
 
-internal class ParticipantRepository(PersonalFinanceDbContext context) : IParticipantReadRepository, IParticipantWriteRepository
+internal class ParticipantRepository(FinanceServiceDbContext context) : IParticipantReadRepository, IParticipantWriteRepository
 {
     public async Task<PagedList<Participant>> GetAll(Guid userId, ParticipantFilter filter)
     {

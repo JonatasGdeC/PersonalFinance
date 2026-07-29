@@ -2,7 +2,7 @@ using FinanceService.Domain.Repositories;
 
 namespace FinanceService.Infrastructure.DataAccess;
 
-internal class UnitOfWork(PersonalFinanceDbContext context) : IUnitOfWork
+internal class UnitOfWork(FinanceServiceDbContext context) : IUnitOfWork
 {
     public async Task Commit()
     {

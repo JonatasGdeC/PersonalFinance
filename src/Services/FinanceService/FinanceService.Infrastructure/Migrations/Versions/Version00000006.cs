@@ -4,26 +4,29 @@ using FinanceService.Domain.Entities;
 
 namespace FinanceService.Infrastructure.Migrations.Versions;
 
-[Migration(version: MigrationContants.Version.TABLE_REGISTER_BUDGET, description: "Creating budget table registrations.")]
+[Migration(version: MigrationContants.Version.TABLE_REGISTER_BILL, description: "Creating bill table registrations.")]
 public class Version00000006 : ForwardOnlyMigration
 {
     public override void Up()
     {
-        Create.Table(tableName: MigrationContants.TableName.BUDGETS)
-            .WithColumn(name: nameof(Budget.Id)).AsGuid().PrimaryKey().NotNullable()
-            .WithColumn(name: nameof(Budget.MaximumSpend)).AsDouble().NotNullable()
-            .WithColumn(name: nameof(Budget.Color)).AsString(size: 20).NotNullable()
-            .WithColumn(name: nameof(Budget.CategoryId)).AsGuid().NotNullable()
-            .WithColumn(name: nameof(Budget.UserId)).AsGuid().NotNullable();
+        Create.Table(tableName: MigrationContants.TableName.BILLS)
+            .WithColumn(name: nameof(Bill.Id)).AsGuid().PrimaryKey().NotNullable()
+            .WithColumn(name: nameof(Bill.DueDate)).AsDateTime().NotNullable()
+            .WithColumn(name: nameof(Bill.Amount)).AsDouble().NotNullable()
+            .WithColumn(name: nameof(Bill.InstallmentsTotal)).AsInt32().NotNullable()
+            .WithColumn(name: nameof(Bill.InstallmentsPaid)).AsInt32().NotNullable()
+            .WithColumn(name: nameof(Bill.CategoryId)).AsGuid().Nullable()
+            .WithColumn(name: nameof(Bill.ParticipantId)).AsGuid().NotNullable()
+            .WithColumn(name: nameof(Bill.UserId)).AsGuid().NotNullable();
 
-        Create.ForeignKey(foreignKeyName: "FK_Budgets_Categories_CategoryId")
-            .FromTable(table: MigrationContants.TableName.BUDGETS).ForeignColumn(column: nameof(Budget.CategoryId))
+        Create.ForeignKey(foreignKeyName: "FK_Bills_Categories_CategoryId")
+            .FromTable(table: MigrationContants.TableName.BILLS).ForeignColumn(column: nameof(Bill.CategoryId))
             .ToTable(table: MigrationContants.TableName.CATEGORIES).PrimaryColumn(column: nameof(Category.Id))
-            .OnDelete(rule: Rule.Cascade);
+            .OnDelete(rule: Rule.SetNull);
 
-        Create.ForeignKey(foreignKeyName: "FK_Budgets_Users_UserId")
-            .FromTable(table: MigrationContants.TableName.BUDGETS).ForeignColumn(column: nameof(Budget.UserId))
-            .ToTable(table: MigrationContants.TableName.USERS).PrimaryColumn(column: nameof(User.Id))
+        Create.ForeignKey(foreignKeyName: "FK_Bills_Participants_ParticipantId")
+            .FromTable(table: MigrationContants.TableName.BILLS).ForeignColumn(column: nameof(Bill.ParticipantId))
+            .ToTable(table: MigrationContants.TableName.PARTICIPANTS).PrimaryColumn(column: nameof(Participant.Id))
             .OnDelete(rule: Rule.Cascade);
     }
 }

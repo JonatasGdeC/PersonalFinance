@@ -1,21 +1,16 @@
-using FinanceService.Api.Extensions;
-using FinanceService.Api.Filter;
-using FinanceService.Api.Middleware;
 using FinanceService.Api.Token;
 using FinanceService.Domain.Security.Tokens;
 using PersonalFinance.Application;
 using FinanceService.Infrastructure;
-using FinanceService.Infrastructure.Extensions;
-using FinanceService.Infrastructure.Migrations;
+using Shared.Infrastructure;
+using Shared.Infrastructure.Extensions;
+using Shared.Infrastructure.Filter;
+using Shared.Infrastructure.Middleware;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
-const string corsPolicyName = "Frontend";
-
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddCorsConfig(corsPolicyName: corsPolicyName);
 builder.Services.AddSwaggerConfig();
-builder.Services.RateLimiting();
 builder.Services.AddAuthenticationConfig(configuration: builder.Configuration);
 
 builder.Services.AddApplication();
@@ -34,8 +29,6 @@ WebApplication app = builder.Build();
 
 app.UseMiddleware<CultureMiddleware>();
 
-app.UseCors(policyName: corsPolicyName);
-app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();

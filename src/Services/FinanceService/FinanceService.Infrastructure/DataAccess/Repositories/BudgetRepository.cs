@@ -4,7 +4,7 @@ using FinanceService.Domain.Repositories.Budget;
 
 namespace FinanceService.Infrastructure.DataAccess.Repositories;
 
-internal class BudgetRepository(PersonalFinanceDbContext context) : IBudgetReadRepository, IBudgetWriteRepository
+internal class BudgetRepository(FinanceServiceDbContext context) : IBudgetReadRepository, IBudgetWriteRepository
 {
     public async Task<List<Budget>> GetAll(Guid userId)
     {

@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\BuildingBlocks\Shared.Infrastructure\Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\FinanceService.Domain\FinanceService.Domain.csproj" />
     </ItemGroup>
 

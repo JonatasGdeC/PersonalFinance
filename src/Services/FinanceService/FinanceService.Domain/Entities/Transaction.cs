@@ -16,5 +16,4 @@ public class Transaction
     public required Participant Participant { get; set; }
     
     public Guid UserId { get; set; }
-    public required User User { get; set; }
 }

@@ -1,0 +1,75 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend
+
+  financeservice:
+    build:
+      context: .
+      dockerfile: src/Services/FinanceService/FinanceService.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__connection: Host=postgres;Database=FinanceDb;Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
+      Settings__Jwt__ExpiresMinutes: ${JWT_EXPIRES_MINUTES}
+      Settings__PasswordResetToken__ExpiresMinutes: ${PASSWORD_RESET_EXPIRES_MINUTES}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  userservice:
+    build:
+      context: .
+      dockerfile: src/Services/UserService/UserService.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__connection: Host=postgres;Database=UserDb;Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
+      Settings__Jwt__ExpiresMinutes: ${JWT_EXPIRES_MINUTES}
+      Settings__PasswordResetToken__ExpiresMinutes: ${PASSWORD_RESET_EXPIRES_MINUTES}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  gateway:
+    build:
+      context: .
+      dockerfile: src/Services/Gateway.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
+      ReverseProxy__Clusters__financeCluster__Destinations__destination1__Address: http://financeservice:8080
+      ReverseProxy__Clusters__userCluster__Destinations__destination1__Address: http://userservice:8080
+    ports:
+      - "5111:8080"
+    depends_on:
+      - financeservice
+      - userservice
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  postgres-data:

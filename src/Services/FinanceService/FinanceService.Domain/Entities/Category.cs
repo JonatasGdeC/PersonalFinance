@@ -9,5 +9,4 @@ public class Category
     public required TransactionType Type  { get; set; }
     
     public Guid UserId { get; set; }
-    public required User User { get; set; }
 }

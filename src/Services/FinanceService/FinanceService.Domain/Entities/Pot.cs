@@ -9,5 +9,4 @@ public class Pot
     public required string Color { get; set; }
 
     public Guid UserId { get; set; }
-    public required User User { get; set; }
 }

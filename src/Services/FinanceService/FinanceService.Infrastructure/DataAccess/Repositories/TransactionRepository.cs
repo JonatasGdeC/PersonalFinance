@@ -8,7 +8,7 @@ using FinanceService.Infrastructure.DataAccess.Utils;
 
 namespace FinanceService.Infrastructure.DataAccess.Repositories;
 
-internal class TransactionRepository(PersonalFinanceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
+internal class TransactionRepository(FinanceServiceDbContext context) : ITransactionReadRepository, ITransactionWhiteRepository
 {
     public async Task<PagedList<Transaction>> GetAll(Guid userId, TransactionFilter filter)
     {

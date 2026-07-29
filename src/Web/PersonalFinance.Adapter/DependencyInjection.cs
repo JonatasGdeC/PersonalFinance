@@ -10,7 +10,7 @@ public static class DependencyInjection
 {
     public static void AddAdapter(this IServiceCollection services, WebAssemblyHostBuilder builder)
     {
-        string apiBaseUrl = builder.Configuration[key: "ApiBaseUrl"] ?? "http://localhost:5100";
+        string apiBaseUrl = builder.Configuration[key: "ApiBaseUrl"] ?? "http://localhost:5111";
         services.AddScoped(implementationFactory: _ => new HttpClient { BaseAddress = new Uri(uriString: apiBaseUrl) });
 
         services.AddScoped<PersonalFinanceApi>();

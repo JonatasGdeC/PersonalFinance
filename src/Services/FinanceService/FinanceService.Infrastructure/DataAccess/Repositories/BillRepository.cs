@@ -8,7 +8,7 @@ using FinanceService.Infrastructure.DataAccess.Utils;
 
 namespace FinanceService.Infrastructure.DataAccess.Repositories;
 
-internal class BillRepository(PersonalFinanceDbContext context) : IBillReadRepository, IBillWriteRepository
+internal class BillRepository(FinanceServiceDbContext context) : IBillReadRepository, IBillWriteRepository
 {
     public async Task<PagedList<Bill>> GetAll(Guid userId, BillFilter filter)
     {

@@ -6,7 +6,6 @@ using PersonalFinance.Communication.Requests.Category;
 using PersonalFinance.Communication.Requests.Participant;
 using PersonalFinance.Communication.Requests.Pot;
 using PersonalFinance.Communication.Requests.Transaction;
-using PersonalFinance.Communication.Requests.User;
 using FinanceService.Domain.Entities;
 
 namespace PersonalFinance.Application.AutoMapping;
@@ -21,7 +20,6 @@ public class AutoMapping : Profile
 
     private void RequestToEntity()
     {
-        CreateMap<RegisterUserRequest, User>();
         CreateMap<RegisterPotRequest, Pot>();
         CreateMap<RegisterParticipantRequest, Participant>();
         CreateMap<RegisterCategoryRequest, Category>();
@@ -32,7 +30,6 @@ public class AutoMapping : Profile
 
     private void EntityToResponse()
     {
-        CreateMap<User, UserDto>();
         CreateMap<Pot, PotDto>();
         CreateMap<Participant, ParticipantDto>();
         CreateMap<Category, CategoryDto>();

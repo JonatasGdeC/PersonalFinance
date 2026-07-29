@@ -5,7 +5,7 @@ using FinanceService.Domain.Repositories.Category;
 
 namespace FinanceService.Infrastructure.DataAccess.Repositories;
 
-internal class CategoryRepository(PersonalFinanceDbContext context) : ICategoryReadRepository, ICategoryWriteRepository
+internal class CategoryRepository(FinanceServiceDbContext context) : ICategoryReadRepository, ICategoryWriteRepository
 {
     public async Task<List<Category>> GetAll(Guid userId, TransactionType? transactionType = null) =>
         await context.Categories.AsNoTracking()
