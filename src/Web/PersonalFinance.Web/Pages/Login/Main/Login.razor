@@ -1,3 +1,4 @@
+@using PersonalFinance.Web.Pages.Login.Components.FormForgotPassword
 @using PersonalFinance.Web.Pages.Login.Components.FormLogin
 @using PersonalFinance.Web.Pages.Login.Components.FormRegisterUser
 @using PersonalFinance.Web.Resources.Common
@@ -29,12 +30,17 @@
         <Body>
         @if (_showPageLogin)
         {
-            <FormLogin NavigateToSignUp="@ShowPageRegister"/>
+            <FormLogin NavigateToSignUp="@ShowPageRegister" NavigateToForgotPassword="@ShowPageForgotPassword"/>
         }
 
         @if (_showPageRegister)
         {
             <FormRegisterUser NavigateToLogin="@ShowPageLogin"/>
+        }
+
+        @if (_showPageForgotPassword)
+        {
+            <FormForgotPassword NavigateToLogin="@ShowPageLogin"/>
         }
         </Body>
     </AddCard>

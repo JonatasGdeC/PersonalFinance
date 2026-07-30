@@ -10,6 +10,7 @@ namespace PersonalFinance.Web.Pages.Login.Components.FormLogin;
 public partial class FormLogin : ComponentBase
 {
     [Parameter] public EventCallback NavigateToSignUp { get; set; }
+    [Parameter] public EventCallback NavigateToForgotPassword { get; set; }
     
     private readonly LoginRequest _loginRequest = new()
     {

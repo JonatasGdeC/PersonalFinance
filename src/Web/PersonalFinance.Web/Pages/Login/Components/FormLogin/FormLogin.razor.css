@@ -11,6 +11,11 @@
     gap: 16px;
 }
 
+.form-login__forgot-password {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .form-login__footer {
     display: flex;
     align-items: center;

@@ -193,5 +193,68 @@ namespace PersonalFinance.Web.Resources.Login {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Esqueci minha senha.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Informe seu email e enviaremos um código para redefinir sua senha..
+        /// </summary>
+        public static string ForgotPasswordInstructions {
+            get {
+                return ResourceManager.GetString("ForgotPasswordInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enviar código.
+        /// </summary>
+        public static string SendCode {
+            get {
+                return ResourceManager.GetString("SendCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enviando código....
+        /// </summary>
+        public static string SendingCode {
+            get {
+                return ResourceManager.GetString("SendingCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Voltar para o login.
+        /// </summary>
+        public static string BackToLogin {
+            get {
+                return ResourceManager.GetString("BackToLogin", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Se este email estiver cadastrado, você receberá um código em instantes..
+        /// </summary>
+        public static string CodeSentSuccess {
+            get {
+                return ResourceManager.GetString("CodeSentSuccess", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Email é obrigatório..
+        /// </summary>
+        public static string EmailRequiredError {
+            get {
+                return ResourceManager.GetString("EmailRequiredError", resourceCulture);
+            }
+        }
+
     }
 }

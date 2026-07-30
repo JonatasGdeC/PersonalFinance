@@ -63,4 +63,25 @@
     <data name="AllFieldsRequiredError" xml:space="preserve">
         <value>Todos os campos são obrigatórios.</value>
     </data>
+    <data name="ForgotPassword" xml:space="preserve">
+        <value>Esqueci minha senha</value>
+    </data>
+    <data name="ForgotPasswordInstructions" xml:space="preserve">
+        <value>Informe seu email e enviaremos um código para redefinir sua senha.</value>
+    </data>
+    <data name="SendCode" xml:space="preserve">
+        <value>Enviar código</value>
+    </data>
+    <data name="SendingCode" xml:space="preserve">
+        <value>Enviando código...</value>
+    </data>
+    <data name="BackToLogin" xml:space="preserve">
+        <value>Voltar para o login</value>
+    </data>
+    <data name="CodeSentSuccess" xml:space="preserve">
+        <value>Se este email estiver cadastrado, você receberá um código em instantes.</value>
+    </data>
+    <data name="EmailRequiredError" xml:space="preserve">
+        <value>Email é obrigatório.</value>
+    </data>
 </root>

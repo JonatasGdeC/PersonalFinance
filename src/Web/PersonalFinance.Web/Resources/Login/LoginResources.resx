@@ -63,4 +63,25 @@
     <data name="AllFieldsRequiredError" xml:space="preserve">
         <value>All fields are required.</value>
     </data>
+    <data name="ForgotPassword" xml:space="preserve">
+        <value>Forgot password?</value>
+    </data>
+    <data name="ForgotPasswordInstructions" xml:space="preserve">
+        <value>Enter your email and we will send you a code to reset your password.</value>
+    </data>
+    <data name="SendCode" xml:space="preserve">
+        <value>Send code</value>
+    </data>
+    <data name="SendingCode" xml:space="preserve">
+        <value>Sending code...</value>
+    </data>
+    <data name="BackToLogin" xml:space="preserve">
+        <value>Back to login</value>
+    </data>
+    <data name="CodeSentSuccess" xml:space="preserve">
+        <value>If this email is registered, you will receive a code shortly.</value>
+    </data>
+    <data name="EmailRequiredError" xml:space="preserve">
+        <value>Email is required.</value>
+    </data>
 </root>

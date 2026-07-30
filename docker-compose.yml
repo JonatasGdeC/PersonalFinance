@@ -75,6 +75,29 @@ services:
         condition: service_healthy
     networks:
       - backend
+    
+  notificationservice:
+    build:
+      context: .
+      dockerfile: src/Services/NotificationService/NotificationService.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      EmailSettings__Host: smtp.gmail.com
+      EmailSettings__Port: 465
+      EmailSettings__Username: ${EMAILSETTINGS_USERNAME}
+      EmailSettings__Password: ${EMAILSETTINGS_PASSWORD}
+      EmailSettings__From: ${EMAILSETTINGS_FROM}
+      RabbitMq__Username: ${RABBITMQ_USER}
+      RabbitMq__Password: ${RABBITMQ_PASSWORD}
+      RabbitMq__Host: rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
 
   gateway:
     build:
@@ -91,6 +114,7 @@ services:
     depends_on:
       - financeservice
       - userservice
+      - notificationservice
     networks:
       - backend
 

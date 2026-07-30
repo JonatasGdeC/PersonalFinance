@@ -193,5 +193,68 @@ namespace PersonalFinance.Web.Resources.Login {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your email and we will send you a code to reset your password..
+        /// </summary>
+        public static string ForgotPasswordInstructions {
+            get {
+                return ResourceManager.GetString("ForgotPasswordInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Send code.
+        /// </summary>
+        public static string SendCode {
+            get {
+                return ResourceManager.GetString("SendCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sending code....
+        /// </summary>
+        public static string SendingCode {
+            get {
+                return ResourceManager.GetString("SendingCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Back to login.
+        /// </summary>
+        public static string BackToLogin {
+            get {
+                return ResourceManager.GetString("BackToLogin", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to If this email is registered, you will receive a code shortly..
+        /// </summary>
+        public static string CodeSentSuccess {
+            get {
+                return ResourceManager.GetString("CodeSentSuccess", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Email is required..
+        /// </summary>
+        public static string EmailRequiredError {
+            get {
+                return ResourceManager.GetString("EmailRequiredError", resourceCulture);
+            }
+        }
+
     }
 }

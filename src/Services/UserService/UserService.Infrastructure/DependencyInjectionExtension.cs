@@ -6,12 +6,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.Extensions;
 using UserService.Domain.Repositories;
+using UserService.Domain.Repositories.PasswordResetCode;
 using UserService.Domain.Repositories.User;
+using UserService.Domain.Security.CodeGenerator;
 using UserService.Domain.Security.Cryptography;
 using UserService.Domain.Security.Tokens;
 using UserService.Domain.Services.LoggedUser;
 using UserService.Infrastructure.DataAccess;
 using UserService.Infrastructure.DataAccess.Repositories;
+using UserService.Infrastructure.Security.CodeGenerator;
 using UserService.Infrastructure.Security.Tokens;
 using UserService.Infrastructure.Services.LoggedUser;
 
@@ -30,6 +33,7 @@ public static class DependencyInjectionExtension
         
         services.AddScoped<IEncrypter,BCrypt>();
         services.AddScoped<ILoggedUser, LoggedUser>();
+        services.AddScoped<ICodeGenerator, CodeGenerator>();
         
         services.AddMassTransit(configure: x =>
         {
@@ -90,5 +94,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserReadRepository, UserRepository>();
         services.AddScoped<IUserWriteRepository, UserRepository>();
+        services.AddScoped<IPasswordResetCodeRepository, PasswordResetCodeRepository>();
     }
 }

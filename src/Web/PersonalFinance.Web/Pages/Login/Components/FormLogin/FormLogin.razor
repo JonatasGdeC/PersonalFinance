@@ -11,8 +11,12 @@
 
         @foreach (string errorMessage in _errorMessage)
         {
-            <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>    
+            <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
         }
+
+        <div class="form-login__forgot-password">
+            <AddButton Text="@LoginResources.ForgotPassword" Variant="ButtonVariant.Link" OnClick="@(async _ => await NavigateToForgotPassword.InvokeAsync())"/>
+        </div>
     </div>
 
     <AddButton Text="@(_isSubmitting ? LoginResources.LoggingIn : LoginResources.Login)"
