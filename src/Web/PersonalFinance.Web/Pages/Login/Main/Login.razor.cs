@@ -4,26 +4,27 @@ public partial class Login
 {
     private bool _showPageLogin = true;
     private bool _showPageRegister;
-    private bool _showPageForgotPassword;
+    private bool _showPageResetPassword;
 
     private void ShowPageLogin()
     {
         _showPageLogin = true;
         _showPageRegister = false;
-        _showPageForgotPassword = false;
+        _showPageResetPassword = false;
     }
 
     private void ShowPageRegister()
     {
         _showPageRegister = true;
         _showPageLogin = false;
-        _showPageForgotPassword = false;
+        _showPageResetPassword = false;
     }
 
     private void ShowPageForgotPassword()
     {
-        _showPageForgotPassword = true;
+        _showPageResetPassword = true;
         _showPageLogin = false;
         _showPageRegister = false;
     }
+    
 }

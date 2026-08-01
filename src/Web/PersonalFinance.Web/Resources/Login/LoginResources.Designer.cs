@@ -256,5 +256,113 @@ namespace PersonalFinance.Web.Resources.Login {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Verification code.
+        /// </summary>
+        public static string VerificationCode {
+            get {
+                return ResourceManager.GetString("VerificationCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the code you received by email to reset your password..
+        /// </summary>
+        public static string VerificationCodeInstructions {
+            get {
+                return ResourceManager.GetString("VerificationCodeInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm code.
+        /// </summary>
+        public static string ConfirmCode {
+            get {
+                return ResourceManager.GetString("ConfirmCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirming....
+        /// </summary>
+        public static string ConfirmingCode {
+            get {
+                return ResourceManager.GetString("ConfirmingCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Code is required..
+        /// </summary>
+        public static string CodeRequiredError {
+            get {
+                return ResourceManager.GetString("CodeRequiredError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a new password and confirm it..
+        /// </summary>
+        public static string NewPasswordInstructions {
+            get {
+                return ResourceManager.GetString("NewPasswordInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm new password.
+        /// </summary>
+        public static string ConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmNewPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating....
+        /// </summary>
+        public static string UpdatingPassword {
+            get {
+                return ResourceManager.GetString("UpdatingPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match..
+        /// </summary>
+        public static string PasswordsDoNotMatchError {
+            get {
+                return ResourceManager.GetString("PasswordsDoNotMatchError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Password changed successfully..
+        /// </summary>
+        public static string PasswordChangedSuccess {
+            get {
+                return ResourceManager.GetString("PasswordChangedSuccess", resourceCulture);
+            }
+        }
+
     }
 }

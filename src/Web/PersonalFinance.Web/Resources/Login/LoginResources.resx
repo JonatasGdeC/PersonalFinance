@@ -84,4 +84,40 @@
     <data name="EmailRequiredError" xml:space="preserve">
         <value>Email is required.</value>
     </data>
+    <data name="VerificationCode" xml:space="preserve">
+        <value>Verification code</value>
+    </data>
+    <data name="VerificationCodeInstructions" xml:space="preserve">
+        <value>Enter the code you received by email to reset your password.</value>
+    </data>
+    <data name="Code" xml:space="preserve">
+        <value>Code</value>
+    </data>
+    <data name="ConfirmCode" xml:space="preserve">
+        <value>Confirm code</value>
+    </data>
+    <data name="ConfirmingCode" xml:space="preserve">
+        <value>Confirming...</value>
+    </data>
+    <data name="CodeRequiredError" xml:space="preserve">
+        <value>Code is required.</value>
+    </data>
+    <data name="NewPassword" xml:space="preserve">
+        <value>New password</value>
+    </data>
+    <data name="NewPasswordInstructions" xml:space="preserve">
+        <value>Enter a new password and confirm it.</value>
+    </data>
+    <data name="ConfirmNewPassword" xml:space="preserve">
+        <value>Confirm new password</value>
+    </data>
+    <data name="UpdatingPassword" xml:space="preserve">
+        <value>Updating...</value>
+    </data>
+    <data name="PasswordsDoNotMatchError" xml:space="preserve">
+        <value>Passwords do not match.</value>
+    </data>
+    <data name="PasswordChangedSuccess" xml:space="preserve">
+        <value>Password changed successfully.</value>
+    </data>
 </root>
