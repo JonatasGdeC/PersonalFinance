@@ -11,7 +11,7 @@ builder.Services.AddAuthenticationConfig(configuration: builder.Configuration);
 builder.Services.AddAuthorization();
 builder.Services.AddOpenApi();
 
-builder.Services.AddReverseProxy().LoadFromConfig(config: builder.Configuration.GetSection(key: "ReverseProxy"));
+builder.Services.AddReverseProxyConfig(configuration: builder.Configuration);
 
 WebApplication app = builder.Build();
 

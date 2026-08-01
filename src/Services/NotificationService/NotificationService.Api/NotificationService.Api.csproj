@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\BuildingBlocks\PersonalFinance.Contracts\PersonalFinance.Contracts.csproj" />
+      <ProjectReference Include="..\..\BuildingBlocks\Shared.Infrastructure\Shared.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
