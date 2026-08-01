@@ -1,6 +1,7 @@
 using MassTransit;
 using NotificationService.Api.Messaging.Consumers;
 using NotificationService.Api.Services.MailKit;
+using Shared.Infrastructure.Middleware;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args: args);
 
@@ -27,6 +28,8 @@ builder.Services.AddMassTransit(configure: x =>
 });
 
 WebApplication app = builder.Build();
+
+app.UseMiddleware<CultureMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
