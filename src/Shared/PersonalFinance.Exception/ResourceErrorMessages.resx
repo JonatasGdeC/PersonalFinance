@@ -106,4 +106,10 @@
     <data name="INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL" xml:space="preserve">
         <value>Installments paid cannot be negative or exceed the installments total.</value>
     </data>
+    <data name="CODE_INVALID" xml:space="preserve">
+        <value>Invalid or expired code.</value>
+    </data>
+    <data name="INVALID_TOKEN" xml:space="preserve">
+        <value>Invalid or expired token.</value>
+    </data>
 </root>

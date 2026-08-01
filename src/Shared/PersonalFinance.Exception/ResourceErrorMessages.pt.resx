@@ -105,4 +105,10 @@
     <data name="INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL" xml:space="preserve">
         <value>As parcelas pagas não podem ser negativas nem exceder o total de parcelas.</value>
     </data>
+    <data name="CODE_INVALID" xml:space="preserve">
+        <value>Código inválido ou expirado.</value>
+    </data>
+    <data name="INVALID_TOKEN" xml:space="preserve">
+        <value>Token inválido ou expirado.</value>
+    </data>
 </root>

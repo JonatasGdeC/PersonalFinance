@@ -60,6 +60,78 @@ namespace PersonalFinance.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount must be greater than zero..
+        /// </summary>
+        public static string AMOUNT_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("AMOUNT_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bill not found..
+        /// </summary>
+        public static string BILL_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BILL_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Budget not found..
+        /// </summary>
+        public static string BUDGET_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BUDGET_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category not found..
+        /// </summary>
+        public static string CATEGORY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CATEGORY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid or expired code..
+        /// </summary>
+        public static string CODE_INVALID {
+            get {
+                return ResourceManager.GetString("CODE_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color is required..
+        /// </summary>
+        public static string COLOR_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("COLOR_IS_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current amount must be greater than or equal to zero..
+        /// </summary>
+        public static string CURRENT_AMOUNT_MUST_BE_POSITIVE {
+            get {
+                return ResourceManager.GetString("CURRENT_AMOUNT_MUST_BE_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date is required..
+        /// </summary>
+        public static string DATE_IS_REQUIRED {
+            get {
+                return ResourceManager.GetString("DATE_IS_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email already in use..
         /// </summary>
         public static string EMAIL_ALREADY_EXISTS {
@@ -87,11 +159,47 @@ namespace PersonalFinance.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installments paid cannot be negative or exceed the installments total..
+        /// </summary>
+        public static string INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL {
+            get {
+                return ResourceManager.GetString("INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installments total must be greater than zero..
+        /// </summary>
+        public static string INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid email or password..
         /// </summary>
         public static string INVALID_LOGIN {
             get {
                 return ResourceManager.GetString("INVALID_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid or expired token..
+        /// </summary>
+        public static string INVALID_TOKEN {
+            get {
+                return ResourceManager.GetString("INVALID_TOKEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum spend must be greater than zero..
+        /// </summary>
+        public static string MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
             }
         }
         
@@ -128,6 +236,15 @@ namespace PersonalFinance.Exception {
         public static string OLD_PASSWORD_INVALID {
             get {
                 return ResourceManager.GetString("OLD_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Participant not found..
+        /// </summary>
+        public static string PARTICIPANT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("PARTICIPANT_NOT_FOUND", resourceCulture);
             }
         }
         
@@ -186,15 +303,6 @@ namespace PersonalFinance.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown error..
-        /// </summary>
-        public static string UNKNOWN_ERROR {
-            get {
-                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Pot not found..
         /// </summary>
         public static string POT_NOT_FOUND {
@@ -202,16 +310,7 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("POT_NOT_FOUND", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Color is required..
-        /// </summary>
-        public static string COLOR_IS_REQUIRED {
-            get {
-                return ResourceManager.GetString("COLOR_IS_REQUIRED", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Target must be greater than zero..
         /// </summary>
@@ -220,34 +319,7 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("TARGET_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Current amount must be greater than or equal to zero..
-        /// </summary>
-        public static string CURRENT_AMOUNT_MUST_BE_POSITIVE {
-            get {
-                return ResourceManager.GetString("CURRENT_AMOUNT_MUST_BE_POSITIVE", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Participant not found..
-        /// </summary>
-        public static string PARTICIPANT_NOT_FOUND {
-            get {
-                return ResourceManager.GetString("PARTICIPANT_NOT_FOUND", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Category not found..
-        /// </summary>
-        public static string CATEGORY_NOT_FOUND {
-            get {
-                return ResourceManager.GetString("CATEGORY_NOT_FOUND", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Transaction not found..
         /// </summary>
@@ -256,67 +328,13 @@ namespace PersonalFinance.Exception {
                 return ResourceManager.GetString("TRANSACTION_NOT_FOUND", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Amount must be greater than zero..
+        ///   Looks up a localized string similar to Unknown error..
         /// </summary>
-        public static string AMOUNT_MUST_BE_GREATER_THAN_ZERO {
+        public static string UNKNOWN_ERROR {
             get {
-                return ResourceManager.GetString("AMOUNT_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Date is required..
-        /// </summary>
-        public static string DATE_IS_REQUIRED {
-            get {
-                return ResourceManager.GetString("DATE_IS_REQUIRED", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Budget not found..
-        /// </summary>
-        public static string BUDGET_NOT_FOUND {
-            get {
-                return ResourceManager.GetString("BUDGET_NOT_FOUND", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Maximum spend must be greater than zero..
-        /// </summary>
-        public static string MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO {
-            get {
-                return ResourceManager.GetString("MAXIMUM_SPEND_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Bill not found..
-        /// </summary>
-        public static string BILL_NOT_FOUND {
-            get {
-                return ResourceManager.GetString("BILL_NOT_FOUND", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Installments total must be greater than zero..
-        /// </summary>
-        public static string INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO {
-            get {
-                return ResourceManager.GetString("INSTALLMENTS_TOTAL_MUST_BE_GREATER_THAN_ZERO", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Installments paid cannot be negative or exceed the installments total..
-        /// </summary>
-        public static string INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL {
-            get {
-                return ResourceManager.GetString("INSTALLMENTS_PAID_CANNOT_EXCEED_TOTAL", resourceCulture);
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
     }
