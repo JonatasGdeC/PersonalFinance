@@ -1,3 +1,4 @@
+@using PersonalFinance.Web.Pages.Login.Components.GoogleLoginButton
 @using PersonalFinance.Web.Resources.Login
 
 <form class="form-login" @onsubmit="@HandleLogin" @onsubmit:preventDefault="true">
@@ -22,6 +23,8 @@
     <AddButton Text="@(_isSubmitting ? LoginResources.LoggingIn : LoginResources.Login)"
                Variant="ButtonVariant.Primary" Type="submit"
                FullWidth="true" Disabled="_isSubmitting"/>
+
+    <GoogleLoginButton/>
 
     <div class="form-login__footer">
         <AddText Text="@LoginResources.NeedAccount" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>

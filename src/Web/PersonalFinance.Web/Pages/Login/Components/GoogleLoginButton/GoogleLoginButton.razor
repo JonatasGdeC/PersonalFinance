@@ -1,0 +1,15 @@
+@using PersonalFinance.Web.Resources.Login
+@implements IDisposable
+
+<div class="google-login-button">
+    <div class="google-login-button__divider">
+        <AddText Text="@LoginResources.Or" Preset="TextPreset.Preset4" Color="ThemeColor.Grey500"/>
+    </div>
+
+    <div id="@CONTAINER_ID" class="google-login-button__slot"></div>
+
+    @foreach (string errorMessage in _errorMessage)
+    {
+        <AddText Text="@errorMessage" Color="ThemeColor.Red" Preset="TextPreset.Preset5Bold"/>
+    }
+</div>

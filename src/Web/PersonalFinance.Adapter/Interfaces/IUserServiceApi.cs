@@ -8,6 +8,7 @@ public interface IUserServiceApi
 {
     Task<RegisterUserResponse> Register(RegisterUserRequest request);
     Task<LoginResponse> Login(LoginRequest request);
+    Task<LoginResponse> LoginGoogle(LoginGoogleRequest request);
     Task<UserDto?> Get();
     Task Update(UpdateUserRequest request);
     Task UpdatePassword(UpdatePasswordRequest request);

@@ -1,0 +1,25 @@
+.google-login-button {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.google-login-button__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.google-login-button__divider::before,
+.google-login-button__divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--grey-100);
+}
+
+.google-login-button__slot {
+    display: flex;
+    justify-content: center;
+}
