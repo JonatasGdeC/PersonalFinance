@@ -65,6 +65,7 @@ services:
       Settings__Jwt__SigningKey: ${JWT_SIGNING_KEY}
       Settings__Jwt__ExpiresMinutes: ${JWT_EXPIRES_MINUTES}
       Settings__PasswordResetToken__ExpiresMinutes: ${PASSWORD_RESET_EXPIRES_MINUTES}
+      Settings__Google__ClientId: ${GOOGLE_CLIENT_ID}
       RabbitMq__Username: ${RABBITMQ_USER}
       RabbitMq__Password: ${RABBITMQ_PASSWORD}
       RabbitMq__Host: rabbitmq

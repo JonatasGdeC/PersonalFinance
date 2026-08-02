@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="16.2.0" />
+      <PackageReference Include="Google.Apis.Auth" Version="1.75.0" />
       <PackageReference Include="MassTransit.Abstractions" Version="8.5.10" />
     </ItemGroup>
 

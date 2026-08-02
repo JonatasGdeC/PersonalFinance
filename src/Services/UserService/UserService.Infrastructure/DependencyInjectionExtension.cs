@@ -10,11 +10,13 @@ using UserService.Domain.Repositories.PasswordResetCode;
 using UserService.Domain.Repositories.User;
 using UserService.Domain.Security.CodeGenerator;
 using UserService.Domain.Security.Cryptography;
+using UserService.Domain.Security.External;
 using UserService.Domain.Security.Tokens;
 using UserService.Domain.Services.LoggedUser;
 using UserService.Infrastructure.DataAccess;
 using UserService.Infrastructure.DataAccess.Repositories;
 using UserService.Infrastructure.Security.CodeGenerator;
+using UserService.Infrastructure.Security.External;
 using UserService.Infrastructure.Security.Tokens;
 using UserService.Infrastructure.Services.LoggedUser;
 
@@ -29,6 +31,7 @@ public static class DependencyInjectionExtension
         AddFluentMigrator(services: services, configuration: configurationManager);
         AddUserToken(services: services, configuration: configurationManager);
         AddPasswordResetToken(services: services, configuration: configurationManager);
+        AddGoogleAuthenticator(services: services, configuration: configurationManager);
         AddRepositories(services: services);
         
         services.AddScoped<IEncrypter,BCrypt>();
@@ -87,6 +90,12 @@ public static class DependencyInjectionExtension
             new PasswordResetTokenGenerator(expirationTimeMinutes: uint.Parse(s: expirationTimeMinutes.Value!), signingKey: signingKey.Value!));
         
         services.AddScoped<IVerifyTokenResetCode>(implementationFactory: _ => new VerifyTokenResetCode(signingKey: signingKey.Value!));
+    }
+    
+    private static void AddGoogleAuthenticator(IServiceCollection services, IConfiguration configuration)
+    {
+        string clientId = configuration.GetValue<string>(key: "Settings:Google:ClientId")!;
+        services.AddScoped<IGoogleAuthenticator>(implementationFactory: _ => new GoogleAuthenticator(clientId: clientId));
     }
 
     private static void AddRepositories(IServiceCollection services)

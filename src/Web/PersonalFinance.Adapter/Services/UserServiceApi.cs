@@ -13,6 +13,9 @@ internal class UserServiceApi(HttpClient httpClient) : ApiServiceBase(httpClient
     public async Task<LoginResponse> Login(LoginRequest request) =>
         await PostAsync<LoginRequest, LoginResponse>(request: request, route: "/login");
 
+    public async Task<LoginResponse> LoginGoogle(LoginGoogleRequest request) =>
+        await PostAsync<LoginGoogleRequest, LoginResponse>(request: request, route: "/login-google");
+
     public async Task<UserDto?> Get() => 
         await GetAsync<UserDto>();
 

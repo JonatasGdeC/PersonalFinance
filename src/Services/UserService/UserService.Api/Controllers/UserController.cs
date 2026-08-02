@@ -8,6 +8,7 @@ using UserService.Application.UseCase.User.Delete;
 using UserService.Application.UseCase.User.ForgotPassword;
 using UserService.Application.UseCase.User.Get;
 using UserService.Application.UseCase.User.Login;
+using UserService.Application.UseCase.User.LoginGoogle;
 using UserService.Application.UseCase.User.Register;
 using UserService.Application.UseCase.User.ResetPassword;
 using UserService.Application.UseCase.User.Update;
@@ -36,6 +37,15 @@ public class UserController : ControllerBase
     [ProducesResponseType(type: typeof(LoginResponse), statusCode: StatusCodes.Status200OK)]
     [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Login([FromServices] ILoginUseCase useCase, [FromBody] LoginRequest request)
+    {
+        LoginResponse response = await useCase.Execute(request: request);
+        return Ok(value: response);
+    }
+    
+    [HttpPost(template: "login-google")]
+    [ProducesResponseType(type: typeof(LoginResponse), statusCode: StatusCodes.Status200OK)]
+    [ProducesResponseType(type: typeof(ErrorResponse), statusCode: StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> LoginWithGoogle([FromServices] ILoginGoogleUseCase useCase, [FromBody] LoginGoogleRequest request)
     {
         LoginResponse response = await useCase.Execute(request: request);
         return Ok(value: response);

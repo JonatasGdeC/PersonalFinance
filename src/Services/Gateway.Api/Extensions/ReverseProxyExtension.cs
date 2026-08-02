@@ -31,6 +31,13 @@ internal static class ReverseProxyExtension
         },
         new()
         {
+            RouteId = "user-login-google",
+            ClusterId = USER_CLUSTER,
+            Match = new RouteMatch { Path = "/User/login-google", Methods = [HttpMethods.Post] },
+            RateLimiterPolicy = RateLimitingPolicyNames.LOGIN
+        },
+        new()
+        {
             RouteId = "user-forgot-password",
             ClusterId = USER_CLUSTER,
             Match = new RouteMatch { Path = "/User/forgot-password", Methods = [HttpMethods.Post] },

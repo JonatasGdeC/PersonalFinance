@@ -3,6 +3,7 @@ using UserService.Application.UseCase.User.Delete;
 using UserService.Application.UseCase.User.ForgotPassword;
 using UserService.Application.UseCase.User.Get;
 using UserService.Application.UseCase.User.Login;
+using UserService.Application.UseCase.User.LoginGoogle;
 using UserService.Application.UseCase.User.Register;
 using UserService.Application.UseCase.User.ResetPassword;
 using UserService.Application.UseCase.User.Update;
@@ -37,5 +38,6 @@ public static class DependencyInjectionExtension
         service.AddScoped<IForgotPassword, ForgotPassword>();
         service.AddScoped<IValidateResetCodeUseCase, ValidateResetCodeUseCase>();
         service.AddScoped<IResetPassword, ResetPassword>();
+        service.AddScoped<ILoginGoogleUseCase, LoginGoogleUseCase>();
     }
 }
