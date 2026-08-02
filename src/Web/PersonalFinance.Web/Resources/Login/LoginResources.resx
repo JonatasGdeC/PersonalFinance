@@ -120,4 +120,10 @@
     <data name="PasswordChangedSuccess" xml:space="preserve">
         <value>Password changed successfully.</value>
     </data>
+    <data name="Or" xml:space="preserve">
+        <value>or</value>
+    </data>
+    <data name="WelcomeBack" xml:space="preserve">
+        <value>Welcome back</value>
+    </data>
 </root>
